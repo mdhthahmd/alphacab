@@ -7,8 +7,30 @@ package com.alphacab.models;
 
 /**
  *
- * @author SimSadrowpsX
+ * @author ADMIN
  */
 public class User {
+     String username;
+     String pass;
+     String email;
+     
+    //Constructor declaration of class
+     public User(String username,String pass,String email){
+         this.username = username;
+         this.pass = pass;
+         this.email = email;
+     }
     
+     // method 1
+     public String getUsername(){
+         return username;
+     }
+     // method 2
+     public String getPass(){
+        return pass;
+     }
+      // method 3
+     public String getEmail(){
+        return email;
+     }
 }
