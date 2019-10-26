@@ -22,10 +22,10 @@ public class Driver {
     
     public Driver(String name, String P_address, String email, int mobile_No, Date T_date) {
         this.name = name;
-        this.P_address = P_address;
+        this.p_address = P_address;
         this.email = email;
         this.mobile_No = mobile_No;
-        this.T_date = T_date;
+        this.t_date = T_date;
     }
     
     public String getName() {
@@ -33,7 +33,7 @@ public class Driver {
     }
 
     public String getP_address() {
-        return P_address;
+        return p_address;
     }
 
     public String getEmail() {
@@ -45,10 +45,10 @@ public class Driver {
     }
 
     public Date getT_date() {
-        return T_date;
+        return t_date;
     }
 
     public String getD_licence() {
-        return D_licence;
+        return d_licence;
     }
 }
