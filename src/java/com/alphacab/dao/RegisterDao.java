@@ -26,12 +26,13 @@ public class RegisterDao {
 
         try {
             connection = ConnectionManager.createConnection();
-            String query = "insert into users(fullName,email,userName,password) values (?,?,?,?)"; //Insert user details into the table 'USERS'
+            String query = "insert into users(fullName,email,userName,password,userRole) values (?,?,?,?,?)"; //Insert user details into the table 'USERS'
             preparedStatement = connection.prepareStatement(query); //Making use of prepared statements here to insert bunch of data
             preparedStatement.setString(1, fullName);
             preparedStatement.setString(2, email);
             preparedStatement.setString(3, userName);
             preparedStatement.setString(4, password);
+            preparedStatement.setString(5, "Customer");
 
             int i = preparedStatement.executeUpdate();
 

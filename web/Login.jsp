@@ -8,7 +8,7 @@
         <script>
             function validate()
             {
-                var username = document.form.username.value;
+                var username = document.form.email.value;
                 var password = document.form.password.value;
 
                 if (username == null || username == "")
@@ -26,7 +26,7 @@
     <body>
         <div style="text-align:center"><h1>Alpha Cab Login</h1> </div>
         <br>
-        <form name="form" action="login" method="post" onsubmit="return validate()">
+        <form name="form" action="<%=request.getContextPath()%>/login" method="post" onsubmit="return validate()">
             <table align="center">
                 <tr>
                     <td>Email</td>
@@ -36,7 +36,7 @@
                     <td>Password</td>
                     <td><input type="password" name="password" /></td>
                 </tr>
-                <tr> <!-- refer to the video to understand request.getAttribute() -->
+                <tr> 
                             <td><span style="color:red"><%=(request.getAttribute("errMessage") == null) ? ""
          : request.getAttribute("errMessage")%></span></td>
                 </tr>

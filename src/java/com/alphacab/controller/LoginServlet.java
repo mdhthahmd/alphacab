@@ -1,58 +1,80 @@
 package com.alphacab.controller;
 
 import java.io.IOException;
-import java.io.PrintWriter;
+
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.alphacab.model.LoginBean;
 import com.alphacab.dao.LoginDao;
 
-/**
- *
- * @author SimSadrowpsX
- */
 public class LoginServlet extends HttpServlet {
-
-   
-
-  
+    
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        request.getRequestDispatcher("/Login.jsp").forward(request, response);
+        request.getRequestDispatcher("Login.jsp").forward(request, response);
+        
     }
 
-    
-    @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        // get the creds
+
         String email = request.getParameter("email");
         String password = request.getParameter("password");
-        
-        // init LoginBean
-        LoginBean loginBean = new LoginBean(); 
 
-        loginBean.setEmail(email); 
+        LoginBean loginBean = new LoginBean();
+
+        loginBean.setEmail(email);
         loginBean.setPassword(password);
 
         LoginDao loginDao = new LoginDao();
 
-        // validate
-        String userValidate = loginDao.authenticateUser(loginBean); 
+        try {
+            String userValidate = loginDao.authenticateUser(loginBean);
 
-        if (userValidate.equals("SUCCESS"))
-        {
-            request.setAttribute("email", email); 
-            request.getRequestDispatcher("/Home.jsp").forward(request, response);
-        } else {
-            request.setAttribute("errMessage", userValidate); 
-            request.getRequestDispatcher("/Login.jsp").forward(request, response);
+            if (userValidate.equals("Admin_Role")) {
+                System.out.println("Admin's Home");
+
+                HttpSession session = request.getSession(); //Creating a session
+                session.setAttribute("Admin", email); //setting session attribute
+                request.setAttribute("userName", loginBean.getUserName());
+
+                request.getRequestDispatcher("/Admin.jsp").forward(request, response);
+
+            } else if (userValidate.equals("Driver_Role")) {
+                
+                System.out.println("Driver's Home");
+
+                HttpSession session = request.getSession();
+                session.setAttribute("Driver", email);
+                request.setAttribute("userName", loginBean.getUserName() );
+
+                request.getRequestDispatcher("Driver.jsp").forward(request, response);
+                
+            } else if (userValidate.equals("Customer_Role")) {
+                
+                System.out.println("Customer's Home");
+
+                HttpSession session = request.getSession();
+                session.setMaxInactiveInterval(10 * 60);
+                session.setAttribute("Customer", email);
+                request.setAttribute("userName", loginBean.getUserName());
+
+                request.getRequestDispatcher("/Customer.jsp").forward(request, response);
+                
+            } else {
+                System.out.println("Error message = " + userValidate);
+                request.setAttribute("errMessage", userValidate);
+
+                request.getRequestDispatcher("/Login.jsp").forward(request, response);
+            }
+        } catch (IOException e1) {
+            e1.printStackTrace();
+        } catch (Exception e2) {
+            e2.printStackTrace();
         }
-    }
-
-  
-
+    } //End of doPost()
 }

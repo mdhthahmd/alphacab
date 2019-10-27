@@ -44,7 +44,8 @@ public class ConnectionManager {
             try {
                 connection = ds.getConnection();
             } catch (Exception e) {
-                System.out.println("Error: Creating thr DBConnection!");
+                System.out.println("Error: Creating the DBConnection!");
+                e.printStackTrace();
             }
         /*} catch (IOException ex) {
             System.out.println("Error: One or more db configs not loaded");

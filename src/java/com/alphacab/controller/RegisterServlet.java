@@ -24,7 +24,6 @@ public class RegisterServlet extends HttpServlet {
         String password = request.getParameter("password");
 
         RegisterBean registerBean = new RegisterBean();
-        //Using Java Beans - An easiest way to play with group of related data
         registerBean.setFullName(fullName);
         registerBean.setEmail(email);
         registerBean.setUserName(userName);
