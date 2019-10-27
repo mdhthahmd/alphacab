@@ -13,7 +13,7 @@ public class ConnectionManager {
         
         Connection connection = null;
 
-        try (InputStream input = new FileInputStream("dbSettings/settings.properties")) {
+        /* try (InputStream input = new FileInputStream("./config/db.properties")) {
 
             Properties dbConfig = new Properties();
 
@@ -32,23 +32,24 @@ public class ConnectionManager {
             // https://db.apache.org/derby/docs/10.7/adminguide/radminnsdatasourcexmp.html
             String connectionURL = String.format("jdbc:derby://%s:%s/%s", host, port, db);
 
-            System.out.println(connectionURL);
+            System.out.println(connectionURL); */
 
             ClientDataSource ds = new ClientDataSource();
-            ds.setServerName(host);
-            ds.setPortNumber(Integer.parseInt(port));
-            ds.setDatabaseName(db);
-            ds.setUser(user);
-            ds.setPassword(password);
+            ds.setServerName("localhost");
+            ds.setPortNumber(1527);
+            ds.setDatabaseName("cabdb");
+            ds.setUser("root");
+            ds.setPassword("root");
 
             try {
                 connection = ds.getConnection();
             } catch (Exception e) {
                 System.out.println("Error: Creating thr DBConnection!");
             }
-        } catch (IOException ex) {
+        /*} catch (IOException ex) {
             System.out.println("Error: One or more db configs not loaded");
-        }
+            ex.printStackTrace();
+        }*/
         return connection;
     }
 }

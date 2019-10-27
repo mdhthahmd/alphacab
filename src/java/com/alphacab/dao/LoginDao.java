@@ -11,34 +11,36 @@ public class LoginDao {
 
     public String authenticateUser(LoginBean loginBean) {
 
-        String userName = loginBean.getUserName(); //Keeping user entered values in temporary variables.
+        String email = loginBean.getEmail(); 
         String password = loginBean.getPassword();
 
         Connection connection = null;
         Statement statement = null;
         ResultSet resultSet = null;
 
-        String userNameDB = "";
+        String emailDB = "";
         String passwordDB = "";
 
         try {
-            connection = ConnectionManager.createConnection(); //establishing connection
-            statement = connection.createStatement(); //Statement is used to write queries. Read more about it.
-            resultSet = statement.executeQuery("select userName,password from users"); //Here table name is users and userName,password are columns. fetching all the records and storing in a resultSet.
+            connection = ConnectionManager.createConnection();
+            statement = connection.createStatement(); 
+            resultSet = statement.executeQuery("select email,password from users"); 
 
-            while (resultSet.next()) // Until next row is present otherwise it return false
+            while (resultSet.next()) 
             {
-                userNameDB = resultSet.getString("userName"); //fetch the values present in database
+                emailDB = resultSet.getString("email"); 
                 passwordDB = resultSet.getString("password");
 
-                if (userName.equals(userNameDB) && password.equals(passwordDB)) {
-                    return "SUCCESS"; ////If the user entered values are already present in database, which means user has already registered so I will return SUCCESS message.
+                if (email.equals(emailDB) && password.equals(passwordDB)) {
+                    return "SUCCESS"; 
                 }
             }
+            
+            connection.close();
+            
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        return "Invalid user credentials"; // Just returning appropriate message otherwise
+        return "Invalid user credentials";
     }
-
 }
