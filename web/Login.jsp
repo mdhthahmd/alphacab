@@ -24,6 +24,10 @@
         </script> 
     </head>
     <body>
+        
+        <%
+            response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
+        %>
         <div style="text-align:center"><h1>Alpha Cab Login</h1> </div>
         <br>
         <form name="form" action="<%=request.getContextPath()%>/login" method="post" onsubmit="return validate()">

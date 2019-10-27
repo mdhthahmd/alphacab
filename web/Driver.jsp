@@ -5,6 +5,7 @@
         <title>Driver's Page</title>
     </head>
     <% //In case, if Editor session is not set, redirect to Login page
+        response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
         if ((request.getSession(false).getAttribute("Driver") == null)) {
     %>
     <jsp:forward page="/Login.jsp"></jsp:forward>

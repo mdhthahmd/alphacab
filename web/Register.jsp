@@ -40,6 +40,9 @@
                                     </script> 
     </head>
     <body>
+        <%
+            response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
+        %>
         <center><h2>AlphaCab Registration</h2></center>
         <form name="form" action="register" method="post" onsubmit="return validate()">
             <table align="center">

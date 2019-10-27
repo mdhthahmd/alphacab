@@ -6,6 +6,9 @@
         <title>AlphaCab - The Best Ride in Town</title>
     </head>
     <body>
+        <%
+            response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
+        %>
         <h1>Welcome to AlphaCab - The Best Ride In Town</h1>
         <p>To Experience the Serivce Please Register</p> 
         <form name="register" action="register" method="get">

@@ -6,6 +6,9 @@
         <title>Home Page</title>
     </head>
     <body>
+        <%
+            response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
+        %>
         <center><h2>Home Page</h2></center>
         Welcome <%=request.getAttribute("userName")%>
         <div style="text-align: right"><a href="logout">Logout</a></div>

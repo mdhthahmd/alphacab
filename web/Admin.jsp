@@ -5,6 +5,8 @@
         <title>Admin Page</title>
     </head>
     <% //In case, if Admin session is not set, redirect to Login page
+        response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
+        
         if ((request.getSession(false).getAttribute("Admin") == null)) {
     %>
     <jsp:forward page="/Login.jsp"></jsp:forward>
