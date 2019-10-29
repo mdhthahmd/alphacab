@@ -65,15 +65,10 @@
           <li class="nav-item">
             <a class="nav-link" href="#">
               <span data-feather="file"></span>
-              Assigned Jobs
+              New booking
             </a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">
-              <span data-feather="shopping-cart"></span>
-              Customers Served
-            </a>
-          </li>
+
           <li class="nav-item">
             <a class="nav-link" href="#">
               <span data-feather="users"></span>

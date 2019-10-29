@@ -57,25 +57,25 @@
       <div class="sidebar-sticky">
         <ul class="nav flex-column">
           <li class="nav-item">
-            <a class="nav-link active" href="#">
+            <a class="nav-link active" href="driver-profile.jsp">
               <span data-feather="home"></span>
               Profile <span class="sr-only">(current)</span>
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">
+            <a class="nav-link" href="driver-new-jobs.jsp">
               <span data-feather="file"></span>
               New Jobs
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">
+            <a class="nav-link" href="driver-assigned-jobs.jsp">
               <span data-feather="file"></span>
               Assigned Jobs
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">
+            <a class="nav-link" href="driver-customer-served.jsp">
               <span data-feather="shopping-cart"></span>
               Customers Served
             </a>
