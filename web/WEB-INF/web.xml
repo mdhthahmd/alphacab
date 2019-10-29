@@ -4,9 +4,11 @@
     <session-config>
         <session-timeout>10</session-timeout>
     </session-config>
-    <welcome-file-list>
-        <welcome-file>Welcome.jsp</welcome-file>
-    </welcome-file-list>
+   <!-- <welcome-file-list>
+        <welcome-file>login</welcome-file>
+    </welcome-file-list>  -->
+    
+
     <servlet>
         <servlet-name>LoginServlet</servlet-name>
         <servlet-class>com.alphacab.controller.LoginServlet</servlet-class>
@@ -19,6 +21,7 @@
         <servlet-name>RegisterServlet</servlet-name>
         <servlet-class>com.alphacab.controller.RegisterServlet</servlet-class>
     </servlet>
+    
     <servlet-mapping>
         <servlet-name>LoginServlet</servlet-name>
         <url-pattern>/login</url-pattern>

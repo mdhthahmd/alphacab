@@ -15,7 +15,7 @@ public class LoginServlet extends HttpServlet {
     
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        request.getRequestDispatcher("Login.jsp").forward(request, response);
+        request.getRequestDispatcher("index.jsp").forward(request, response);
         
     }
 
@@ -42,7 +42,7 @@ public class LoginServlet extends HttpServlet {
                 session.setAttribute("Admin", email); //setting session attribute
                 request.setAttribute("userName", loginBean.getUserName());
 
-                request.getRequestDispatcher("Admin.jsp").forward(request, response);
+                request.getRequestDispatcher("views/admin/admin-dashboard.jsp").forward(request, response);
 
             } else if (userValidate.equals("Driver_Role")) {
                 
@@ -52,7 +52,7 @@ public class LoginServlet extends HttpServlet {
                 session.setAttribute("Driver", email);
                 request.setAttribute("userName", loginBean.getUserName() );
 
-                request.getRequestDispatcher("Driver.jsp").forward(request, response);
+                request.getRequestDispatcher("views/driver/driver-dashboard.jsp").forward(request, response);
                 
             } else if (userValidate.equals("Customer_Role")) {
                 
@@ -63,13 +63,13 @@ public class LoginServlet extends HttpServlet {
                 session.setAttribute("Customer", email);
                 request.setAttribute("userName", loginBean.getUserName());
 
-                request.getRequestDispatcher("Customer.jsp").forward(request, response);
+                request.getRequestDispatcher("views/customer/customer-dashboard.jsp").forward(request, response);
                 
             } else {
                 System.out.println("Error message = " + userValidate);
                 request.setAttribute("errMessage", userValidate);
 
-                request.getRequestDispatcher("Login.jsp").forward(request, response);
+                request.getRequestDispatcher("index.jsp").forward(request, response);
             }
         } catch (IOException e1) {
             e1.printStackTrace();

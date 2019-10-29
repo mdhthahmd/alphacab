@@ -8,12 +8,13 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.alphacab.model.RegisterBean;
 import com.alphacab.dao.RegisterDao;
+import javax.servlet.http.HttpSession;
 
 public class RegisterServlet extends HttpServlet {
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        request.getRequestDispatcher("/Register.jsp").forward(request, response);
+        request.getRequestDispatcher("index.jsp").forward(request, response);
     }
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -23,6 +24,9 @@ public class RegisterServlet extends HttpServlet {
         String userName = request.getParameter("username");
         String password = request.getParameter("password");
 
+        HttpSession session = request.getSession();
+        
+        
         RegisterBean registerBean = new RegisterBean();
         registerBean.setFullName(fullName);
         registerBean.setEmail(email);
@@ -35,13 +39,18 @@ public class RegisterServlet extends HttpServlet {
         String userRegistered = registerDao.registerUser(registerBean);
 
         if (userRegistered.equals("SUCCESS")) //On success, you can display a message to user on Home page
-        {
-            request.setAttribute("userName", userName);
-            request.getRequestDispatcher("/Home.jsp").forward(request, response);
+        {    
+            request.setAttribute("userName", registerBean.getUserName() );
+            session.setAttribute("Customer", registerBean.getEmail() );
+            System.out.println("Asslah hasdhjdascjkasjckjsk");
+            request.getRequestDispatcher("views/customer/customer-dashboard.jsp").forward(request, response);
+            
+     
+            System.out.println("Nabbu Nabeel");
         } else //On Failure, display a meaningful message to the User.
         {
             request.setAttribute("errMessage", userRegistered);
-            request.getRequestDispatcher("/Register.jsp").forward(request, response);
+            request.getRequestDispatcher("index.jsp").forward(request, response);
         }
     }
 }

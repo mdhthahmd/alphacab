@@ -7,23 +7,26 @@
         <!--css stuffs -->
     </head>
     <body>
+        
         <div class="container" id="container">
             <div class="form-container sign-up-container">
-                <form action="#">
+                <form action="<%=request.getContextPath()%>/register" method="post">
                     <h1>Create Account</h1>
                     <br/>
-                    <input type="text" placeholder="Name" />
-                    <input type="email" placeholder="Email" />
-                    <input type="password" placeholder="Password" />
+                    <input type="text" placeholder="Full Name" name="fullname"/>
+                    <input type="email" placeholder="Email" name="email"/>
+                    <input type="text" placeholder="User Name" name="username"/>
+                    <input type="password" placeholder="Password" name="password"/>
+                    <input type="password" placeholder="Confirm Password" name="conpassword"/>
                     <button>Sign Up</button>
                 </form>
             </div>
             <div class="form-container sign-in-container">
-                <form action="#">
+                <form action="<%=request.getContextPath()%>/login" method="post">
                     <h1>Sign in</h1>
                     <br/>
-                    <input type="email" placeholder="Email" />
-                    <input type="password" placeholder="Password" />
+                    <input type="email" placeholder="Email" name="email"/>
+                    <input type="password" placeholder="Password" name="password"/>
                     <a href="#">Forgot your password?</a>
                     <button>Sign In</button>
                 </form>

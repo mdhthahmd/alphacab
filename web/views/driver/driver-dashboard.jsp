@@ -39,6 +39,14 @@
     
     
   </head>
+  
+  <% //In case, if Editor session is not set, redirect to Login page
+        response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
+        if ((request.getSession(false).getAttribute("Driver") == null)) {
+    %>
+    <jsp:forward page="/Login.jsp"></jsp:forward>
+    <%}%>
+    
   <body>
     <nav class="navbar navbar-dark fixed-top bg-dark flex-md-nowrap p-0 shadow">
   <a class="navbar-brand col-sm-3 col-md-2 mr-0" href="#">Alpha Cab</a>
@@ -93,5 +101,9 @@
     <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
       <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
              <h1 class="h2">Driver</h1>
+             
+             Welcome <%=request.getAttribute("userName")%>
+
+        <div style="text-align: right"><a href="<%=request.getContextPath()%>/logout">Logout</a></div>
       </div>
 
