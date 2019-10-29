@@ -1,4 +1,3 @@
-//LoginBean.java
  
 package com.alphacab.model;
  
