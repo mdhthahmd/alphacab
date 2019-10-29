@@ -1,38 +1,66 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-package com.alphacab;
-
-/**
- *
- * @author SimSadrowpsX
- */
-
-import com.alphacab.models.User;
+package com.alphacab.database;
 
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.Properties;
-
 import org.apache.derby.jdbc.ClientDataSource;
-
 import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.ResultSetMetaData;
-import java.sql.Statement;
-import java.util.ArrayList;
+
+public class ConnectionManager {
+
+    public static Connection createConnection() {
+        
+        Connection connection = null;
+
+        /* try (InputStream input = new FileInputStream("./config/db.properties")) {
+
+            Properties dbConfig = new Properties();
+
+            // load a properties file
+            dbConfig.load(input);
+
+            String host, port, db, user, password;
+
+            host = dbConfig.getProperty("host");
+            port = dbConfig.getProperty("port");
+            db = dbConfig.getProperty("db");
+            user = dbConfig.getProperty("user");
+            password = dbConfig.getProperty("password");
+
+            // jdbc:derby:[subsubprotocol:][databaseName][;attribute=value]*
+            // https://db.apache.org/derby/docs/10.7/adminguide/radminnsdatasourcexmp.html
+            String connectionURL = String.format("jdbc:derby://%s:%s/%s", host, port, db);
+
+            System.out.println(connectionURL); */
+
+            ClientDataSource ds = new ClientDataSource();
+            ds.setServerName("localhost");
+            ds.setPortNumber(1527);
+            ds.setDatabaseName("cabdb");
+            ds.setUser("root");
+            ds.setPassword("root");
+
+            try {
+                connection = ds.getConnection();
+            } catch (Exception e) {
+                System.out.println("Error: Creating the DBConnection!");
+                e.printStackTrace();
+            }
+        /*} catch (IOException ex) {
+            System.out.println("Error: One or more db configs not loaded");
+            ex.printStackTrace();
+        }*/
+        return connection;
+    }
+}
 
 
-public class Database {
-    
-    Connection connection = null;
-    Statement statement;
-    ResultSet resultset;
-    PreparedStatement preparedstatement;
+
+
+
+/**
+ 
     
     public void createUser(String userName, String pass, String email){
        String sqlQueryCreate_user = "insert into USERS (username, pass, email) values (?, ?, ?)";
@@ -94,18 +122,7 @@ public class Database {
         }
     }
     
-    public User readUser(String email){
-        ArrayList<User> usr = new ArrayList();
-        usr = getUsers();
-        for(int i = 0; i < usr.size(); i++)
-        {
-            if(email.equals(usr.get(i).getEmail()))
-            {
-                return usr.get(i);
-            }
-        }
-        return null;
-    }
+   
     
     public ArrayList<User> getUsers (){
         ArrayList<User> users = new ArrayList();
@@ -133,56 +150,5 @@ public class Database {
        return users;
     }
     
-    /* driver */
-    /* Journy */
-    /* Admin */
-    
-    private void connect() {
-        
-        try (InputStream input = new FileInputStream("dbSettings/settings.properties")) {
-
-            Properties dbConfig = new Properties();
-
-            // load a properties file
-            dbConfig.load(input);
-
-            String host, port, db, user, password;
-
-            host = dbConfig.getProperty("host");
-            port = dbConfig.getProperty("port");
-            db = dbConfig.getProperty("db");
-            user = dbConfig.getProperty("user");
-            password = dbConfig.getProperty("password");
-
-            // jdbc:derby:[subsubprotocol:][databaseName][;attribute=value]*
-            // https://db.apache.org/derby/docs/10.7/adminguide/radminnsdatasourcexmp.html
-            String connectionURL = String.format("jdbc:derby://%s:%s/%s", host, port, db);
-
-            System.out.println(connectionURL);
-
-            ClientDataSource ds = new ClientDataSource();
-            ds.setServerName(host);
-            ds.setPortNumber(Integer.parseInt(port));
-            ds.setDatabaseName(db);
-            ds.setUser(user);
-            ds.setPassword(password);
-
-            
-
-            try {
-                connection = ds.getConnection();
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-            
-        } catch (IOException ex) {
-            ex.printStackTrace();
-        }
-        
-    }
-
-    public static void main(String[] args) {
-
-        
-    }
-}
+ 
+ */
