@@ -54,3 +54,101 @@ public class ConnectionManager {
         return connection;
     }
 }
+
+
+
+
+
+/**
+ 
+    
+    public void createUser(String userName, String pass, String email){
+       String sqlQueryCreate_user = "insert into USERS (username, pass, email) values (?, ?, ?)";
+       try{
+        
+            if (connection == null) {
+                this.connect();
+            }
+
+            preparedstatement = connection.prepareStatement(sqlQueryCreate_user);
+            preparedstatement.setString(1, userName);
+            preparedstatement.setString(2, pass);
+            preparedstatement.setString(3, email);
+            preparedstatement.execute();
+            
+            preparedstatement.close();
+            connection.close();
+        }catch(Exception e){
+            System.out.println("error: create user " + e);
+        }
+    }
+    
+    public void updateUser(String userName, String pass, String email){
+       String sqlQuerryUpdate_user = "UPDATE USERS SET username = ?, pass = ?, WHERE email = ?";
+       
+       try{
+        
+            if (connection == null) {
+                this.connect();
+            }
+
+            preparedstatement = connection.prepareStatement(sqlQuerryUpdate_user);
+            preparedstatement.setString(1, userName);
+            preparedstatement.setString(2, pass);
+            preparedstatement.setString(3, email);
+            preparedstatement.executeUpdate();
+            
+            preparedstatement.close();
+            connection.close();
+        }catch(Exception e){
+            System.out.println("error: update user " + e);
+        }
+    }
+    
+    public void deleteUser(String email){
+       String sqlQuerryDelete_user = "DELETE FROM USERS WHERE email = '"+email+"'";
+       
+       try{
+        
+            if (connection == null) {
+                this.connect();
+            }
+            statement.executeUpdate(sqlQuerryDelete_user);
+            
+            statement.close();
+            connection.close();
+        }catch(Exception e){
+            System.out.println("error: Delete user " + e);
+        }
+    }
+    
+   
+    
+    public ArrayList<User> getUsers (){
+        ArrayList<User> users = new ArrayList();
+        try{
+        
+            if (connection == null) {
+                this.connect();
+            }
+
+            statement = connection.createStatement();
+
+            resultset = statement.executeQuery("SELCET * FROM users");
+            
+            while(resultset.next())
+            {
+                User usr = new User(resultset.getString("username"),resultset.getString("pass"),resultset.getString("email"));
+                users.add(usr);
+            }
+            statement.close();
+            resultset.close();
+            connection.close();
+        }catch(Exception e){
+            
+        }
+       return users;
+    }
+    
+ 
+ */
