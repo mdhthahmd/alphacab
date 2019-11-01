@@ -12,11 +12,11 @@ import com.alphacab.model.LoginBean;
 import com.alphacab.dao.LoginDao;
 
 public class LoginServlet extends HttpServlet {
-    
+
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         request.getRequestDispatcher("index.jsp").forward(request, response);
-        
+
     }
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
@@ -39,36 +39,41 @@ public class LoginServlet extends HttpServlet {
                 System.out.println("Admin's Home");
 
                 HttpSession session = request.getSession(); //Creating a session
-                session.setAttribute("Admin", email); //setting session attribute
-                request.setAttribute("userName", loginBean.getUserName());
+                session.setMaxInactiveInterval(10 * 60);
+                session.setAttribute("Role", "Admin");
+                session.setAttribute("Email", email);
+                session.setAttribute("userName", loginBean.getUserName());
 
-                request.getRequestDispatcher("views/admin/admin-dashboard.jsp").forward(request, response);
+                response.sendRedirect("dashboard");
 
             } else if (userValidate.equals("Driver_Role")) {
-                
+
                 System.out.println("Driver's Home");
 
                 HttpSession session = request.getSession();
-                session.setAttribute("Driver", email);
-                request.setAttribute("userName", loginBean.getUserName() );
+                session.setMaxInactiveInterval(10 * 60);
+                session.setAttribute("Role", "Driver");
+                session.setAttribute("Email", email);
+                session.setAttribute("userName", loginBean.getUserName());
 
-                request.getRequestDispatcher("views/driver/driver-dashboard.jsp").forward(request, response);
-                
+                response.sendRedirect("dashboard");
+
             } else if (userValidate.equals("Customer_Role")) {
-                
+
                 System.out.println("Customer's Home");
 
                 HttpSession session = request.getSession();
                 session.setMaxInactiveInterval(10 * 60);
                 session.setAttribute("Customer", email);
-                request.setAttribute("userName", loginBean.getUserName());
+                session.setAttribute("Role", "Customer");
+                session.setAttribute("userName", loginBean.getUserName());
 
-                request.getRequestDispatcher("views/customer/customer-dashboard.jsp").forward(request, response);
-                
+                response.sendRedirect("dashboard");
+
             } else {
                 System.out.println("Error message = " + userValidate);
+                
                 request.setAttribute("errMessage", userValidate);
-
                 request.getRequestDispatcher("index.jsp").forward(request, response);
             }
         } catch (IOException e1) {
@@ -76,5 +81,5 @@ public class LoginServlet extends HttpServlet {
         } catch (Exception e2) {
             e2.printStackTrace();
         }
-    } //End of doPost()
+    }
 }
