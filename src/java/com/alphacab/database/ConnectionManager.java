@@ -1,7 +1,7 @@
 package com.alphacab.database;
 
 import java.io.FileInputStream;
-import java.io.IOException;
+import java.io.FileNotFoundException;
 import java.io.InputStream;
 import java.util.Properties;
 import org.apache.derby.jdbc.ClientDataSource;
@@ -10,10 +10,10 @@ import java.sql.Connection;
 public class ConnectionManager {
 
     public static Connection createConnection() {
-        
+
         Connection connection = null;
 
-        /* try (InputStream input = new FileInputStream("./config/db.properties")) {
+        try (InputStream input = new FileInputStream("dbconfig.properties")) {
 
             Properties dbConfig = new Properties();
 
@@ -32,25 +32,38 @@ public class ConnectionManager {
             // https://db.apache.org/derby/docs/10.7/adminguide/radminnsdatasourcexmp.html
             String connectionURL = String.format("jdbc:derby://%s:%s/%s", host, port, db);
 
-            System.out.println(connectionURL); */
+            System.out.println(connectionURL);
 
             ClientDataSource ds = new ClientDataSource();
+            /* 
             ds.setServerName("localhost");
             ds.setPortNumber(1527);
             ds.setDatabaseName("cabdb");
             ds.setUser("root");
             ds.setPassword("root");
+             */
+
+            ds.setServerName(host);
+            ds.setPortNumber(Integer.parseInt(port));
+            ds.setDatabaseName(db);
+            ds.setUser(user);
+            ds.setPassword(password);
 
             try {
                 connection = ds.getConnection();
             } catch (Exception e) {
-                System.out.println("Error: Creating the DBConnection!");
+                System.out.println("Error: Failed to Connect to Database!");
                 e.printStackTrace();
             }
-        /*} catch (IOException ex) {
-            System.out.println("Error: One or more db configs not loaded");
+
+        } catch (FileNotFoundException ex) {
+            System.out.println("Error: One or more db configs not loaded, dbconfig.properties file missing");
+            System.out.println("       Place Database Config file (dbconfig.properties) in path :");
+            System.out.println("       " + System.getProperty("user.dir"));
             ex.printStackTrace();
-        }*/
+        } catch(Exception ex ){
+            ex.printStackTrace();
+        }
         return connection;
     }
 }
