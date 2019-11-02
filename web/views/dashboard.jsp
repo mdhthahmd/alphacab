@@ -33,6 +33,35 @@
 
         <div class="mdc-drawer__content">
             <nav class="mdc-list">
+
+                <%if (session.getAttribute("Role") == "Admin") {%>
+                <hr class="mdc-list-divider">
+                <h6 class="mdc-list-group__subheader">Administrator</h6>
+                <a class="mdc-list-item" href="#">
+                    <i class="material-icons mdc-list-item__graphic" aria-hidden="true">bookmark</i>
+                    <span class="mdc-list-item__text">Add Driver</span>
+                </a>
+                <%}%>
+
+
+                <%if (session.getAttribute("Role") == "Driver") {%>
+                <hr class="mdc-list-divider">
+                <h6 class="mdc-list-group__subheader">Driver</h6>
+                <a class="mdc-list-item" href="#">
+                    <i class="material-icons mdc-list-item__graphic" aria-hidden="true">bookmark</i>
+                    <span class="mdc-list-item__text">Take a Journey</span>
+                </a>
+                <%}%>
+
+                <%if (session.getAttribute("Role") == "Customer") {%>
+                <hr class="mdc-list-divider">
+                <h6 class="mdc-list-group__subheader">Customer</h6>
+                <a class="mdc-list-item" href="#">
+                    <i class="material-icons mdc-list-item__graphic" aria-hidden="true">bookmark</i>
+                    <span class="mdc-list-item__text">Set a Pickup</span>
+                </a>
+                <%}%>
+
                 <hr class="mdc-list-divider">
                 <h6 class="mdc-list-group__subheader">Labels</h6>
                 <a class="mdc-list-item" href="#">
@@ -56,21 +85,6 @@
                     <i class="material-icons mdc-list-item__graphic" aria-hidden="true">drafts</i>
                     <span class="mdc-list-item__text">Drafts</span>
                 </a>
-
-                <hr class="mdc-list-divider">
-                <h6 class="mdc-list-group__subheader">Labels</h6>
-                <a class="mdc-list-item" href="#">
-                    <i class="material-icons mdc-list-item__graphic" aria-hidden="true">bookmark</i>
-                    <span class="mdc-list-item__text">Family</span>
-                </a>
-                <a class="mdc-list-item" href="#">
-                    <i class="material-icons mdc-list-item__graphic" aria-hidden="true">bookmark</i>
-                    <span class="mdc-list-item__text">Friends</span>
-                </a>
-                <a class="mdc-list-item" href="#">
-                    <i class="material-icons mdc-list-item__graphic" aria-hidden="true">bookmark</i>
-                    <span class="mdc-list-item__text">Work</span>
-                </a>
             </nav>
         </div>
     </aside>
@@ -79,7 +93,19 @@
 
     <div class="mdc-drawer-app-content mdc-top-app-bar--fixed-adjust">
         <main class="main-content" >
-            <div style="padding: 1rem;">
+
+            <!-- <button class="mdc-button mdc-button--raised">
+                <i class="material-icons mdc-button__icon" aria-hidden="true">cloud</i>
+                <span class="mdc-button__label">Button</span>
+            </button> 
+            
+                       
+            https://material.io/resources/icons/?style=baseline for more icons
+            
+            
+            -->
+
+            <form action="<%=request.getContextPath()%>/logout" method="get" style="padding:1rem;">
 
                 <div class="mdc-text-field mdc-text-field--outlined">
                     <input class="mdc-text-field__input" id="text-field-hero-input">
@@ -92,33 +118,14 @@
                     </div>
                 </div>
 
-                <!-- <button class="mdc-button mdc-button--raised">
-                    <i class="material-icons mdc-button__icon" aria-hidden="true">cloud</i>
-                    <span class="mdc-button__label">Button</span>
-                </button> 
-                
-                
-                
-                https://material.io/resources/icons/?style=baseline for more icons
-                
-                
-                -->
-                
-                <a class="mdc-button mdc-button--raised" href="<%=request.getContextPath()%>/logout">
-                    <i class="material-icons mdc-button__icon" aria-hidden="true">home</i>
+                <button class="mdc-button mdc-button--raised">
+                    <!--  <i class="material-icons mdc-button__icon" aria-hidden="true">home</i> -->
                     <span class="mdc-button__label">Logout</span>
-                </a>
-
-            </div>
+                </button>
+            </form>
 
         </main>
     </div>
-
-
-
-
-
-
 
 </body>
 
