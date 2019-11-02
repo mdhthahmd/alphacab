@@ -98,10 +98,8 @@
                 <i class="material-icons mdc-button__icon" aria-hidden="true">cloud</i>
                 <span class="mdc-button__label">Button</span>
             </button> 
-            
                        
             https://material.io/resources/icons/?style=baseline for more icons
-            
             
             -->
 
@@ -118,10 +116,11 @@
                     </div>
                 </div>
 
-                <button class="mdc-button mdc-button--raised">
+                <button type="submit" class="mdc-button mdc-button--raised">
                     <!--  <i class="material-icons mdc-button__icon" aria-hidden="true">home</i> -->
                     <span class="mdc-button__label">Logout</span>
                 </button>
+                
             </form>
 
         </main>
