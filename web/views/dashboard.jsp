@@ -38,53 +38,111 @@
                 <hr class="mdc-list-divider">
                 <h6 class="mdc-list-group__subheader">Administrator</h6>
                 <a class="mdc-list-item" href="#">
-                    <i class="material-icons mdc-list-item__graphic" aria-hidden="true">bookmark</i>
+                    <i class="material-icons mdc-list-item__graphic" aria-hidden="true">account_circle</i>
+                    <span class="mdc-list-item__text">Profile</span>
+                </a>
+                
+                <hr class="mdc-list-divider">
+                <h6 class="mdc-list-group__subheader">Menu</h6>
+                <a class="mdc-list-item" href="#">
+                    <i class="material-icons mdc-list-item__graphic" aria-hidden="true">person_add</i>
                     <span class="mdc-list-item__text">Add Driver</span>
                 </a>
+                <a class="mdc-list-item" href="#">
+                    <i class="material-icons mdc-list-item__graphic" aria-hidden="true">person_add_disabled</i>
+                    <span class="mdc-list-item__text">Remove Driver</span>
+                </a>
+                <a class="mdc-list-item" href="#">
+                    <i class="material-icons mdc-list-item__graphic" aria-hidden="true">how_to_reg</i>
+                    <span class="mdc-list-item__text">Customers List</span>
+                </a>
+                
+
+                <a class="mdc-list-item mdc-list-item--activated" href="#" aria-current="page">
+                    <i class="material-icons mdc-list-item__graphic" aria-hidden="true">directions_car</i>
+                    <span class="mdc-list-item__text">Drivers List</span>
+                </a>
+                <a class="mdc-list-item" href="#">
+                    <i class="material-icons mdc-list-item__graphic" aria-hidden="true">attach_money</i>
+                    <span class="mdc-list-item__text">Change Price of Destination</span>
+                </a>
+                <a class="mdc-list-item" href="#">
+                    <i class="material-icons mdc-list-item__graphic" aria-hidden="true">description</i>
+                    <span class="mdc-list-item__text">Daily Report</span>
+                </a>
+                
                 <%}%>
+
+
 
 
                 <%if (session.getAttribute("Role") == "Driver") {%>
                 <hr class="mdc-list-divider">
                 <h6 class="mdc-list-group__subheader">Driver</h6>
                 <a class="mdc-list-item" href="#">
+                    <i class="material-icons mdc-list-item__graphic" aria-hidden="true">account_circle</i>
+                    <span class="mdc-list-item__text">Profile</span>
+                </a>
+                
+                <hr class="mdc-list-divider">
+                <h6 class="mdc-list-group__subheader">Menu</h6>
+                <a class="mdc-list-item" href="#">
                     <i class="material-icons mdc-list-item__graphic" aria-hidden="true">bookmark</i>
                     <span class="mdc-list-item__text">Take a Journey</span>
                 </a>
+                
+                <a class="mdc-list-item" href="#">
+                    <i class="material-icons mdc-list-item__graphic" aria-hidden="true">assignment</i>
+                    <span class="mdc-list-item__text">Assigned Jobs</span>
+                </a>
+
+                <a class="mdc-list-item mdc-list-item--activated" href="#" aria-current="page">
+                    <i class="material-icons mdc-list-item__graphic" aria-hidden="true">people</i>
+                    <span class="mdc-list-item__text">Customers Served</span>
+                </a>
+                <a class="mdc-list-item" href="#">
+                    <i class="material-icons mdc-list-item__graphic" aria-hidden="true">receipt</i>
+                    <span class="mdc-list-item__text">Create Invoice</span>
+                </a>
+                <a class="mdc-list-item" href="#">
+                    <i class="material-icons mdc-list-item__graphic" aria-hidden="true">description</i>
+                    <span class="mdc-list-item__text">Daily Report</span>
+                </a>
+                
                 <%}%>
 
                 <%if (session.getAttribute("Role") == "Customer") {%>
                 <hr class="mdc-list-divider">
                 <h6 class="mdc-list-group__subheader">Customer</h6>
                 <a class="mdc-list-item" href="#">
-                    <i class="material-icons mdc-list-item__graphic" aria-hidden="true">bookmark</i>
+                    <i class="material-icons mdc-list-item__graphic" aria-hidden="true">account_circle</i>
+                    <span class="mdc-list-item__text">Profile</span>
+                </a>
+                
+                <hr class="mdc-list-divider">
+                <h6 class="mdc-list-group__subheader">Menu</h6>
+                <a class="mdc-list-item" href="#">
+                    <i class="material-icons mdc-list-item__graphic" aria-hidden="true">my_location</i>
                     <span class="mdc-list-item__text">Set a Pickup</span>
                 </a>
-                <%}%>
-
-                <hr class="mdc-list-divider">
-                <h6 class="mdc-list-group__subheader">Labels</h6>
+                
                 <a class="mdc-list-item" href="#">
-                    <i class="material-icons mdc-list-item__graphic" aria-hidden="true">bookmark</i>
-                    <span class="mdc-list-item__text">Work</span>
+                    <i class="material-icons mdc-list-item__graphic" aria-hidden="true">local_taxi</i>
+                    <span class="mdc-list-item__text">Advance Booking</span>
                 </a>
 
                 <a class="mdc-list-item mdc-list-item--activated" href="#" aria-current="page">
-                    <i class="material-icons mdc-list-item__graphic" aria-hidden="true">inbox</i>
-                    <span class="mdc-list-item__text">Inbox</span>
+                    <i class="material-icons mdc-list-item__graphic" aria-hidden="true">history</i>
+                    <span class="mdc-list-item__text">History</span>
                 </a>
+                
                 <a class="mdc-list-item" href="#">
-                    <i class="material-icons mdc-list-item__graphic" aria-hidden="true">star</i>
-                    <span class="mdc-list-item__text">Star</span>
+                    <i class="material-icons mdc-list-item__graphic" aria-hidden="true">description</i>
+                    <span class="mdc-list-item__text">Daily Report</span>
                 </a>
-                <a class="mdc-list-item" href="#">
-                    <i class="material-icons mdc-list-item__graphic" aria-hidden="true">send</i>
-                    <span class="mdc-list-item__text">Sent Mail</span>
-                </a>
-                <a class="mdc-list-item" href="#">
-                    <i class="material-icons mdc-list-item__graphic" aria-hidden="true">drafts</i>
-                    <span class="mdc-list-item__text">Drafts</span>
-                </a>
+                <%}%>
+
+                
             </nav>
         </div>
     </aside>
