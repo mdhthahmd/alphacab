@@ -110,7 +110,7 @@
                     <span class="mdc-list-item__text">Assigned Jobs</span>
                 </a>
 
-                <a class="mdc-list-item mdc-list-item--activated" href="<%=request.getContextPath()%>/customers-served" aria-current="page">
+                <a class="mdc-list-item" href="<%=request.getContextPath()%>/customers-served">
                     <i class="material-icons mdc-list-item__graphic" aria-hidden="true">people</i>
                     <span class="mdc-list-item__text">Customers Served</span>
                 </a>
