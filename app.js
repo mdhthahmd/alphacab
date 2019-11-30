@@ -1,5 +1,8 @@
 import { MDCTextField} from '@material/textfield';
 import {MDCRipple} from '@material/ripple';
+import {MDCList} from "@material/list";
+import {MDCTopAppBar} from "@material/top-app-bar";
+import {MDCDrawer} from "@material/drawer";
 
 
 const buttons = [].map.call( document.querySelectorAll('.mdc-button'), function(el) {
@@ -10,15 +13,15 @@ const textfields = [].map.call( document.querySelectorAll('.mdc-text-field'), fu
     return new MDCTextField(el);
 });
 
-import {MDCList} from "@material/list";
+
 const list = MDCList.attachTo(document.querySelector('.mdc-list'));
 list.wrapFocus = true;
 
-import {MDCDrawer} from "@material/drawer";
+
 const drawer = MDCDrawer.attachTo(document.querySelector('.mdc-drawer'));
 
 
-import {MDCTopAppBar} from "@material/top-app-bar";
+
 const topAppBar = MDCTopAppBar.attachTo(document.querySelector('.mdc-top-app-bar'));
 topAppBar.setScrollTarget(document.querySelector('.main-content'));
 topAppBar.listen('MDCTopAppBar:nav', () => {

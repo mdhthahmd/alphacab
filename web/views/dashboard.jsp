@@ -86,25 +86,30 @@
                 
                 <hr class="mdc-list-divider">
                 <h6 class="mdc-list-group__subheader">Menu</h6>
-                <a class="mdc-list-item" href="#">
+                <a class="mdc-list-item" href="<%=request.getContextPath()%>/takejourney">
                     <i class="material-icons mdc-list-item__graphic" aria-hidden="true">bookmark</i>
                     <span class="mdc-list-item__text">Take a Journey</span>
                 </a>
+                <a class="mdc-list-item" href="<%=request.getContextPath()%>/map">
+                    <i class="material-icons mdc-list-item__graphic" aria-hidden="true">near_me</i>
+                    <span class="mdc-list-item__text">Map</span>
+                </a>
+                   
                 
-                <a class="mdc-list-item" href="#">
+                <a class="mdc-list-item" href="<%=request.getContextPath()%>/assignedjobs">
                     <i class="material-icons mdc-list-item__graphic" aria-hidden="true">assignment</i>
                     <span class="mdc-list-item__text">Assigned Jobs</span>
                 </a>
 
-                <a class="mdc-list-item mdc-list-item--activated" href="#" aria-current="page">
+                <a class="mdc-list-item mdc-list-item--activated" href="<%=request.getContextPath()%>/customersserved" aria-current="page">
                     <i class="material-icons mdc-list-item__graphic" aria-hidden="true">people</i>
                     <span class="mdc-list-item__text">Customers Served</span>
                 </a>
-                <a class="mdc-list-item" href="#">
+                <a class="mdc-list-item" href="<%=request.getContextPath()%>/createinvoice">
                     <i class="material-icons mdc-list-item__graphic" aria-hidden="true">receipt</i>
                     <span class="mdc-list-item__text">Create Invoice</span>
                 </a>
-                <a class="mdc-list-item" href="#">
+                <a class="mdc-list-item" href="<%=request.getContextPath()%>/dailyreport">
                     <i class="material-icons mdc-list-item__graphic" aria-hidden="true">description</i>
                     <span class="mdc-list-item__text">Daily Report</span>
                 </a>
