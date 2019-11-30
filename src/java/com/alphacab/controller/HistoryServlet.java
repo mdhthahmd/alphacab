@@ -7,12 +7,12 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-public class DailyReportServlet extends HttpServlet {
+public class HistoryServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-            request.getRequestDispatcher("views/driver/dailyreport.jsp").forward(request, response);
+            request.getRequestDispatcher("views/customer/history.jsp").forward(request, response);
     }
 
     @Override

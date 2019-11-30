@@ -8,6 +8,11 @@ $mdc-theme-primary: #000; // change this to #000
 @import "@material/list/mdc-list";
 @import "@material/button/mdc-button";
 
+@import "@material/checkbox/mdc-checkbox"; // Required only for data table with row selection.
+@import "@material/data-table/mdc-data-table";
+
+@import "@material/typography/mdc-typography";
+
 body {
   margin: 0px;
   display: flex;

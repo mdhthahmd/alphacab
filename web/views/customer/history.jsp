@@ -10,7 +10,7 @@
         <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" rel="stylesheet">
     </head>
 
-    <body>
+    <body class="mdc-typography">
 
     <header class="mdc-top-app-bar">
         <div class="mdc-top-app-bar__row">
@@ -25,6 +25,7 @@
             </section>
         </div>
     </header>
+
     <aside class="mdc-drawer mdc-top-app-bar--fixed-adjust">
         <div class="mdc-drawer__header">
             <h3 class="mdc-drawer__title">Welcome <%=session.getAttribute("userName")%></h3>
@@ -41,7 +42,7 @@
                     <i class="material-icons mdc-list-item__graphic" aria-hidden="true">account_circle</i>
                     <span class="mdc-list-item__text">Account</span>
                 </a>
-                
+
                 <hr class="mdc-list-divider">
                 <h6 class="mdc-list-group__subheader">Menu</h6>
                 <a class="mdc-list-item" href="#">
@@ -56,7 +57,7 @@
                     <i class="material-icons mdc-list-item__graphic" aria-hidden="true">how_to_reg</i>
                     <span class="mdc-list-item__text">Customers List</span>
                 </a>
-                
+
 
                 <a class="mdc-list-item mdc-list-item--activated" href="#" aria-current="page">
                     <i class="material-icons mdc-list-item__graphic" aria-hidden="true">directions_car</i>
@@ -70,7 +71,7 @@
                     <i class="material-icons mdc-list-item__graphic" aria-hidden="true">description</i>
                     <span class="mdc-list-item__text">Daily Report</span>
                 </a>
-                
+
                 <%}%>
 
 
@@ -83,7 +84,7 @@
                     <i class="material-icons mdc-list-item__graphic" aria-hidden="true">account_circle</i>
                     <span class="mdc-list-item__text">Profile</span>
                 </a>
-                
+
                 <hr class="mdc-list-divider">
                 <h6 class="mdc-list-group__subheader">Menu</h6>
                 <a class="mdc-list-item" href="<%=request.getContextPath()%>/takejourney">
@@ -94,8 +95,8 @@
                     <i class="material-icons mdc-list-item__graphic" aria-hidden="true">near_me</i>
                     <span class="mdc-list-item__text">Map</span>
                 </a>
-                   
-                
+
+
                 <a class="mdc-list-item" href="<%=request.getContextPath()%>/assignedjobs">
                     <i class="material-icons mdc-list-item__graphic" aria-hidden="true">assignment</i>
                     <span class="mdc-list-item__text">Assigned Jobs</span>
@@ -113,21 +114,20 @@
                     <i class="material-icons mdc-list-item__graphic" aria-hidden="true">description</i>
                     <span class="mdc-list-item__text">Daily Report</span>
                 </a>
-                
+
                 <%}%>
 
-               
-                <%if (session.getAttribute("Role") == "Customer") {%>
+                 <%if (session.getAttribute("Role") == "Customer") {%>
                 
                  <hr class="mdc-list-divider">
                  <h6 class="mdc-list-group__subheader">Customer</h6>
                  
-                  <a class="mdc-list-item mdc-list-item--activated" href="<%=request.getContextPath()%>/dashboard" aria-current="page">
+                 <a class="mdc-list-item" href="<%=request.getContextPath()%>/dashboard">
                     <i class="material-icons mdc-list-item__graphic" aria-hidden="true">my_location</i>
                     <span class="mdc-list-item__text">Set a Pickup</span>
                 </a>
 
-                <a class="mdc-list-item" href="<%=request.getContextPath()%>/history">
+                <a class="mdc-list-item mdc-list-item--activated" href="<%=request.getContextPath()%>/history" aria-current="page" >
                     <i class="material-icons mdc-list-item__graphic" aria-hidden="true">history</i>
                     <span class="mdc-list-item__text">History</span>
                 </a>
@@ -140,7 +140,7 @@
 
                 <%}%>
 
-                
+
             </nav>
         </div>
     </aside>
@@ -148,40 +148,71 @@
 
 
     <div class="mdc-drawer-app-content mdc-top-app-bar--fixed-adjust">
-        <main class="main-content" >
+        <main id="main-content" >
 
-            <!-- <button class="mdc-button mdc-button--raised">
-                <i class="material-icons mdc-button__icon" aria-hidden="true">cloud</i>
-                <span class="mdc-button__label">Button</span>
-            </button> 
-                       
-            https://material.io/resources/icons/?style=baseline for more icons
-            
-            -->
+            <h1 class="mdc-typography--headline3" >Your History</h1>
 
-            <form action="<%=request.getContextPath()%>/logout" method="get" style="padding:1rem;">
 
-                <div class="mdc-text-field mdc-text-field--outlined">
-                    <input class="mdc-text-field__input" id="text-field-hero-input">
-                    <div class="mdc-notched-outline">
-                        <div class="mdc-notched-outline__leading"></div>
-                        <div class="mdc-notched-outline__notch">
-                            <label for="text-field-hero-input" class="mdc-floating-label">Name</label>
-                        </div>
-                        <div class="mdc-notched-outline__trailing"></div>
-                    </div>
-                </div>
+            <div class="mdc-data-table">
+                <table class="mdc-data-table__table" aria-label="Dessert calories">
+                    <thead>
+                        <tr class="mdc-data-table__header-row">
+                            <th class="mdc-data-table__header-cell" role="columnheader" scope="col">Driver</th>
+                            <th class="mdc-data-table__header-cell" role="columnheader" scope="col">Origin</th>
+                            <th class="mdc-data-table__header-cell" role="columnheader" scope="col">Destination</th>
+                            <th class="mdc-data-table__header-cell" role="columnheader" scope="col">Status</th>
+                            <th class="mdc-data-table__header-cell" role="columnheader" scope="col">Date</th>
+                            <th class="mdc-data-table__header-cell" role="columnheader" scope="col">Time</th>
+                        </tr>
+                    </thead>
+                    <tbody class="mdc-data-table__content">
+                        <tr class="mdc-data-table__row">
+                            <td class="mdc-data-table__cell">Abdulla Nabeel</td>
+                            <td class="mdc-data-table__cell">Home</td>
+                            <td class="mdc-data-table__cell">Bank Of Maldives</td>
+                            <td class="mdc-data-table__cell">COMPLETED</td>
+                            <td class="mdc-data-table__cell">30 November 2019</td>
+                            <td class="mdc-data-table__cell">11:19 AM</td>
+                        </tr>
+                        <tr class="mdc-data-table__row">
+                            <td class="mdc-data-table__cell">Abdulla Nabeel</td>
+                            <td class="mdc-data-table__cell">Home</td>
+                            <td class="mdc-data-table__cell">Bank Of Maldives</td>
+                            <td class="mdc-data-table__cell">COMPLETED</td>
+                            <td class="mdc-data-table__cell">30 November 2019</td>
+                            <td class="mdc-data-table__cell">11:19 AM</td>
+                        </tr>
+                        <tr class="mdc-data-table__row">
+                            <td class="mdc-data-table__cell">Abdulla Nabeel</td>
+                            <td class="mdc-data-table__cell">Home</td>
+                            <td class="mdc-data-table__cell">Bank Of Maldives</td>
+                            <td class="mdc-data-table__cell">COMPLETED</td>
+                            <td class="mdc-data-table__cell">30 November 2019</td>
+                            <td class="mdc-data-table__cell">11:19 AM</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
 
-                <button type="submit" class="mdc-button mdc-button--raised">
-                    <!--  <i class="material-icons mdc-button__icon" aria-hidden="true">home</i> -->
-                    <span class="mdc-button__label">Logout</span>
-                </button>
-                
-            </form>
+
 
         </main>
     </div>
 
+
+  
+                
+    <style>
+
+       
+
+         #main-content {
+            padding-left: 2em;
+        }
+
+
+    </style>
 </body>
+
 
 </html>
