@@ -19,9 +19,13 @@
                 <span class="mdc-top-app-bar__title">AlphaCab Dashboard</span>
             </section>
             <section class="mdc-top-app-bar__section mdc-top-app-bar__section--align-end" role="toolbar">
-                <button class="material-icons mdc-top-app-bar__action-item mdc-icon-button" aria-label="Download">file_download</button>
-                <button class="material-icons mdc-top-app-bar__action-item mdc-icon-button" aria-label="Print this page">print</button>
-                <button class="material-icons mdc-top-app-bar__action-item mdc-icon-button" aria-label="Bookmark this page">bookmark</button>
+                <form action="<%=request.getContextPath()%>/logout" method="get" style="padding:1rem;">  
+                    <button type="submit" class="mdc-button mdc-button--raised">
+                        <!--  <i class="material-icons mdc-button__icon" aria-hidden="true">home</i> -->
+                        <span class="material-icons mdc-top-app-bar mdc-icon-button">power_settings_new</span>
+                        <!--<i class="material-icons mdc-list-item__graphic" aria-hidden="true">lock_open</i>-->
+                    </button>                   
+                </form>
             </section>
         </div>
     </header>
@@ -37,9 +41,14 @@
                 <%if (session.getAttribute("Role") == "Admin") {%>
                 <hr class="mdc-list-divider">
                 <h6 class="mdc-list-group__subheader">Administrator</h6>
-                <a class="mdc-list-item" href="#">
+                <a class="mdc-list-item" href="<%=request.getContextPath()%>/add-driver">
                     <i class="material-icons mdc-list-item__graphic" aria-hidden="true">bookmark</i>
                     <span class="mdc-list-item__text">Add Driver</span>
+                </a>
+
+                <a class="mdc-list-item" href="#">
+                    <i class="material-icons mdc-list-item__graphic" aria-hidden="true">bookmark</i>
+                    <span class="mdc-list-item__text">Drivers</span>
                 </a>
                 <%}%>
 
@@ -89,42 +98,13 @@
         </div>
     </aside>
 
+    <!--<div class="mdc-drawer-app-content mdc-top-app-bar--fixed-adjust">-->
+    <main class="main-content" >
 
 
-    <div class="mdc-drawer-app-content mdc-top-app-bar--fixed-adjust">
-        <main class="main-content" >
 
-            <!-- <button class="mdc-button mdc-button--raised">
-                <i class="material-icons mdc-button__icon" aria-hidden="true">cloud</i>
-                <span class="mdc-button__label">Button</span>
-            </button> 
-                       
-            https://material.io/resources/icons/?style=baseline for more icons
-            
-            -->
-
-            <form action="<%=request.getContextPath()%>/logout" method="get" style="padding:1rem;">
-
-                <div class="mdc-text-field mdc-text-field--outlined">
-                    <input class="mdc-text-field__input" id="text-field-hero-input">
-                    <div class="mdc-notched-outline">
-                        <div class="mdc-notched-outline__leading"></div>
-                        <div class="mdc-notched-outline__notch">
-                            <label for="text-field-hero-input" class="mdc-floating-label">Name</label>
-                        </div>
-                        <div class="mdc-notched-outline__trailing"></div>
-                    </div>
-                </div>
-
-                <button type="submit" class="mdc-button mdc-button--raised">
-                    <!--  <i class="material-icons mdc-button__icon" aria-hidden="true">home</i> -->
-                    <span class="mdc-button__label">Logout</span>
-                </button>
-                
-            </form>
-
-        </main>
-    </div>
+    </main>
+    <!--</div>-->
 
 </body>
 

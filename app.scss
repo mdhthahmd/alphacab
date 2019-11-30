@@ -1,4 +1,4 @@
-$mdc-theme-primary: #4c8bf5; // change this to #000
+$mdc-theme-primary: #000; // change this to #000
 
 
 @import "@material/textfield/mdc-text-field";
@@ -7,6 +7,11 @@ $mdc-theme-primary: #4c8bf5; // change this to #000
 @import "@material/drawer/mdc-drawer";
 @import "@material/list/mdc-list";
 @import "@material/button/mdc-button";
+
+@import "@material/form-field/mdc-form-field";
+@import "@material/checkbox/mdc-checkbox";
+
+@import "@material/data-table/mdc-data-table";
 
 body {
   margin: 0px;
@@ -20,9 +25,10 @@ body {
   position: relative;
 }
 
-.main-content {
-  overflow: auto;
-  height: 100%;
+main {
+    width: 0px;
+    padding: 0px;
+    margin: 0px;
 }
 
 .app-bar {
@@ -32,4 +38,21 @@ body {
 // only apply this style if below top app bar
 .mdc-top-app-bar {
   z-index: 7;
+}
+
+
+.mdc-form-field {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    align-items: 'center';
+    //justify-content: 'center';
+    //margin: 40px;
+    margin-top: 75px;
+    //background-color: red;
+ 
+}
+
+.mdc-text-field mdc-text-field--outlined {
+    margin: 50px;
 }
