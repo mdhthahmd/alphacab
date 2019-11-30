@@ -166,8 +166,13 @@
                 
     <style>
 
-        #main-content {
-            padding-left: 2em;
+         #main-content {
+            padding: 2.5em;
+        }
+        
+        .mdc-data-table {
+            width: 100%;
+            margin-top: 2em;
         }
 
 

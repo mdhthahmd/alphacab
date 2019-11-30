@@ -3,7 +3,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
     <head>
-        <title>User Page</title>
+        <title>AlphaCab - Dashboard</title>
         <link rel="stylesheet" href="bundle.css" type="text/css" />
         <script async src="bundle.js" type="text/javascript"></script>
         <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
@@ -99,30 +99,26 @@
                 
                 <hr class="mdc-list-divider">
                 <h6 class="mdc-list-group__subheader">Menu</h6>
-                <a class="mdc-list-item" href="<%=request.getContextPath()%>/takejourney">
+                <a class="mdc-list-item" href="<%=request.getContextPath()%>/take-a-journey">
                     <i class="material-icons mdc-list-item__graphic" aria-hidden="true">bookmark</i>
                     <span class="mdc-list-item__text">Take a Journey</span>
                 </a>
-                <a class="mdc-list-item" href="<%=request.getContextPath()%>/map">
-                    <i class="material-icons mdc-list-item__graphic" aria-hidden="true">near_me</i>
-                    <span class="mdc-list-item__text">Map</span>
-                </a>
-                   
+
                 
-                <a class="mdc-list-item" href="<%=request.getContextPath()%>/assignedjobs">
+                <a class="mdc-list-item" href="<%=request.getContextPath()%>/assigned-jobs">
                     <i class="material-icons mdc-list-item__graphic" aria-hidden="true">assignment</i>
                     <span class="mdc-list-item__text">Assigned Jobs</span>
                 </a>
 
-                <a class="mdc-list-item mdc-list-item--activated" href="<%=request.getContextPath()%>/customersserved" aria-current="page">
+                <a class="mdc-list-item mdc-list-item--activated" href="<%=request.getContextPath()%>/customers-served" aria-current="page">
                     <i class="material-icons mdc-list-item__graphic" aria-hidden="true">people</i>
                     <span class="mdc-list-item__text">Customers Served</span>
                 </a>
-                <a class="mdc-list-item" href="<%=request.getContextPath()%>/createinvoice">
+                <a class="mdc-list-item" href="<%=request.getContextPath()%>/create-invoice">
                     <i class="material-icons mdc-list-item__graphic" aria-hidden="true">receipt</i>
                     <span class="mdc-list-item__text">Create Invoice</span>
                 </a>
-                <a class="mdc-list-item" href="<%=request.getContextPath()%>/dailyreport">
+                <a class="mdc-list-item" href="<%=request.getContextPath()%>/daily-report">
                     <i class="material-icons mdc-list-item__graphic" aria-hidden="true">description</i>
                     <span class="mdc-list-item__text">Daily Report</span>
                 </a>
