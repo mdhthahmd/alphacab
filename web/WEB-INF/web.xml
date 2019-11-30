@@ -8,7 +8,7 @@
     <servlet>
         <servlet-name>CreateDriverServlet</servlet-name>
         <servlet-class>com.alphacab.controller.CreateDriverServlet</servlet-class>
-
+    </servlet>
     <servlet>
         <servlet-name>CustomerHistoryServlet</servlet-name>
         <servlet-class>com.alphacab.controller.HistoryServlet</servlet-class>
@@ -28,7 +28,7 @@
     <servlet-mapping>
         <servlet-name>CreateDriverServlet</servlet-name>
         <url-pattern>/createdriver</url-pattern>
-
+    </servlet-mapping>
     <servlet-mapping>
         <servlet-name>CustomerHistoryServlet</servlet-name>
         <url-pattern>/history</url-pattern>
