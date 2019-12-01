@@ -9,17 +9,17 @@
         <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
         <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" rel="stylesheet">
     </head>
+    
+        <body>
 
-    <body>
-
-    <header class="mdc-top-app-bar">
-        <div class="mdc-top-app-bar__row">
-            <section class="mdc-top-app-bar__section mdc-top-app-bar__section--align-start">
-                <button class="material-icons mdc-top-app-bar__navigation-icon mdc-icon-button">menu</button>
-                <span class="mdc-top-app-bar__title">AlphaCab Dashboard</span>
-            </section>
-            <section class="mdc-top-app-bar__section mdc-top-app-bar__section--align-end" role="toolbar">
-                <form action="<%=request.getContextPath()%>/logout" method="get" style="padding:1rem;">  
+        <header class="mdc-top-app-bar">
+            <div class="mdc-top-app-bar__row">
+                <section class="mdc-top-app-bar__section mdc-top-app-bar__section--align-start">
+                    <button class="material-icons mdc-top-app-bar__navigation-icon mdc-icon-button">menu</button>
+                    <span class="mdc-top-app-bar__title">AlphaCab Dashboard</span>
+                </section>
+                <section class="mdc-top-app-bar__section mdc-top-app-bar__section--align-end" role="toolbar">
+                    <form action="<%=request.getContextPath()%>/logout" method="get" style="padding:1rem;">  
                     <button type="submit" class="mdc-button mdc-button--raised">
                         <!--  <i class="material-icons mdc-button__icon" aria-hidden="true">home</i> -->
                         <span class="material-icons mdc-top-app-bar mdc-icon-button">power_settings_new</span>
@@ -42,25 +42,22 @@
                 <hr class="mdc-list-divider">
                 <h6 class="mdc-list-group__subheader">Administrator</h6>
                 <a class="mdc-list-item" href="<%=request.getContextPath()%>/add-driver">
-                    <i class="material-icons mdc-list-item__graphic" aria-hidden="true">bookmark</i>
+                    <i class="material-icons mdc-list-item__graphic" aria-hidden="true">person_add</i>
                     <span class="mdc-list-item__text">Add Driver</span>
                 </a>
 
-                <a class="mdc-list-item" href="#">
-                    <i class="material-icons mdc-list-item__graphic" aria-hidden="true">bookmark</i>
+                <a class="mdc-list-item" href="<%=request.getContextPath()%>/drivers">
+                    <i class="material-icons mdc-list-item__graphic" aria-hidden="true">directions_car</i>
                     <span class="mdc-list-item__text">Drivers</span>
                 </a>
                 <a class="mdc-list-item" href="#">
                     <i class="material-icons mdc-list-item__graphic" aria-hidden="true">account_circle</i>
                     <span class="mdc-list-item__text">Account</span>
                 </a>
-                
+
                 <hr class="mdc-list-divider">
                 <h6 class="mdc-list-group__subheader">Menu</h6>
-                <a class="mdc-list-item" href="#">
-                    <i class="material-icons mdc-list-item__graphic" aria-hidden="true">person_add</i>
-                    <span class="mdc-list-item__text">Add Driver</span>
-                </a>
+
                 <a class="mdc-list-item" href="#">
                     <i class="material-icons mdc-list-item__graphic" aria-hidden="true">person_add_disabled</i>
                     <span class="mdc-list-item__text">Remove Driver</span>
@@ -69,12 +66,7 @@
                     <i class="material-icons mdc-list-item__graphic" aria-hidden="true">how_to_reg</i>
                     <span class="mdc-list-item__text">Customers List</span>
                 </a>
-                
 
-                <a class="mdc-list-item mdc-list-item--activated" href="#" aria-current="page">
-                    <i class="material-icons mdc-list-item__graphic" aria-hidden="true">directions_car</i>
-                    <span class="mdc-list-item__text">Drivers List</span>
-                </a>
                 <a class="mdc-list-item" href="#">
                     <i class="material-icons mdc-list-item__graphic" aria-hidden="true">attach_money</i>
                     <span class="mdc-list-item__text">Change Price of Destination</span>
@@ -83,7 +75,7 @@
                     <i class="material-icons mdc-list-item__graphic" aria-hidden="true">description</i>
                     <span class="mdc-list-item__text">Daily Report</span>
                 </a>
-                
+
                 <%}%>
 
 
@@ -96,7 +88,7 @@
                     <i class="material-icons mdc-list-item__graphic" aria-hidden="true">account_circle</i>
                     <span class="mdc-list-item__text">Profile</span>
                 </a>
-                
+
                 <hr class="mdc-list-divider">
                 <h6 class="mdc-list-group__subheader">Menu</h6>
                 <a class="mdc-list-item" href="<%=request.getContextPath()%>/takejourney">
@@ -107,8 +99,8 @@
                     <i class="material-icons mdc-list-item__graphic" aria-hidden="true">near_me</i>
                     <span class="mdc-list-item__text">Map</span>
                 </a>
-                   
-                
+
+
                 <a class="mdc-list-item" href="<%=request.getContextPath()%>/assignedjobs">
                     <i class="material-icons mdc-list-item__graphic" aria-hidden="true">assignment</i>
                     <span class="mdc-list-item__text">Assigned Jobs</span>
@@ -126,16 +118,16 @@
                     <i class="material-icons mdc-list-item__graphic" aria-hidden="true">description</i>
                     <span class="mdc-list-item__text">Daily Report</span>
                 </a>
-                
+
                 <%}%>
 
-               
+
                 <%if (session.getAttribute("Role") == "Customer") {%>
-                
-                 <hr class="mdc-list-divider">
-                 <h6 class="mdc-list-group__subheader">Customer</h6>
-                 
-                  <a class="mdc-list-item mdc-list-item--activated" href="<%=request.getContextPath()%>/dashboard" aria-current="page">
+
+                <hr class="mdc-list-divider">
+                <h6 class="mdc-list-group__subheader">Customer</h6>
+
+                <a class="mdc-list-item mdc-list-item--activated" href="<%=request.getContextPath()%>/dashboard" aria-current="page">
                     <i class="material-icons mdc-list-item__graphic" aria-hidden="true">my_location</i>
                     <span class="mdc-list-item__text">Set a Pickup</span>
                 </a>
@@ -144,8 +136,8 @@
                     <i class="material-icons mdc-list-item__graphic" aria-hidden="true">history</i>
                     <span class="mdc-list-item__text">History</span>
                 </a>
-                    
-                 <a class="mdc-list-item" href="<%=request.getContextPath()%>/account">
+
+                <a class="mdc-list-item" href="<%=request.getContextPath()%>/account">
                     <i class="material-icons mdc-list-item__graphic" aria-hidden="true">account_circle</i>
                     <span class="mdc-list-item__text">Account</span>
                 </a>
@@ -153,19 +145,31 @@
 
                 <%}%>
 
-                
+
             </nav>
         </div>
     </aside>
 
-    <!--<div class="mdc-drawer-app-content mdc-top-app-bar--fixed-adjust">-->
-    <main class="main-content" >
+    <div class="mdc-drawer-app-content mdc-top-app-bar--fixed-adjust">
+        <main id="main-content" >
+            <%if (session.getAttribute("Path") == "add-driver") {%>
+            <jsp:include page="admin/add-driver.jsp" /> 
+            <%}%>
+            <%if (session.getAttribute("Path") == "drivers") {%>
+            <jsp:include page="admin/drivers.jsp" /> 
+            <%}%>
+        </main>
+    </div>
+    <style>
+        #main-content {
+            padding: 2.5em;
+        }
 
-
-
-    </main>
-    <!--</div>-->
-
+        .mdc-data-table {
+            width: 100%;
+            margin-top: 2em;
+        }
+    </style>
 </body>
 
 </html>

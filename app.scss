@@ -47,13 +47,17 @@ body {
     flex: 1;
     flex-direction: column;
     align-items: 'center';
-    //justify-content: 'center';
-    //margin: 40px;
-    margin-top: 75px;
-    //background-color: red;
+    margin: 40px;
+    padding: 20px;
  
 }
 
 .mdc-text-field mdc-text-field--outlined {
     margin: 50px;
+}
+
+.button-container {
+    flex: 1;
+    align-items: center;
+    background-color: red;
 }
