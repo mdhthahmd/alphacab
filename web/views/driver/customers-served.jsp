@@ -40,3 +40,11 @@
         </tbody>
     </table>
 </div>
+<style>
+    .mdc-data-table__row:nth-child(2nd){
+        background-color: lightgray;
+    }
+    .mdc-data-table__header-row{
+        background-color: gray;
+    }
+</style>
