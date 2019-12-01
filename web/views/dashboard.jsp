@@ -121,7 +121,7 @@
                     <span class="mdc-list-item__text">Assigned Jobs</span>
                 </a>
 
-                <a class="mdc-list-item" href="<%=request.getContextPath()%>/customers-served">
+                <a class="mdc-list-item " href="<%=request.getContextPath()%>/customers-served" aria-current="page">
                     <i class="material-icons mdc-list-item__graphic" aria-hidden="true">people</i>
                     <span class="mdc-list-item__text">Customers Served</span>
                 </a>
@@ -190,30 +190,46 @@
             <%if (session.getAttribute("Path") == "get-a-ride") {%>
             <jsp:include page="customer/get-a-ride.jsp" /> 
             <%}%>
+    
+            <%if (session.getAttribute("Path") == "assigned-jobs") {%>
+            <jsp:include page="driver/assigned-jobs.jsp" /> 
+            <%}%>
 
+            <%if (session.getAttribute("Path") == "create-invoice") {%>
+            <jsp:include page="driver/create-invoice.jsp" /> 
+            <%}%>
+
+            <%if (session.getAttribute("Path") == "customers-served") {%>
+            <jsp:include page="driver/customers-served.jsp" /> 
+            <%}%>
+
+            <%if (session.getAttribute("Path") == "daily-report") {%>
+            <jsp:include page="driver/daily-report.jsp" /> 
+            <%}%>
+
+            <%if (session.getAttribute("Path") == "take-a-journey") {%>
+            <jsp:include page="driver/take-a-journey.jsp" /> 
+            <%}%>
+
+            <%if (session.getAttribute("Path") == "account") {%>
+            <jsp:include page="customer/account.jsp" /> 
+            <%}%>
+
+            <%if (session.getAttribute("Path") == "history") {%>
+            <jsp:include page="customer/history.jsp" /> 
+            <%}%>
         </main>
     </div>
-
-
-
-
-    <style>
-
-
-
-        #main-content {
-            padding: 2.5em;
-        }
-
-        .mdc-data-table {
-            width: 100%;
-            margin-top: 2em;
-        }
-
-
-    </style>
-
-
+        <style>
+            #main-content {
+                padding: 2.5em;
+            }
+            
+            .mdc-data-table {
+                width: 100%;
+                margin-top: 2em;
+            }
+        </style>
 
 </body>
 
