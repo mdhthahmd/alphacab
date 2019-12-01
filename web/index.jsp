@@ -6,6 +6,9 @@
         <title>JSP Page</title>
         <!--css stuffs -->
     </head>
+    
+     
+        
     <body>
         
         <div class="container" id="container">
