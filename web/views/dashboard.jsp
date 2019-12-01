@@ -54,7 +54,7 @@
                     <i class="material-icons mdc-list-item__graphic" aria-hidden="true">account_circle</i>
                     <span class="mdc-list-item__text">Account</span>
                 </a>
-                
+
                 <hr class="mdc-list-divider">
                 <h6 class="mdc-list-group__subheader">Menu</h6>
                 <a class="mdc-list-item" href="#">
@@ -69,7 +69,7 @@
                     <i class="material-icons mdc-list-item__graphic" aria-hidden="true">how_to_reg</i>
                     <span class="mdc-list-item__text">Customers List</span>
                 </a>
-                
+
 
                 <a class="mdc-list-item mdc-list-item--activated" href="#" aria-current="page">
                     <i class="material-icons mdc-list-item__graphic" aria-hidden="true">directions_car</i>
@@ -83,7 +83,7 @@
                     <i class="material-icons mdc-list-item__graphic" aria-hidden="true">description</i>
                     <span class="mdc-list-item__text">Daily Report</span>
                 </a>
-                
+
                 <%}%>
 
 
@@ -96,7 +96,7 @@
                     <i class="material-icons mdc-list-item__graphic" aria-hidden="true">account_circle</i>
                     <span class="mdc-list-item__text">Profile</span>
                 </a>
-                
+
                 <hr class="mdc-list-divider">
                 <h6 class="mdc-list-group__subheader">Menu</h6>
                 <a class="mdc-list-item" href="<%=request.getContextPath()%>/take-a-journey">
@@ -104,13 +104,13 @@
                     <span class="mdc-list-item__text">Take a Journey</span>
                 </a>
 
-                
+
                 <a class="mdc-list-item" href="<%=request.getContextPath()%>/assigned-jobs">
                     <i class="material-icons mdc-list-item__graphic" aria-hidden="true">assignment</i>
                     <span class="mdc-list-item__text">Assigned Jobs</span>
                 </a>
 
-                <a class="mdc-list-item mdc-list-item--activated" href="<%=request.getContextPath()%>/customers-served" aria-current="page">
+                <a class="mdc-list-item " href="<%=request.getContextPath()%>/customers-served" aria-current="page">
                     <i class="material-icons mdc-list-item__graphic" aria-hidden="true">people</i>
                     <span class="mdc-list-item__text">Customers Served</span>
                 </a>
@@ -122,16 +122,16 @@
                     <i class="material-icons mdc-list-item__graphic" aria-hidden="true">description</i>
                     <span class="mdc-list-item__text">Daily Report</span>
                 </a>
-                
+
                 <%}%>
 
-               
+
                 <%if (session.getAttribute("Role") == "Customer") {%>
-                
-                 <hr class="mdc-list-divider">
-                 <h6 class="mdc-list-group__subheader">Customer</h6>
-                 
-                  <a class="mdc-list-item mdc-list-item--activated" href="<%=request.getContextPath()%>/dashboard" aria-current="page">
+
+                <hr class="mdc-list-divider">
+                <h6 class="mdc-list-group__subheader">Customer</h6>
+
+                <a class="mdc-list-item" href="<%=request.getContextPath()%>/dashboard" aria-current="page">
                     <i class="material-icons mdc-list-item__graphic" aria-hidden="true">my_location</i>
                     <span class="mdc-list-item__text">Set a Pickup</span>
                 </a>
@@ -140,8 +140,8 @@
                     <i class="material-icons mdc-list-item__graphic" aria-hidden="true">history</i>
                     <span class="mdc-list-item__text">History</span>
                 </a>
-                    
-                 <a class="mdc-list-item" href="<%=request.getContextPath()%>/account">
+
+                <a class="mdc-list-item" href="<%=request.getContextPath()%>/account">
                     <i class="material-icons mdc-list-item__graphic" aria-hidden="true">account_circle</i>
                     <span class="mdc-list-item__text">Account</span>
                 </a>
@@ -149,18 +149,52 @@
 
                 <%}%>
 
-                
+
             </nav>
         </div>
     </aside>
 
-    <!--<div class="mdc-drawer-app-content mdc-top-app-bar--fixed-adjust">-->
-    <main class="main-content" >
+    <div class="mdc-drawer-app-content mdc-top-app-bar--fixed-adjust">
+        <main id="main-content" >
+            <%if (session.getAttribute("Path") == "assigned-jobs") {%>
+            <jsp:include page="driver/assigned-jobs.jsp" /> 
+            <%}%>
 
+            <%if (session.getAttribute("Path") == "create-invoice") {%>
+            <jsp:include page="driver/create-invoice.jsp" /> 
+            <%}%>
 
+            <%if (session.getAttribute("Path") == "customers-served") {%>
+            <jsp:include page="driver/customers-served.jsp" /> 
+            <%}%>
 
-    </main>
-    <!--</div>-->
+            <%if (session.getAttribute("Path") == "daily-report") {%>
+            <jsp:include page="driver/daily-report.jsp" /> 
+            <%}%>
+
+            <%if (session.getAttribute("Path") == "take-a-journey") {%>
+            <jsp:include page="driver/take-a-journey.jsp" /> 
+            <%}%>
+
+            <%if (session.getAttribute("Path") == "account") {%>
+            <jsp:include page="customer/account.jsp" /> 
+            <%}%>
+
+            <%if (session.getAttribute("Path") == "history") {%>
+            <jsp:include page="customer/history.jsp" /> 
+            <%}%>
+        </main>
+    </div>
+        <style>
+            #main-content {
+                padding: 2.5em;
+            }
+            
+            .mdc-data-table {
+                width: 100%;
+                margin-top: 2em;
+            }
+        </style>
 
 </body>
 
