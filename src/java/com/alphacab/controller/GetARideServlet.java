@@ -20,6 +20,22 @@ public class GetARideServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        String distance = request.getParameter("distance");
+        String origin_lat = request.getParameter("origin-lat");
+        String origin_lng = request.getParameter("origin-lng");
+        String destination_lat = request.getParameter("destination-lat");
+        String destination_lng = request.getParameter("destination-lng");
+        String originAddress = request.getParameter("originAddress");
+        String destinationAddress = request.getParameter("destinationAddress");
+        
+        
+        System.out.println(distance);
+        System.out.println(origin_lat);
+        System.out.println(origin_lng);
+        System.out.println(destination_lat);
+        System.out.println(destination_lng);
+        System.out.println(originAddress);
+        System.out.println(destinationAddress);
     }
 
 }
