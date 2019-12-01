@@ -18,6 +18,14 @@
         <servlet-class>com.alphacab.controller.AccountServlet</servlet-class>
     </servlet>
     <servlet>
+        <servlet-name>DriversListServlet</servlet-name>
+        <servlet-class>com.alphacab.controller.DriversListServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>UpdateDriverServlet</servlet-name>
+        <servlet-class>com.alphacab.controller.UpdateDriverServlet</servlet-class>
+    </servlet>
+    <servlet>
         <servlet-name>TakeAJourneyServlet</servlet-name>
         <servlet-class>com.alphacab.controller.TakeAJourneyServlet</servlet-class>
     </servlet>
@@ -68,6 +76,14 @@
     <servlet-mapping>
         <servlet-name>AccountServlet</servlet-name>
         <url-pattern>/account</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>DriversListServlet</servlet-name>
+        <url-pattern>/drivers</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>UpdateDriverServlet</servlet-name>
+        <url-pattern>/update-driver</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>TakeAJourneyServlet</servlet-name>

@@ -1,21 +1,5 @@
 
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
-    <head>
-        <title>User Page</title>
-        <link rel="stylesheet" href="bundle.css" type="text/css" />
-        <script async src="bundle.js" type="text/javascript"></script>
-        <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-        <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" rel="stylesheet">
-        <%@include file = "dashboard.jsp" %>
-    </head>
-
-    <body>
-
-
         <form class="mdc-form-field" action="<%=request.getContextPath()%>/createdriver" method="post">
-
             <div class="mdc-text-field mdc-text-field--outlined">
                 <input class="mdc-text-field__input" name="fullname">
                 <div class="mdc-notched-outline">
@@ -74,10 +58,7 @@
         </form>
 
     <style>
-        
+        .mdc-form-field {
+            padding: 2em;
+        }
     </style>
-
-</body>
-
-
-</html>

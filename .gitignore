@@ -2,3 +2,4 @@ node_modules
 build
 nbproject/private
 /dist/
+/dist/alphacab.war
