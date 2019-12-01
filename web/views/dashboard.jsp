@@ -77,10 +77,6 @@
                     <i class="material-icons mdc-list-item__graphic" aria-hidden="true">how_to_reg</i>
                     <span class="mdc-list-item__text">Customers List</span>
                 </a>
-<<<<<<< HEAD
-=======
-
->>>>>>> 501a6d8179537d382148d3d59c493eb7bbb82c27
 
                 <a class="mdc-list-item" href="#">
                     <i class="material-icons mdc-list-item__graphic" aria-hidden="true">attach_money</i>
@@ -111,13 +107,8 @@
                     <span class="mdc-list-item__text">Take a Journey</span>
                 </a>
 
-                <a class="mdc-list-item" href="<%=request.getContextPath()%>/map">
-                    <i class="material-icons mdc-list-item__graphic" aria-hidden="true">near_me</i>
-                    <span class="mdc-list-item__text">Map</span>
-                </a>
 
-
-                <a class="mdc-list-item" href="<%=request.getContextPath()%>/assignedjobs">
+                <a class="mdc-list-item" href="<%=request.getContextPath()%>/assigned-jobs">
 
                     <i class="material-icons mdc-list-item__graphic" aria-hidden="true">assignment</i>
                     <span class="mdc-list-item__text">Assigned Jobs</span>
