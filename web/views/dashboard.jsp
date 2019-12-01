@@ -11,15 +11,16 @@
     </head>
 
     <body>
-        
-        
+
+
         <%
             response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
             response.setHeader("Pragma3", "no-cahce");
             response.setHeader("Expires", "0");
-            
-            if(session.getAttribute("userName") == null)
+
+            if (session.getAttribute("userName") == null) {
                 response.sendRedirect("index.jsp");
+            }
         %>
 
     <header class="mdc-top-app-bar">
@@ -61,26 +62,19 @@
                     <i class="material-icons mdc-list-item__graphic" aria-hidden="true">directions_car</i>
                     <span class="mdc-list-item__text">Drivers</span>
                 </a>
-                <a class="mdc-list-item" href="#">
+                <!-- <a class="mdc-list-item" href="#">
                     <i class="material-icons mdc-list-item__graphic" aria-hidden="true">account_circle</i>
                     <span class="mdc-list-item__text">Account</span>
-                </a>
+                </a> -->
 
-                <hr class="mdc-list-divider">
-                <h6 class="mdc-list-group__subheader">Menu</h6>
-
-                <a class="mdc-list-item" href="#">
-                    <i class="material-icons mdc-list-item__graphic" aria-hidden="true">person_add_disabled</i>
-                    <span class="mdc-list-item__text">Remove Driver</span>
-                </a>
                 <a class="mdc-list-item" href="#">
                     <i class="material-icons mdc-list-item__graphic" aria-hidden="true">how_to_reg</i>
-                    <span class="mdc-list-item__text">Customers List</span>
+                    <span class="mdc-list-item__text">Customers</span>
                 </a>
 
                 <a class="mdc-list-item" href="#">
                     <i class="material-icons mdc-list-item__graphic" aria-hidden="true">attach_money</i>
-                    <span class="mdc-list-item__text">Change Price of Destination</span>
+                    <span class="mdc-list-item__text">Change Price</span>
                 </a>
                 <a class="mdc-list-item" href="#">
                     <i class="material-icons mdc-list-item__graphic" aria-hidden="true">description</i>
@@ -131,13 +125,20 @@
 
 
                 <%if (session.getAttribute("Role") == "Customer") {%>
-
+                
                 <hr class="mdc-list-divider">
                 <h6 class="mdc-list-group__subheader">Customer</h6>
+                <a class="mdc-list-item" href="#">
+                    <i class="material-icons mdc-list-item__graphic" aria-hidden="true">account_circle</i>
+                    <span class="mdc-list-item__text">Profile</span>
+                </a>
 
-                <a class="mdc-list-item mdc-list-item--activated" href="<%=request.getContextPath()%>/dashboard" aria-current="page">
+                <hr class="mdc-list-divider">
+                <h6 class="mdc-list-group__subheader">Menu</h6>
+
+                <a class="mdc-list-item" href="<%=request.getContextPath()%>/get-a-ride">
                     <i class="material-icons mdc-list-item__graphic" aria-hidden="true">my_location</i>
-                    <span class="mdc-list-item__text">Set a Pickup</span>
+                    <span class="mdc-list-item__text">Get A Ride</span>
                 </a>
 
                 <a class="mdc-list-item" href="<%=request.getContextPath()%>/history">
@@ -150,21 +151,11 @@
                     <span class="mdc-list-item__text">Account</span>
                 </a>
 
-                <a class="mdc-list-item" href="<%=request.getContextPath()%>/test-view-one">
-                    <i class="material-icons mdc-list-item__graphic" aria-hidden="true">visibility</i>
-                    <span class="mdc-list-item__text">Test View One</span>
+                <a class="mdc-list-item mdc-list-item--activated" href="<%=request.getContextPath()%>/dashboard" aria-current="page">
+                    <i class="material-icons mdc-list-item__graphic" aria-hidden="true">my_location</i>
+                    <span class="mdc-list-item__text">Dashboard</span>
                 </a>
 
-                <a class="mdc-list-item" href="<%=request.getContextPath()%>/test-view-two">
-                    <i class="material-icons mdc-list-item__graphic" aria-hidden="true">visibility</i>
-                    <span class="mdc-list-item__text">Test View Two</span>
-                </a>
-
-
-                <a class="mdc-list-item" href="<%=request.getContextPath()%>/get-a-ride">
-                    <i class="material-icons mdc-list-item__graphic" aria-hidden="true">visibility</i>
-                    <span class="mdc-list-item__text">Get A Ride</span>
-                </a>
                 <%}%>   
             </nav>
         </div>
@@ -179,18 +170,10 @@
             <jsp:include page="admin/drivers.jsp" /> 
             <%}%>
 
-            <%if (session.getAttribute("Path") == "test-view-one") {%>
-            <jsp:include page="test-view-one.jsp" /> 
-            <%}%>
-
-            <%if (session.getAttribute("Path") == "test-view-two") {%>
-            <jsp:include page="test-view-two.jsp" /> 
-            <%}%>
-
             <%if (session.getAttribute("Path") == "get-a-ride") {%>
             <jsp:include page="customer/get-a-ride.jsp" /> 
             <%}%>
-    
+
             <%if (session.getAttribute("Path") == "assigned-jobs") {%>
             <jsp:include page="driver/assigned-jobs.jsp" /> 
             <%}%>
@@ -220,16 +203,16 @@
             <%}%>
         </main>
     </div>
-        <style>
-            #main-content {
-                padding: 2.5em;
-            }
-            
-            .mdc-data-table {
-                width: 100%;
-                margin-top: 2em;
-            }
-        </style>
+    <style>
+        #main-content {
+            padding: 2.5em;
+        }
+
+        .mdc-data-table {
+            width: 100%;
+            margin-top: 2em;
+        }
+    </style>
 </body>
 
 </html>
