@@ -1,6 +1,6 @@
 
-            <h1 class="mdc-typography--headline3" >Your History</h1>
 
+            <h1 class="mdc-typography--headline3" >Assigned Jobs</h1>
 
             <div class="mdc-data-table">
                 <table class="mdc-data-table__table" aria-label="Dessert calories">
@@ -42,4 +42,4 @@
                     </tbody>
                 </table>
             </div>
-
+        
