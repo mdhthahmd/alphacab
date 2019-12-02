@@ -21,8 +21,8 @@ public class JourneyDao {
         //Time time = journeyBean.getTime();
         String email = journeyBean.getEmail();
         String pickupLocation = journeyBean.getPickupLocation();
-        double p_Lattitude = journeyBean.getD_Lattitude();
-        double p_Longitude = journeyBean.getD_Longitude();
+        double p_Lattitude = journeyBean.getP_Lattitude();
+        double p_Longitude = journeyBean.getP_Longitude();
         String dropoffLocation = journeyBean.getDropoffLocation();
         double d_Lattitude = journeyBean.getD_Lattitude();
         double d_Longitude = journeyBean.getD_Longitude();
