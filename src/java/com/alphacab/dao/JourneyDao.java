@@ -16,38 +16,38 @@ import java.sql.Time;
 public class JourneyDao {
 
     public String Journey(JourneyBean journeyBean) {
-        int journeyID = journeyBean.getJourneyID();
+        //int journeyID = journeyBean.getJourneyID();
+        //Date date = journeyBean.getDate();
+        //Time time = journeyBean.getTime();
         String email = journeyBean.getEmail();
-        Date date = journeyBean.getDate();
-        Time time = journeyBean.getTime();
         String pickupLocation = journeyBean.getPickupLocation();
-        int p_Lattitude = journeyBean.getD_Lattitude();
-        int p_Longitude = journeyBean.getD_Longitude();
+        double p_Lattitude = journeyBean.getD_Lattitude();
+        double p_Longitude = journeyBean.getD_Longitude();
         String dropoffLocation = journeyBean.getDropoffLocation();
-        int d_Lattitude = journeyBean.getD_Lattitude();
-        int d_Longitude = journeyBean.getD_Longitude();
+        double d_Lattitude = journeyBean.getD_Lattitude();
+        double d_Longitude = journeyBean.getD_Longitude();
+        double journeyDistance = journeyBean.getDistance();
         String status = journeyBean.getStatus();
-
 
         Connection connection = null;
         PreparedStatement preparedStatement = null;
 
         try {
             connection = ConnectionManager.createConnection();
-            String query = "INSERT INTO journeys(email,pickup_location,p_lattitude,p_longitude,dropoff_location,d_lattitude,d_longitude,status) \n" +
-            "values(?,?,?,?,?,?,?,?);"; //Insert user details into the table 'USERS'
+            String query = "INSERT INTO journeys(email,pickup_location,p_lattitude,p_longitude,dropoff_location,d_lattitude,d_longitude,journeyDistance,status) \n" +
+            "values(?,?,?,?,?,?,?,?,?)"; //Insert user details into the table 'USERS'
             preparedStatement = connection.prepareStatement(query); //Making use of prepared statements here to insert bunch of data
-            preparedStatement.setInt(1, journeyID);
-            preparedStatement.setString(2, email);
-            preparedStatement.setDate(3, date);
-            preparedStatement.setTime(4, time);
-            preparedStatement.setString(5, pickupLocation);
-            preparedStatement.setInt(6, p_Lattitude);
-            preparedStatement.setInt(7, p_Longitude);
-            preparedStatement.setString(8, dropoffLocation);
-            preparedStatement.setInt(9, d_Lattitude);
-            preparedStatement.setInt(10, d_Lattitude);
-            preparedStatement.setString(10, status);
+            preparedStatement.setString(1, email);
+            preparedStatement.setString(2, pickupLocation);
+            preparedStatement.setDouble(3, p_Lattitude);
+            preparedStatement.setDouble(4, p_Longitude);
+            preparedStatement.setString(5, dropoffLocation);
+            preparedStatement.setDouble(6, d_Lattitude);
+            preparedStatement.setDouble(7, d_Longitude);
+            preparedStatement.setDouble(8, journeyDistance);
+            preparedStatement.setString(9, status);
+            //preparedStatement.setDate(2, date);
+            //preparedStatement.setTime(3, time);
             
 
             int i = preparedStatement.executeUpdate();

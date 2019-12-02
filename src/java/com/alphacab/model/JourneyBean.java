@@ -14,13 +14,21 @@ public class JourneyBean {
     private Date date;
     private Time time;
     private String pickupLocation;
-    private int p_Lattitude;
-    private int p_Longitude;
+    private double p_Lattitude;
+    private double p_Longitude;
     private String dropoffLocation;
-    private int d_Lattitude;
-    private int d_Longitude;
+    private double d_Lattitude;
+    private double d_Longitude;
     private String status;
+    private double distance;
 
+    public double getDistance() {
+        return distance;
+    }
+    public void setDistance(double distance) {
+        this.distance = distance;
+    }
+    
     public String getStatus() {
         return status;
     }
@@ -70,19 +78,19 @@ public class JourneyBean {
         this.pickupLocation = pickupLocation;
     }
 
-    public int getP_Lattitude() {
+    public double getP_Lattitude() {
         return p_Lattitude;
     }
 
-    public void setP_Lattitude(int p_Lattitude) {
+    public void setP_Lattitude(double p_Lattitude) {
         this.p_Lattitude = p_Lattitude;
     }
 
-    public int getP_Longitude() {
+    public double getP_Longitude() {
         return p_Longitude;
     }
 
-    public void setP_Longitude(int p_Longitude) {
+    public void setP_Longitude(double p_Longitude) {
         this.p_Longitude = p_Longitude;
     }
 
@@ -94,19 +102,19 @@ public class JourneyBean {
         this.dropoffLocation = dropoffLocation;
     }
 
-    public int getD_Lattitude() {
+    public double getD_Lattitude() {
         return d_Lattitude;
     }
 
-    public void setD_Lattitude(int d_Lattitude) {
+    public void setD_Lattitude(double d_Lattitude) {
         this.d_Lattitude = d_Lattitude;
     }
 
-    public int getD_Longitude() {
+    public double getD_Longitude() {
         return d_Longitude;
     }
 
-    public void setD_Longitude(int d_Longitude) {
+    public void setD_Longitude(double d_Longitude) {
         this.d_Longitude = d_Longitude;
     }
 

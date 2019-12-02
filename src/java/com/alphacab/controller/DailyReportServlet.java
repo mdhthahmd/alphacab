@@ -1,5 +1,4 @@
-
- package com.alphacab.controller;
+package com.alphacab.controller;
 
 import java.io.IOException;
 import javax.servlet.ServletException;

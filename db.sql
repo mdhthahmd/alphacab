@@ -12,19 +12,21 @@ values('Midhath','midhath@mail.com','midhath','midhath','Customer');
 
 --SELECT * FROM users;
 
---CREATE TABLE journeys (
---    journeyID INT not null primary key
---        GENERATED ALWAYS AS IDENTITY
---        (START WITH 1, INCREMENT BY 1),
---    email VARCHAR(30) NOT NULL,
---    date_time TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
---    pickup_location VARCHAR(30) NOT NULL,
---    p_lattitude DECIMAL(8 , 8 ) NOT NULL,
---    p_longitude DECIMAL(8 , 8 ) NOT NULL,
---    dropoff_location VARCHAR(30) NOT NULL,
---    d_lattitude DECIMAL(8 , 8 ) NOT NULL,
---    d_longitude DECIMAL(8 , 8 ) NOT NULL
---);
+-- CREATE TABLE journeys (
+--     journeyID INT not null primary key
+--         GENERATED ALWAYS AS IDENTITY
+--         (START WITH 1, INCREMENT BY 1),
+--     email VARCHAR(30) NOT NULL,
+--     date_time TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+--     pickup_location VARCHAR(90) NOT NULL,
+--     p_lattitude DECIMAL(16 , 8 ) NOT NULL,
+--     p_longitude DECIMAL(16 , 8 ) NOT NULL,
+--     dropoff_location VARCHAR(90) NOT NULL,
+--     d_lattitude DECIMAL(16 , 8 ) NOT NULL,
+--     d_longitude DECIMAL(16 , 8 ) NOT NULL,
+--     journeyDistance  DECIMAL(16 , 8 ) NOT NULL,
+--     status VARCHAR(10) NOT NULL
+-- );
 
 INSERT INTO journeys(
 email,
@@ -33,12 +35,17 @@ p_lattitude,
 p_longitude,
 dropoff_location,
 d_lattitude,
-d_longitude) 
+d_longitude,
+journeyDistance,
+status)
+
 values(
 'nabbu@mail.com',
 'ameeneemagu',
-450.000,
-100.123,
+10.000,
+20.123,
 'henveyru',
-540.000,
-604.000);
+40.000,
+-04.000,
+1234.123,
+'UNASSIGNED');
