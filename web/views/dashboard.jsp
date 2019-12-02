@@ -10,8 +10,7 @@
         <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" rel="stylesheet">
     </head>
 
-    <body>
-
+    <body class="mdc-typography">
 
         <%
             response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
@@ -54,7 +53,7 @@
                 <hr class="mdc-list-divider">
                 <h6 class="mdc-list-group__subheader">Administrator</h6>
               
-                <a class="mdc-list-item" href="<%=request.getContextPath()%>/drivers">
+                <a class="mdc-list-item <%=session.getAttribute("Path") == "drivers" ? "mdc-list-item--activated" : "" %>" href="<%=request.getContextPath()%>/drivers">
                     <i class="material-icons mdc-list-item__graphic" aria-hidden="true">directions_car</i>
                     <span class="mdc-list-item__text">Drivers</span>
                 </a>
@@ -64,7 +63,7 @@
                     <span class="mdc-list-item__text">Account</span>
                 </a> -->
 
-                <a class="mdc-list-item" href="<%=request.getContextPath()%>/customers-list">
+                <a class="mdc-list-item <%=session.getAttribute("Path") == "customers-list" ? "mdc-list-item--activated" : "" %>" href="<%=request.getContextPath()%>/customers-list">
                     <i class="material-icons mdc-list-item__graphic" aria-hidden="true">how_to_reg</i>
                     <span class="mdc-list-item__text">Customers</span>
                 </a>
@@ -84,8 +83,10 @@
 
 
                 <%if (session.getAttribute("Role") == "Driver") {%>
+                
                 <hr class="mdc-list-divider">
                 <h6 class="mdc-list-group__subheader">Driver</h6>
+                
                 <a class="mdc-list-item" href="#">
                     <i class="material-icons mdc-list-item__graphic" aria-hidden="true">account_circle</i>
                     <span class="mdc-list-item__text">Profile</span>
@@ -93,27 +94,28 @@
 
                 <hr class="mdc-list-divider">
                 <h6 class="mdc-list-group__subheader">Menu</h6>
-                <a class="mdc-list-item" href="<%=request.getContextPath()%>/take-a-journey">
+                
+                <a class="mdc-list-item <%=session.getAttribute("Path") == "take-a-journey" ? "mdc-list-item--activated" : "" %>" href="<%=request.getContextPath()%>/take-a-journey">
                     <i class="material-icons mdc-list-item__graphic" aria-hidden="true">bookmark</i>
                     <span class="mdc-list-item__text">Take a Journey</span>
                 </a>
-
-
-                <a class="mdc-list-item" href="<%=request.getContextPath()%>/assigned-jobs">
-
+                
+                <a class="mdc-list-item <%=session.getAttribute("Path") == "assigned-jobs" ? "mdc-list-item--activated" : "" %>" href="<%=request.getContextPath()%>/assigned-jobs">
                     <i class="material-icons mdc-list-item__graphic" aria-hidden="true">assignment</i>
                     <span class="mdc-list-item__text">Assigned Jobs</span>
                 </a>
-
-                <a class="mdc-list-item " href="<%=request.getContextPath()%>/customers-served" aria-current="page">
+                
+                <a class="mdc-list-item <%=session.getAttribute("Path") == "customers-served" ? "mdc-list-item--activated" : "" %>" href="<%=request.getContextPath()%>/customers-served">
                     <i class="material-icons mdc-list-item__graphic" aria-hidden="true">people</i>
                     <span class="mdc-list-item__text">Customers Served</span>
                 </a>
-                <a class="mdc-list-item" href="<%=request.getContextPath()%>/create-invoice">
+                
+                <a class="mdc-list-item <%=session.getAttribute("Path") == "create-invoice" ? "mdc-list-item--activated" : "" %>" href="<%=request.getContextPath()%>/create-invoice">
                     <i class="material-icons mdc-list-item__graphic" aria-hidden="true">receipt</i>
                     <span class="mdc-list-item__text">Create Invoice</span>
                 </a>
-                <a class="mdc-list-item" href="<%=request.getContextPath()%>/daily-report">
+                
+                <a class="mdc-list-item <%=session.getAttribute("Path") == "daily-report" ? "mdc-list-item--activated" : "" %>"  href="<%=request.getContextPath()%>/daily-report">
                     <i class="material-icons mdc-list-item__graphic" aria-hidden="true">description</i>
                     <span class="mdc-list-item__text">Daily Report</span>
                 </a>
@@ -125,6 +127,7 @@
 
                 <hr class="mdc-list-divider">
                 <h6 class="mdc-list-group__subheader">Customer</h6>
+                
                 <a class="mdc-list-item" href="#">
                     <i class="material-icons mdc-list-item__graphic" aria-hidden="true">account_circle</i>
                     <span class="mdc-list-item__text">Profile</span>
@@ -133,22 +136,22 @@
                 <hr class="mdc-list-divider">
                 <h6 class="mdc-list-group__subheader">Menu</h6>
 
-                <a class="mdc-list-item" href="<%=request.getContextPath()%>/get-a-ride">
+                <a class="mdc-list-item <%=session.getAttribute("Path") == "get-a-ride" ? "mdc-list-item--activated" : "" %>" href="<%=request.getContextPath()%>/get-a-ride">
                     <i class="material-icons mdc-list-item__graphic" aria-hidden="true">my_location</i>
                     <span class="mdc-list-item__text">Get A Ride</span>
                 </a>
 
-                <a class="mdc-list-item" href="<%=request.getContextPath()%>/history">
+                <a class="mdc-list-item <%=session.getAttribute("Path") == "history" ? "mdc-list-item--activated" : "" %>" href="<%=request.getContextPath()%>/history">
                     <i class="material-icons mdc-list-item__graphic" aria-hidden="true">history</i>
                     <span class="mdc-list-item__text">History</span>
                 </a>
 
-                <a class="mdc-list-item" href="<%=request.getContextPath()%>/account">
+                <a class="mdc-list-item <%=session.getAttribute("Path") == "account" ? "mdc-list-item--activated" : "" %>" href="<%=request.getContextPath()%>/account">
                     <i class="material-icons mdc-list-item__graphic" aria-hidden="true">account_circle</i>
                     <span class="mdc-list-item__text">Account</span>
                 </a>
 
-                <a class="mdc-list-item mdc-list-item--activated" href="<%=request.getContextPath()%>/dashboard" aria-current="page">
+                <a class="mdc-list-item <%=session.getAttribute("Path") == "dashboard" ? "mdc-list-item--activated" : "" %>" href="<%=request.getContextPath()%>/dashboard">
                     <i class="material-icons mdc-list-item__graphic" aria-hidden="true">my_location</i>
                     <span class="mdc-list-item__text">Dashboard</span>
                 </a>
@@ -203,16 +206,6 @@
             <%}%>
         </main>
     </div>
-    <style>
-        #main-content {
-            padding: 2.5em;
-        }
-
-        .mdc-data-table {
-            width: 100%;
-            margin-top: 2em;
-        }
-    </style>
 </body>
 
 </html>

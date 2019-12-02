@@ -1,1 +1,20 @@
-Purge
+<button id="btn-book" onclick="myFunction()" disabled="true"  class="mdc-button mdc-button--raised">  <span class="mdc-button__ripple"></span> Book A Ride</button>
+
+
+ #btn-book {
+            position: absolute;
+            bottom: 10%;
+            left: 50%;
+            height: 48px;
+            width: 256px;
+            transform: translateX(-50%);
+            
+        }
+        
+        #googleMap {
+             position: absolute;
+        top: 0;
+        left: 0;
+        width: 100% !important;
+        height: 100% !important;
+        }
