@@ -53,21 +53,18 @@
                 <%if (session.getAttribute("Role") == "Admin") {%>
                 <hr class="mdc-list-divider">
                 <h6 class="mdc-list-group__subheader">Administrator</h6>
-                <a class="mdc-list-item" href="<%=request.getContextPath()%>/add-driver">
-                    <i class="material-icons mdc-list-item__graphic" aria-hidden="true">person_add</i>
-                    <span class="mdc-list-item__text">Add Driver</span>
-                </a>
-
+              
                 <a class="mdc-list-item" href="<%=request.getContextPath()%>/drivers">
                     <i class="material-icons mdc-list-item__graphic" aria-hidden="true">directions_car</i>
                     <span class="mdc-list-item__text">Drivers</span>
                 </a>
+                    
                 <!-- <a class="mdc-list-item" href="#">
                     <i class="material-icons mdc-list-item__graphic" aria-hidden="true">account_circle</i>
                     <span class="mdc-list-item__text">Account</span>
                 </a> -->
 
-                <a class="mdc-list-item" href="#">
+                <a class="mdc-list-item" href="<%=request.getContextPath()%>/customers-list">
                     <i class="material-icons mdc-list-item__graphic" aria-hidden="true">how_to_reg</i>
                     <span class="mdc-list-item__text">Customers</span>
                 </a>
@@ -78,7 +75,7 @@
                 </a>
                 <a class="mdc-list-item" href="#">
                     <i class="material-icons mdc-list-item__graphic" aria-hidden="true">description</i>
-                    <span class="mdc-list-item__text">Daily Report</span>
+                    <span class="mdc-list-item__text">Generate Report</span>
                 </a>
 
                 <%}%>
@@ -125,7 +122,7 @@
 
 
                 <%if (session.getAttribute("Role") == "Customer") {%>
-                
+
                 <hr class="mdc-list-divider">
                 <h6 class="mdc-list-group__subheader">Customer</h6>
                 <a class="mdc-list-item" href="#">
@@ -168,6 +165,9 @@
             <%}%>
             <%if (session.getAttribute("Path") == "drivers") {%>
             <jsp:include page="admin/drivers.jsp" /> 
+            <%}%>
+            <%if (session.getAttribute("Path") == "customers-list") {%>
+            <jsp:include page="admin/customers.jsp" /> 
             <%}%>
 
             <%if (session.getAttribute("Path") == "get-a-ride") {%>

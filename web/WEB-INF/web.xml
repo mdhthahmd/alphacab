@@ -57,6 +57,10 @@
         <servlet-name>GetARideServlet</servlet-name>
         <servlet-class>com.alphacab.controller.GetARideServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>CustomersListServlet</servlet-name>
+        <servlet-class>com.alphacab.controller.CustomersListServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>DashboardServlet</servlet-name>
         <url-pattern>/dashboard</url-pattern>
@@ -116,6 +120,10 @@
     <servlet-mapping>
         <servlet-name>GetARideServlet</servlet-name>
         <url-pattern>/get-a-ride</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>CustomersListServlet</servlet-name>
+        <url-pattern>/customers-list</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>10</session-timeout>
