@@ -7,7 +7,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.alphacab.model.CreateDriverBean;
-import com.alphacab.dao.CreateDriverDao;
+import com.alphacab.dao.DriverDao;
 import javax.servlet.http.HttpSession;
 
 public class CreateDriverServlet extends HttpServlet {
@@ -43,15 +43,11 @@ public class CreateDriverServlet extends HttpServlet {
         {    
             request.setAttribute("userName", createDriverBean.getUserName() );
             session.setAttribute("Customer", createDriverBean.getEmail() );
-            System.out.println("Asslah hasdhjdascjkasjckjsk");
             request.getRequestDispatcher("views/dashboard.jsp").forward(request, response);
-            
-     
-            System.out.println("Nabbu Nabeel");
         } else //On Failure, display a meaningful message to the User.
         {
             request.setAttribute("errMessage", driverCreated);
-            request.getRequestDispatcher("views/add-driver.jsp").forward(request, response);
+            request.getRequestDispatcher("views/dashboard.jsp").forward(request, response);
         }
     }
 }
