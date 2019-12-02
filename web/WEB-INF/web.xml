@@ -1,6 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <web-app version="3.1" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd">
-    <display-name>LoginMvc</display-name>
+    <display-name>Alphacab</display-name>
+     <!-- <welcome-file-list>
+        <welcome-file>login</welcome-file>
+    </welcome-file-list>  -->
+    <session-config>
+        <session-timeout>10</session-timeout>
+    </session-config>
+     <servlet>
+        <servlet-name>LoginServlet</servlet-name>
+        <servlet-class>com.alphacab.controller.LoginServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>LogoutServlet</servlet-name>
+        <servlet-class>com.alphacab.controller.LogoutServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>RegisterServlet</servlet-name>
+        <servlet-class>com.alphacab.controller.RegisterServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>DashboardServlet</servlet-name>
+        <servlet-class>com.alphacab.controller.DashboardServlet</servlet-class>
+    </servlet>
     <servlet>
         <servlet-name>AddDriverServlet</servlet-name>
         <servlet-class>com.alphacab.controller.AddDriverServlet</servlet-class>
@@ -22,10 +44,6 @@
         <servlet-class>com.alphacab.controller.DriversListServlet</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>UpdateDriverServlet</servlet-name>
-        <servlet-class>com.alphacab.controller.UpdateDriverServlet</servlet-class>
-    </servlet>
-    <servlet>
         <servlet-name>TakeAJourneyServlet</servlet-name>
         <servlet-class>com.alphacab.controller.TakeAJourneyServlet</servlet-class>
     </servlet>
@@ -44,14 +62,6 @@
     <servlet>
         <servlet-name>DailyReportServlet</servlet-name>
         <servlet-class>com.alphacab.controller.DailyReportServlet</servlet-class>
-    </servlet>
-    <servlet>
-        <servlet-name>TestViewOneServlet</servlet-name>
-        <servlet-class>com.alphacab.controller.TestViewOneServlet</servlet-class>
-    </servlet>
-    <servlet>
-        <servlet-name>TestViewTwoServlet</servlet-name>
-        <servlet-class>com.alphacab.controller.TestViewTwoServlet</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>GetARideServlet</servlet-name>
@@ -82,10 +92,6 @@
         <url-pattern>/drivers</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>UpdateDriverServlet</servlet-name>
-        <url-pattern>/update-driver</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
         <servlet-name>TakeAJourneyServlet</servlet-name>
         <url-pattern>/take-a-journey</url-pattern>
     </servlet-mapping>
@@ -106,39 +112,9 @@
         <url-pattern>/daily-report</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>TestViewOneServlet</servlet-name>
-        <url-pattern>/test-view-one</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>TestViewTwoServlet</servlet-name>
-        <url-pattern>/test-view-two</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
         <servlet-name>GetARideServlet</servlet-name>
         <url-pattern>/get-a-ride</url-pattern>
     </servlet-mapping>
-    <session-config>
-        <session-timeout>10</session-timeout>
-    </session-config>
-    <!-- <welcome-file-list>
-        <welcome-file>login</welcome-file>
-    </welcome-file-list>  -->
-    <servlet>
-        <servlet-name>LoginServlet</servlet-name>
-        <servlet-class>com.alphacab.controller.LoginServlet</servlet-class>
-    </servlet>
-    <servlet>
-        <servlet-name>LogoutServlet</servlet-name>
-        <servlet-class>com.alphacab.controller.LogoutServlet</servlet-class>
-    </servlet>
-    <servlet>
-        <servlet-name>RegisterServlet</servlet-name>
-        <servlet-class>com.alphacab.controller.RegisterServlet</servlet-class>
-    </servlet>
-    <servlet>
-        <servlet-name>DashboardServlet</servlet-name>
-        <servlet-class>com.alphacab.controller.DashboardServlet</servlet-class>
-    </servlet>
     <servlet-mapping>
         <servlet-name>LoginServlet</servlet-name>
         <url-pattern>/login</url-pattern>

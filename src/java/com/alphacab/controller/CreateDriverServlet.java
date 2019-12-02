@@ -33,11 +33,11 @@ public class CreateDriverServlet extends HttpServlet {
         createDriverBean.setUserName(userName);
         createDriverBean.setPassword(password);
 
-        CreateDriverDao createDriverDao = new CreateDriverDao();
+        DriverDao driverDao = new DriverDao();
         //////////////////////////////////////////////////////////////////////////
 
         //The core Logic of the Creating driver is present here. We are going to insert user data in to the database.
-        String driverCreated = createDriverDao.createDriver(createDriverBean);
+        String driverCreated = driverDao.createDriver(createDriverBean);
 
         if (driverCreated.equals("SUCCESS")) //On success, you can display a message to user on Home page
         {    
