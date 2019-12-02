@@ -7,6 +7,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.alphacab.model.JourneyBean;
+import com.alphacab.dao.JourneyDao;
+
 public class GetARideServlet extends HttpServlet {
 
     @Override
@@ -20,6 +23,8 @@ public class GetARideServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        HttpSession session = request.getSession();
+        
         String distance = request.getParameter("distance");
         String origin_lat = request.getParameter("origin-lat");
         String origin_lng = request.getParameter("origin-lng");
@@ -28,14 +33,27 @@ public class GetARideServlet extends HttpServlet {
         String originAddress = request.getParameter("originAddress");
         String destinationAddress = request.getParameter("destinationAddress");
         
+        JourneyBean jb = new JourneyBean();
+        jb.setEmail(""+session.getAttribute("Email"));
+        jb.setStatus("UNASSIGNED");
+        jb.setDistance(Double.parseDouble(distance));
+        jb.setP_Lattitude(Double.parseDouble(origin_lat));
+        jb.setP_Longitude(Double.parseDouble(origin_lng));
+        jb.setD_Lattitude(Double.parseDouble(destination_lat));
+        jb.setD_Longitude(Double.parseDouble(destination_lng));
+        jb.setPickupLocation(originAddress);
+        jb.setDropoffLocation(destinationAddress);
         
-        System.out.println(distance);
-        System.out.println(origin_lat);
-        System.out.println(origin_lng);
-        System.out.println(destination_lat);
-        System.out.println(destination_lng);
-        System.out.println(originAddress);
-        System.out.println(destinationAddress);
+        JourneyDao journeyDao = new JourneyDao();
+        
+        String addJourney = journeyDao.Journey(jb);
+        if (addJourney.equals("SUCCESS")) //On success, you can display a message to user on Home page
+        { 
+            System.out.println("sucess journey added");
+        }else
+        {
+            System.out.println("failed journey not added");
+        }
     }
 
 }
