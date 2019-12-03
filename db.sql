@@ -25,7 +25,8 @@ values('Midhath','midhath@mail.com','midhath','midhath','Customer');
 --     d_lattitude DECIMAL(16 , 8 ) NOT NULL,
 --     d_longitude DECIMAL(16 , 8 ) NOT NULL,
 --     journeyDistance  DECIMAL(16 , 8 ) NOT NULL,
---     status VARCHAR(10) NOT NULL
+--     status VARCHAR(10) NOT NULL,
+--     ASSIGNEDDRIVER VARCHAR(30)
 -- );
 
 INSERT INTO journeys(

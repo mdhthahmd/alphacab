@@ -21,6 +21,17 @@ public class JourneyBean {
     private double d_Longitude;
     private String status;
     private double distance;
+    private String assigneddriver;
+    
+    public void setAssiginedDriver(String assigneddriver)    
+    {
+        this.assigneddriver = assigneddriver;
+    }
+    
+    public String getAssiginedDriver()
+    {
+        return assigneddriver;
+    }
 
     public double getDistance() {
         return distance;
