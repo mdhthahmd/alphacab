@@ -12,7 +12,7 @@ import com.alphacab.model.JourneyBean;
 import com.alphacab.database.ConnectionManager;
 import java.sql.Date;
 import java.sql.ResultSet;
-import java.time.format.DateTimeFormatter;
+import java.sql.Time;
 import java.util.ArrayList;
 
 public class JourneyDao {
@@ -77,7 +77,9 @@ public class JourneyDao {
         ResultSet resultSet = null;
         
         int journeyID;
-        Date dateTime;
+        Date date;
+        Time time;
+        String customerEmail;
         String pickupLocation;
         double p_Lattitude;
         double p_Longitude;
@@ -98,7 +100,7 @@ public class JourneyDao {
                 JourneyBean journeyInfo = new JourneyBean();
                 
                 journeyID = Integer.parseInt(resultSet.getString("journeyID"));
-                dateTime = resultSet.getDate("date_time");
+                date = resultSet.getDate("date_time");
                 pickupLocation =  resultSet.getString("pickup_location");
                 p_Lattitude = resultSet.getDouble("p_lattitude");
                 p_Longitude = resultSet.getDouble("p_longitude");
@@ -107,9 +109,17 @@ public class JourneyDao {
                 d_Longitude =  resultSet.getDouble("d_longitude");
                 status = resultSet.getString("status");
                 distance = resultSet.getDouble("journeyDistance");
+                customerEmail = resultSet.getString("email");
+                //get time from time stamp
+                String strTime = (""+resultSet.getTimestamp("date_time"));
+                String []objTime = strTime.split(" ");
+                String []temp = objTime[1].split("\\.");
+                time = java.sql.Time.valueOf(temp[0]);
                 
+                journeyInfo.setEmail(customerEmail);
                 journeyInfo.setJourneyID(journeyID);
-                journeyInfo.setDate(dateTime);
+                journeyInfo.setTime(time);
+                journeyInfo.setDate(date);
                 journeyInfo.setPickupLocation(pickupLocation);
                 journeyInfo.setP_Lattitude(p_Lattitude);
                 journeyInfo.setP_Longitude(p_Longitude);
