@@ -1,21 +1,28 @@
 $mdc-theme-primary: #000; // change this to #000
 
-
 @import "@material/textfield/mdc-text-field";
 @import "@material/top-app-bar/mdc-top-app-bar";
 @import "@material/icon-button/mdc-icon-button";
 @import "@material/drawer/mdc-drawer";
 @import "@material/list/mdc-list";
 @import "@material/button/mdc-button";
-
 @import "@material/data-table/mdc-data-table";
-
-@import "@material/checkbox/mdc-checkbox"; // Required only for data table with row selection.
+@import "@material/checkbox/mdc-checkbox";
 @import "@material/data-table/mdc-data-table";
-
 @import "@material/typography/mdc-typography";
+@import "@material/menu-surface/mdc-menu-surface";
+@import "@material/menu/mdc-menu";
+@import "@material/select/mdc-select";
 
+@import "@material/snackbar/mdc-snackbar";
 
+.demo-width-class {
+  width: 400px;
+}
+
+.demo-width-class {
+  width: 400px;
+}
 
 body {
   margin: 0px;
@@ -43,7 +50,6 @@ body {
 .mdc-top-app-bar {
   z-index: 7;
 }
-
 
 .mdc-form-field {
     display: flex;

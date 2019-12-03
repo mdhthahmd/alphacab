@@ -40,13 +40,10 @@ public class RegisterServlet extends HttpServlet {
 
         if (userRegistered.equals("SUCCESS")) //On success, you can display a message to user on Home page
         {    
-            request.setAttribute("userName", registerBean.getUserName() );
+            session.setAttribute("userName", registerBean.getUserName() );
             session.setAttribute("Customer", registerBean.getEmail() );
-            System.out.println("Asslah hasdhjdascjkasjckjsk");
-            request.getRequestDispatcher("views/customer/customer-dashboard.jsp").forward(request, response);
+            request.getRequestDispatcher("views/dashboard.jsp").forward(request, response);
             
-     
-            System.out.println("Nabbu Nabeel");
         } else //On Failure, display a meaningful message to the User.
         {
             request.setAttribute("errMessage", userRegistered);

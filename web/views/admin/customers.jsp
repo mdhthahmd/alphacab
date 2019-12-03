@@ -31,7 +31,7 @@
                 <td class="mdc-data-table__cell"><%=customers.get(i).getLastName()%></td>
                 <td class="mdc-data-table__cell"><%=customers.get(i).getEmail()%></td>
                 <td class="mdc-data-table__cell">
-                       <form action="<%=request.getContextPath()%>/update-customer" method="post">
+                    <form action="<%=request.getContextPath()%>/update-customer" method="post">
                         <a class="material-icons mdc-top-app-bar__navigation-icon mdc-icon-button">edit</a>
                     </form>
                 </td>    
@@ -44,6 +44,30 @@
             <% }%> 
         </tbody>
     </table>
+</div>
+
+<div class="mdc-select">
+    <div class="mdc-select__anchor demo-width-class">
+        <i class="mdc-select__dropdown-icon"></i>
+        <div class="mdc-select__selected-text"></div>
+        <span class="mdc-floating-label">Pick a Food Group</span>
+        <div class="mdc-line-ripple"></div>
+    </div>
+
+    <div class="mdc-select__menu mdc-menu mdc-menu-surface demo-width-class">
+        <ul class="mdc-list">
+            <li class="mdc-list-item mdc-list-item--selected" data-value="" aria-selected="true"></li>
+            <li class="mdc-list-item" data-value="grains">
+                Bread, Cereal, Rice, and Pasta
+            </li>
+            <li class="mdc-list-item" data-value="vegetables">
+                Vegetables
+            </li>
+            <li class="mdc-list-item" data-value="fruit">
+                Fruit
+            </li>
+        </ul>
+    </div>
 </div>
 
 <style>

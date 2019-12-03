@@ -140,15 +140,15 @@
                     <i class="material-icons mdc-list-item__graphic" aria-hidden="true">my_location</i>
                     <span class="mdc-list-item__text">Get A Ride</span>
                 </a>
+                    
+                 <a class="mdc-list-item <%=session.getAttribute("Path") == "account" ? "mdc-list-item--activated" : "" %>" href="<%=request.getContextPath()%>/bookings">
+                    <i class="material-icons mdc-list-item__graphic" aria-hidden="true">account_circle</i>
+                    <span class="mdc-list-item__text">Bookings</span>
+                </a>
 
                 <a class="mdc-list-item <%=session.getAttribute("Path") == "history" ? "mdc-list-item--activated" : "" %>" href="<%=request.getContextPath()%>/history">
                     <i class="material-icons mdc-list-item__graphic" aria-hidden="true">history</i>
                     <span class="mdc-list-item__text">History</span>
-                </a>
-
-                <a class="mdc-list-item <%=session.getAttribute("Path") == "account" ? "mdc-list-item--activated" : "" %>" href="<%=request.getContextPath()%>/account">
-                    <i class="material-icons mdc-list-item__graphic" aria-hidden="true">account_circle</i>
-                    <span class="mdc-list-item__text">Account</span>
                 </a>
 
                 <a class="mdc-list-item <%=session.getAttribute("Path") == "dashboard" ? "mdc-list-item--activated" : "" %>" href="<%=request.getContextPath()%>/dashboard">
@@ -175,6 +175,10 @@
 
             <%if (session.getAttribute("Path") == "get-a-ride") {%>
             <jsp:include page="customer/get-a-ride.jsp" /> 
+            <%}%>
+            
+            <%if (session.getAttribute("Path") == "bookings") {%>
+            <jsp:include page="customer/bookings.jsp" /> 
             <%}%>
 
             <%if (session.getAttribute("Path") == "assigned-jobs") {%>

@@ -1,18 +1,12 @@
 package com.alphacab.model;
 
 
-import static com.sun.xml.bind.util.CalendarConv.formatter;
-import java.sql.Date;
-import java.sql.Time;
-import java.text.SimpleDateFormat;
-
-
 public class JourneyBean {
 
     private int journeyID;
     private String email;
-    private Date date;
-    private Time time;
+    private String date;
+    private String time;
     private String pickupLocation;
     private double p_Lattitude;
     private double p_Longitude;
@@ -54,19 +48,19 @@ public class JourneyBean {
         this.email = email;
     }
 
-    public Date getDate() {
+    public String getDate() {
         return date;
     }
 
-    public void setDate(Date date) {
+    public void setDate(String date) {
         this.date = date;
     }
 
-    public Time getTime() {
+    public String getTime() {
         return time;
     }
 
-    public void setTime(Time time) {
+    public void setTime(String time) {
         this.time = time;
     }
 

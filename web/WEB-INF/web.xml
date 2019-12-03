@@ -1,13 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <web-app version="3.1" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd">
     <display-name>Alphacab</display-name>
-     <!-- <welcome-file-list>
+    <!-- <welcome-file-list>
         <welcome-file>login</welcome-file>
     </welcome-file-list>  -->
+    <servlet-mapping>
+        <servlet-name>BookingsServlet</servlet-name>
+        <url-pattern>/bookings</url-pattern>
+    </servlet-mapping>
     <session-config>
         <session-timeout>10</session-timeout>
     </session-config>
-     <servlet>
+    <servlet>
         <servlet-name>LoginServlet</servlet-name>
         <servlet-class>com.alphacab.controller.LoginServlet</servlet-class>
     </servlet>
@@ -71,6 +75,10 @@
         <servlet-name>CustomersListServlet</servlet-name>
         <servlet-class>com.alphacab.controller.CustomersListServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>BookingsServlet</servlet-name>
+        <servlet-class>com.alphacab.controller.BookingsServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>DashboardServlet</servlet-name>
         <url-pattern>/dashboard</url-pattern>
@@ -132,7 +140,7 @@
         <url-pattern>/register</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-     <servlet-name>CustomersListServlet</servlet-name>
+        <servlet-name>CustomersListServlet</servlet-name>
         <url-pattern>/customers-list</url-pattern>
     </servlet-mapping>
 </web-app>

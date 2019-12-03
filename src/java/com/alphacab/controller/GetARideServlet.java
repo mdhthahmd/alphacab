@@ -15,16 +15,16 @@ public class GetARideServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-                HttpSession session = request.getSession();
-                session.setAttribute("Path", "get-a-ride");
-                request.getRequestDispatcher("views/dashboard.jsp").forward(request, response);
+        HttpSession session = request.getSession();
+        session.setAttribute("Path", "get-a-ride");
+        request.getRequestDispatcher("views/dashboard.jsp").forward(request, response);
     }
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         HttpSession session = request.getSession();
-        
+
         String distance = request.getParameter("distance");
         String origin_lat = request.getParameter("origin-lat");
         String origin_lng = request.getParameter("origin-lng");
@@ -32,9 +32,9 @@ public class GetARideServlet extends HttpServlet {
         String destination_lng = request.getParameter("destination-lng");
         String originAddress = request.getParameter("originAddress");
         String destinationAddress = request.getParameter("destinationAddress");
-        
+
         JourneyBean jb = new JourneyBean();
-        jb.setEmail(""+session.getAttribute("Email"));
+        jb.setEmail("" + session.getAttribute("Email"));
         jb.setStatus("UNASSIGNED");
         jb.setDistance(Double.parseDouble(distance));
         jb.setP_Lattitude(Double.parseDouble(origin_lat));
@@ -43,17 +43,23 @@ public class GetARideServlet extends HttpServlet {
         jb.setD_Longitude(Double.parseDouble(destination_lng));
         jb.setPickupLocation(originAddress);
         jb.setDropoffLocation(destinationAddress);
-        
+
         JourneyDao journeyDao = new JourneyDao();
-        
+
         String addJourney = journeyDao.Journey(jb);
-        if (addJourney.equals("SUCCESS")) //On success, you can display a message to user on Home page
-        { 
-            System.out.println("sucess journey added");
-        }else
+        
+        System.out.println(addJourney);
+        if (addJourney.equals("SUCCESS"))
         {
-            System.out.println("failed journey not added");
+            
+            // Populate Data For Bookings here
+            // and send user to booking servelt
+            
+           response.sendRedirect(request.getContextPath()+"/bookings");
+            
+        } else {
+            session.setAttribute("Path", "get-a-ride");
+            request.getRequestDispatcher("views/dashboard.jsp").forward(request, response);
         }
     }
-
 }
