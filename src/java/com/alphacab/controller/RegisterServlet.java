@@ -23,7 +23,7 @@ public class RegisterServlet extends HttpServlet {
         String email = request.getParameter("email");
         String userName = request.getParameter("username");
         String password = request.getParameter("password");
-
+        String address = request.getParameter("address");
         HttpSession session = request.getSession();
         
         
@@ -32,6 +32,7 @@ public class RegisterServlet extends HttpServlet {
         registerBean.setEmail(email);
         registerBean.setUserName(userName);
         registerBean.setPassword(password);
+        registerBean.setAddress(address);
 
         RegisterDao registerDao = new RegisterDao();
 
@@ -40,13 +41,12 @@ public class RegisterServlet extends HttpServlet {
 
         if (userRegistered.equals("SUCCESS")) //On success, you can display a message to user on Home page
         {    
-            request.setAttribute("userName", registerBean.getUserName() );
-            session.setAttribute("Customer", registerBean.getEmail() );
-            System.out.println("Asslah hasdhjdascjkasjckjsk");
-            request.getRequestDispatcher("views/customer/customer-dashboard.jsp").forward(request, response);
+            session.setAttribute("Role", "Customer");
+            session.setAttribute("Email", email);
+            session.setAttribute("userName", registerBean.getUserName());
+            request.getRequestDispatcher("views/dashboard.jsp").forward(request, response);
             
      
-            System.out.println("Nabbu Nabeel");
         } else //On Failure, display a meaningful message to the User.
         {
             request.setAttribute("errMessage", userRegistered);

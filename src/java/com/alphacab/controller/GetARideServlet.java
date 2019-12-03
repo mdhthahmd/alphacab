@@ -32,9 +32,11 @@ public class GetARideServlet extends HttpServlet {
         String destination_lng = request.getParameter("destination-lng");
         String originAddress = request.getParameter("originAddress");
         String destinationAddress = request.getParameter("destinationAddress");
+        String journeyPrice = request.getParameter("journeyPrice");
         
         JourneyBean jb = new JourneyBean();
         jb.setEmail(""+session.getAttribute("Email"));
+        jb.setId(Integer.parseInt(""+session.getAttribute("ID"))); 
         jb.setStatus("UNASSIGNED");
         jb.setDistance(Double.parseDouble(distance));
         jb.setP_Lattitude(Double.parseDouble(origin_lat));
@@ -43,6 +45,7 @@ public class GetARideServlet extends HttpServlet {
         jb.setD_Longitude(Double.parseDouble(destination_lng));
         jb.setPickupLocation(originAddress);
         jb.setDropoffLocation(destinationAddress);
+        jb.setJourneyPrice(Double.parseDouble(journeyPrice));
         
         JourneyDao journeyDao = new JourneyDao();
         

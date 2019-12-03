@@ -6,7 +6,24 @@ public class CreateDriverBean {
     private String email;
     private String userName;
     private String password;
+    private String registration;
+
+    public void setRegistration(String registration) {
+        this.registration = registration;
+    }
+
+    public String getRegistration() {
+        return registration;
+    }
     private String role;
+
+    public void setRole(String role) {
+        this.role = role;
+    }
+
+    public String getRole() {
+        return role;
+    }
 
     public String getUserName() {
         return userName;

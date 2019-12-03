@@ -30,14 +30,16 @@ public class JourneyDao {
         double d_Longitude = journeyBean.getD_Longitude();
         double journeyDistance = journeyBean.getDistance();
         String status = journeyBean.getStatus();
-
+        int customerID = journeyBean.getId();
+        double journeyPrice = journeyBean.getJourneyPrice();
+        
         Connection connection = null;
         PreparedStatement preparedStatement = null;
 
         try {
             connection = ConnectionManager.createConnection();
-            String query = "INSERT INTO journeys(email,pickup_location,p_lattitude,p_longitude,dropoff_location,d_lattitude,d_longitude,journeyDistance,status) \n" +
-            "values(?,?,?,?,?,?,?,?,?)"; //Insert user details into the table 'USERS'
+            String query = "INSERT INTO journeys(email,pickup_location,p_lattitude,p_longitude,dropoff_location,d_lattitude,d_longitude,journeyDistance,status,id,JOURNEY_PRICE) \n" +
+            "values(?,?,?,?,?,?,?,?,?,?,?)"; //Insert user details into the table 'USERS'
             preparedStatement = connection.prepareStatement(query); //Making use of prepared statements here to insert bunch of data
             preparedStatement.setString(1, email);
             preparedStatement.setString(2, pickupLocation);
@@ -48,8 +50,8 @@ public class JourneyDao {
             preparedStatement.setDouble(7, d_Longitude);
             preparedStatement.setDouble(8, journeyDistance);
             preparedStatement.setString(9, status);
-            //preparedStatement.setDate(2, date);
-            //preparedStatement.setTime(3, time);
+            preparedStatement.setInt(10, customerID);
+            preparedStatement.setDouble(11, journeyPrice);
             
 
             int i = preparedStatement.executeUpdate();
@@ -88,6 +90,8 @@ public class JourneyDao {
         double d_Longitude;
         String status;
         double distance;
+        double journeyPrice;
+        
         
         try {
             connection = ConnectionManager.createConnection();
