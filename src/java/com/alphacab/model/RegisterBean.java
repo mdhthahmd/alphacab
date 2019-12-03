@@ -6,7 +6,28 @@ public class RegisterBean {
     private String email;
     private String userName;
     private String password;
-
+    private String address;
+    private int id;
+    
+    public int getID()
+    {
+        return id;
+    }
+    
+    public void setID(int id)
+    {
+        this.id = id;
+    }
+    
+    public void setAddress(String address)
+    {
+        this.address = address;
+    }
+   
+    public String getAddress()
+    {
+        return address;
+    }
     public String getUserName() {
         return userName;
     }

@@ -64,10 +64,10 @@ public class LoginServlet extends HttpServlet {
 
                 HttpSession session = request.getSession();
                 session.setMaxInactiveInterval(10 * 60);
-                session.setAttribute("Customer", email);
                 session.setAttribute("Role", "Customer");
                 session.setAttribute("userName", loginBean.getUserName());
                 session.setAttribute("Email", email);
+                session.setAttribute("CustomerID",loginBean.getCustomerId());
 
                 response.sendRedirect("dashboard");
 

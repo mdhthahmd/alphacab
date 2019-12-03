@@ -15,6 +15,52 @@ public class JourneyBean {
     private double d_Longitude;
     private String status;
     private double distance;
+    private String assigneddriver;
+    private String registration;
+    private int id;
+    private double journeyPrice;
+
+    public void setAssigneddriver(String assigneddriver) {
+        this.assigneddriver = assigneddriver;
+    }
+
+    public void setRegistration(String registration) {
+        this.registration = registration;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public void setJourneyPrice(double journeyPrice) {
+        this.journeyPrice = journeyPrice;
+    }
+
+    public String getAssigneddriver() {
+        return assigneddriver;
+    }
+
+    public String getRegistration() {
+        return registration;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public double getJourneyPrice() {
+        return journeyPrice;
+    }
+    
+    public void setAssiginedDriver(String assigneddriver)    
+    {
+        this.assigneddriver = assigneddriver;
+    }
+    
+    public String getAssiginedDriver()
+    {
+        return assigneddriver;
+    }
 
     public double getDistance() {
         return distance;

@@ -6,6 +6,15 @@ public class LoginBean {
  private String email;
  private String password;
  private String userName;
+ private int customerID;
+
+    public void setCustomerId(int id) {
+        this.customerID = id;
+    }
+
+    public int getCustomerId() {
+        return customerID;
+    }
  
  public String getUserName() {
      return this.userName;

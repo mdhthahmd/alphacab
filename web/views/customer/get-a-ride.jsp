@@ -191,9 +191,9 @@
         <input type="hidden" id="destination-lng" name="destination-lng"/>
         <input type="hidden" id="originAddress" name="originAddress"/>
         <input type="hidden" id="destinationAddress" name="destinationAddress"/>
+        <input type="hidden" id="journeyPrice" name="journeyPrice"/>
     </form>
 </div>
-
 
 <style>
     #btn-book {

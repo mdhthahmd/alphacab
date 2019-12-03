@@ -6,7 +6,34 @@ public class CustomersBean {
     private String email;
     private String userName;
     private String password;
+    private int id;
     private String role;
+    private String address;
+    
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+
+    public String getAddress() {
+        return address;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public String getRole() {
+        return role;
+    }
+
+    public void setRole(String role) {
+        this.role = role;
+    }
 
     public String getUserName() {
         return userName;

@@ -20,10 +20,30 @@ public class RegisterDao {
         String email = registerBean.getEmail();
         String userName = registerBean.getUserName();
         String password = registerBean.getPassword();
-
+        String address = registerBean.getAddress();
         Connection connection = null;
         PreparedStatement preparedStatement = null;
+        try {
+            connection = ConnectionManager.createConnection();
+            String query = "insert into Customer(Name,Address,email) values (?,?,?)"; //Insert user details into the table 'USERS'
+            preparedStatement = connection.prepareStatement(query); //Making use of prepared statements here to insert bunch of data
+            preparedStatement.setString(1, fullName);
+            preparedStatement.setString(2, address);
+            preparedStatement.setString(3, email);
+            
+        int i = preparedStatement.executeUpdate();
 
+            if (i != 0) //Just to ensure data has been inserted into the database
+            {
+                System.out.println("SUCCESS added to customer table");
+            }
+            
+            connection.close();
+            
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        
         try {
             connection = ConnectionManager.createConnection();
             String query = "insert into users(fullName,email,userName,password,userRole) values (?,?,?,?,?)"; //Insert user details into the table 'USERS'

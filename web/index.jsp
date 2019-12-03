@@ -19,6 +19,7 @@
                     <input type="text" placeholder="Full Name" name="fullname"/>
                     <input type="email" placeholder="Email" name="email"/>
                     <input type="text" placeholder="User Name" name="username"/>
+                    <input type="text" placeholder="Address" name="address"/>
                     <input type="password" placeholder="Password" name="password"/>
                     <input type="password" placeholder="Confirm Password" name="conpassword"/>
                     <button>Sign Up</button>

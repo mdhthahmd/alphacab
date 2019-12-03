@@ -14,11 +14,12 @@ import java.sql.Date;
 import java.sql.ResultSet;
 import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
+import java.sql.Time;
 import java.util.ArrayList;
 
 public class JourneyDao {
 
-    public String Journey(JourneyBean journeyBean) {
+    public String AddJourney(JourneyBean journeyBean) {
         //int journeyID = journeyBean.getJourneyID();
         //Date date = journeyBean.getDate();
         //Time time = journeyBean.getTime();
@@ -31,14 +32,16 @@ public class JourneyDao {
         double d_Longitude = journeyBean.getD_Longitude();
         double journeyDistance = journeyBean.getDistance();
         String status = journeyBean.getStatus();
-
+        int customerID = journeyBean.getId();
+        double journeyPrice = journeyBean.getJourneyPrice();
+        
         Connection connection = null;
         PreparedStatement preparedStatement = null;
 
         try {
             connection = ConnectionManager.createConnection();
-            String query = "INSERT INTO journeys(email,pickup_location,p_lattitude,p_longitude,dropoff_location,d_lattitude,d_longitude,journeyDistance,status) \n"
-                    + "values(?,?,?,?,?,?,?,?,?)"; //Insert user details into the table 'USERS'
+            String query = "INSERT INTO journeys(email,pickup_location,p_lattitude,p_longitude,dropoff_location,d_lattitude,d_longitude,journeyDistance,status,id,JOURNEY_PRICE) \n" +
+            "values(?,?,?,?,?,?,?,?,?,?,?)"; //Insert user details into the table 'USERS'
             preparedStatement = connection.prepareStatement(query); //Making use of prepared statements here to insert bunch of data
             preparedStatement.setString(1, email);
             preparedStatement.setString(2, pickupLocation);
@@ -49,8 +52,9 @@ public class JourneyDao {
             preparedStatement.setDouble(7, d_Longitude);
             preparedStatement.setDouble(8, journeyDistance);
             preparedStatement.setString(9, status);
-            //preparedStatement.setDate(2, date);
-            //preparedStatement.setTime(3, time);
+            preparedStatement.setInt(10, customerID);
+            preparedStatement.setDouble(11, journeyPrice);
+            
 
             int i = preparedStatement.executeUpdate();
 
@@ -67,6 +71,7 @@ public class JourneyDao {
 
         return "Oops.. Something went wrong there..!";  // On failure, send a message from here.
     }
+
 
     public String getAllJourneysForCustomer(String emailAdress, ArrayList<JourneyBean> journeys) {
 
@@ -88,26 +93,39 @@ public class JourneyDao {
 
             while (resultSet.next()) {
                 
-                // Date datetime = resultSet.getDate("DATE_TIME");
-                String pickUpLocation = resultSet.getString("PICKUP_LOCATION");
-                String dropOffLocation = resultSet.getString("DROPOFF_LOCATION");
-                double journeyDistance = resultSet.getDouble("JOURNEYDISTANCE");
-                String status = resultSet.getString("STATUS");
-                
                 JourneyBean journey = new JourneyBean();
                 
+                journeyID = Integer.parseInt(resultSet.getString("journeyID"));
+                date = resultSet.getDate("date_time");
+                pickupLocation =  resultSet.getString("pickup_location");
+                p_Lattitude = resultSet.getDouble("p_lattitude");
+                p_Longitude = resultSet.getDouble("p_longitude");
+                dropoffLocation = resultSet.getString("dropoff_location");
+                d_Lattitude = resultSet.getDouble("d_lattitude");
+                d_Longitude =  resultSet.getDouble("d_longitude");
+                status = resultSet.getString("status");
+                distance = resultSet.getDouble("journeyDistance");
+                customerEmail = resultSet.getString("email");
+                //get time from time stamp
+                String strTime = (""+resultSet.getTimestamp("date_time"));
+                String []objTime = strTime.split(" ");
+                String []temp = objTime[1].split("\\.");
+                time = java.sql.Time.valueOf(temp[0]);
+                
+                journey.setEmail(customerEmail);
+                journey.setJourneyID(journeyID);
+                journey.setTime(time);
+                journey.setDate(date);
+                journey.setPickupLocation(pickupLocation);
+                journey.setP_Lattitude(p_Lattitude);
+                journey.setP_Longitude(p_Longitude);
+                journey.setDropoffLocation(dropoffLocation);
+                journey.setD_Lattitude(d_Lattitude);
+                journey.setD_Longitude(d_Longitude);
                 journey.setStatus(status);
-                journey.setDistance(journeyDistance);
-                journey.setDropoffLocation(dropOffLocation);
-                journey.setPickupLocation(pickUpLocation);
-                journey.setDate(status);
+                journey.setDistance(distance);
                 
-                //Date d = new Date( timestamp.getDate());
-                //journey.setTime( new SimpleDateFormat("hh:mm:ss a").format(datetime) );
-                //journey.setDate( new SimpleDateFormat("dd MMM  YYYY").format(datetime) );
-                
-                
-                journeys.add (journey);
+                journeys.add(journey);
             }
             
             connection.close();
@@ -119,5 +137,7 @@ public class JourneyDao {
         }
 
         return "Oops.. Something went wrong there..!";  // On failure, send a message from here.
+
     }
+
 }
