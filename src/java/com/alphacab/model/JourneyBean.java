@@ -1,12 +1,15 @@
 package com.alphacab.model;
 
+import java.sql.Date;
+import java.sql.Time;
+
 
 public class JourneyBean {
 
     private int journeyID;
     private String email;
-    private String date;
-    private String time;
+    private Date date;
+    private Time time;
     private String pickupLocation;
     private double p_Lattitude;
     private double p_Longitude;
@@ -94,19 +97,19 @@ public class JourneyBean {
         this.email = email;
     }
 
-    public String getDate() {
+    public Date getDate() {
         return date;
     }
 
-    public void setDate(String date) {
+    public void setDate(Date date) {
         this.date = date;
     }
 
-    public String getTime() {
+    public Time getTime() {
         return time;
     }
 
-    public void setTime(String time) {
+    public void setTime(Time time) {
         this.time = time;
     }
 

@@ -49,7 +49,7 @@ public class GetARideServlet extends HttpServlet {
         
         JourneyDao journeyDao = new JourneyDao();
 
-        String addJourney = journeyDao.Journey(jb);
+        String addJourney = journeyDao.AddJourney(jb);
         
         System.out.println(addJourney);
         if (addJourney.equals("SUCCESS"))
