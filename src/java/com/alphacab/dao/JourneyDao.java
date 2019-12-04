@@ -12,8 +12,6 @@ import com.alphacab.model.JourneyBean;
 import com.alphacab.database.ConnectionManager;
 import java.sql.Date;
 import java.sql.ResultSet;
-import java.sql.Timestamp;
-import java.text.SimpleDateFormat;
 import java.sql.Time;
 import java.util.ArrayList;
 
@@ -32,7 +30,7 @@ public class JourneyDao {
         double d_Longitude = journeyBean.getD_Longitude();
         double journeyDistance = journeyBean.getDistance();
         String status = journeyBean.getStatus();
-        int customerID = journeyBean.getId();
+        int customerID = journeyBean.getCustomerID();
         double journeyPrice = journeyBean.getJourneyPrice();
         
         Connection connection = null;
@@ -73,7 +71,7 @@ public class JourneyDao {
     }
 
 
-    public String getAllJourneysForCustomer(String emailAdress, ArrayList<JourneyBean> journeys) {
+    public String getJourneyDetails(String emailAdress, ArrayList<JourneyBean> journeys) {
 
         Connection connection = null;
         PreparedStatement preparedStatement = null;
@@ -81,13 +79,13 @@ public class JourneyDao {
 
         try {
 
-            String query = "SELECT email,pickup_location,dropoff_location,journeyDistance,status FROM JOURNEYS WHERE email = ?";
+            String query = "SELECT * FROM JOURNEYS WHERE email = ? or ASSIGNEDDRIVER = ?";
 
             connection = ConnectionManager.createConnection();
             preparedStatement = connection.prepareStatement(query);
             
-             preparedStatement.setString(1, emailAdress);
-            
+            preparedStatement.setString(1, emailAdress);
+            preparedStatement.setString(2, emailAdress);
             resultSet = preparedStatement.executeQuery();
             
 
@@ -95,7 +93,7 @@ public class JourneyDao {
                 
                 JourneyBean journey = new JourneyBean();
                 
-                int journeyID = resultSet.getInt("journeyID");
+                int journeyID = resultSet.getInt(1);
                 Date date = resultSet.getDate("date_time");
                 String pickupLocation =  resultSet.getString("pickup_location");
                 double p_Lattitude = resultSet.getDouble("p_lattitude");

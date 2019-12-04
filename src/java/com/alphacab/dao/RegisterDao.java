@@ -10,6 +10,8 @@ import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import com.alphacab.model.RegisterBean;
 import com.alphacab.database.ConnectionManager;
+import com.alphacab.model.LoginBean;
+import java.sql.ResultSet;
 
 
 
@@ -58,6 +60,8 @@ public class RegisterDao {
 
             if (i != 0) //Just to ensure data has been inserted into the database
             {
+                ResultSet rs= null;
+                setCustomerID(connection,preparedStatement,rs,registerBean,email);
                 return "SUCCESS";
             }
             
@@ -68,5 +72,25 @@ public class RegisterDao {
         }
 
         return "Oops.. Something went wrong there..!";  // On failure, send a message from here.
+    }
+    
+    private void setCustomerID(Connection connection,PreparedStatement preparedStatement, ResultSet resultSet,RegisterBean registerBean,String email)
+    {
+        try{
+            connection = ConnectionManager.createConnection();
+            String query = "SELECT * FROM Customer WHERE email = ?";
+            preparedStatement = connection.prepareStatement(query);
+            preparedStatement.setString(1, email);
+            resultSet = preparedStatement.executeQuery();
+            
+            if (resultSet.next()) {
+                registerBean.setCustomerID(resultSet.getInt("id"));
+            }
+            
+            connection.close();
+            
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 }

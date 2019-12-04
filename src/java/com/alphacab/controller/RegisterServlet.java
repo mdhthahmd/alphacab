@@ -33,7 +33,7 @@ public class RegisterServlet extends HttpServlet {
         registerBean.setUserName(userName);
         registerBean.setPassword(password);
         registerBean.setAddress(address);
-
+        
         RegisterDao registerDao = new RegisterDao();
 
         //The core Logic of the Registration application is present here. We are going to insert user data in to the database.
@@ -44,6 +44,7 @@ public class RegisterServlet extends HttpServlet {
             session.setAttribute("Role", "Customer");
             session.setAttribute("Email", email);
             session.setAttribute("userName", registerBean.getUserName());
+            session.setAttribute("CustomerID", registerBean.getCustomerID());
             request.getRequestDispatcher("views/dashboard.jsp").forward(request, response);
             
      

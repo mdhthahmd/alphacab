@@ -22,7 +22,7 @@ public class BookingsServlet extends HttpServlet {
             ArrayList<JourneyBean> journeys = new ArrayList<>();
             
             System.out.println(session.getAttribute("Email") + "##########################################################################################");
-            String Status = jd.getAllJourneysForCustomer( (String) session.getAttribute("Email"), journeys);
+            String Status = jd.getJourneyDetails( (String) session.getAttribute("Email"), journeys);
             
             System.out.println("================================================================================================" + Status);
             

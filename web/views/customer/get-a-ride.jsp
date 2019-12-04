@@ -6,6 +6,7 @@
     var startPoint = [];
     var endPoint = [];
     var area;
+    var price = 25;
 
     function myMap() {
         var geocoder = new google.maps.Geocoder;
@@ -148,6 +149,7 @@
         document.getElementById("destination-lng").value = endPoint[0].getPosition().lng();
         document.getElementById("originAddress").value = startAddress;
         document.getElementById("destinationAddress").value = endAddress;
+        document.getElementById("journeyPrice").value = price;
 
     }
 
