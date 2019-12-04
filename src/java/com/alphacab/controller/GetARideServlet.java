@@ -36,7 +36,7 @@ public class GetARideServlet extends HttpServlet {
         
         JourneyBean jb = new JourneyBean();
         jb.setEmail(""+session.getAttribute("Email"));
-        jb.setId(Integer.parseInt(""+session.getAttribute("ID"))); 
+        // jb.setId(Integer.parseInt(""+session.getAttribute("ID"))); 
         jb.setStatus("UNASSIGNED");
         jb.setDistance(Double.parseDouble(distance));
         jb.setP_Lattitude(Double.parseDouble(origin_lat));
@@ -45,7 +45,7 @@ public class GetARideServlet extends HttpServlet {
         jb.setD_Longitude(Double.parseDouble(destination_lng));
         jb.setPickupLocation(originAddress);
         jb.setDropoffLocation(destinationAddress);
-        jb.setJourneyPrice(Double.parseDouble(journeyPrice));
+        //        jb.setJourneyPrice(Double.parseDouble(journeyPrice));
         
         JourneyDao journeyDao = new JourneyDao();
 
@@ -55,8 +55,6 @@ public class GetARideServlet extends HttpServlet {
         if (addJourney.equals("SUCCESS"))
         {
             
-            // Populate Data For Bookings here
-            // and send user to booking servelt
             
            response.sendRedirect(request.getContextPath()+"/bookings");
             

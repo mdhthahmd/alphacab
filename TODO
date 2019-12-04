@@ -1,3 +1,17 @@
+stylize booking confirm dialog
+
+
+
+
+
+
+
+
+
+
+
+
+
 <button id="btn-book" onclick="myFunction()" disabled="true"  class="mdc-button mdc-button--raised">  <span class="mdc-button__ripple"></span> Book A Ride</button>
 
 

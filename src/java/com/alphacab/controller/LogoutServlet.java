@@ -19,7 +19,7 @@ public class LogoutServlet extends HttpServlet {
         {
             session.invalidate();
             // request.setAttribute("errMessage", "You have logged out successfully");
-            response.sendRedirect("login");
+            response.sendRedirect(request.getContextPath()+"/");
             System.out.println("Logged out");
         }
     }
