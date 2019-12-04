@@ -12,8 +12,6 @@ import com.alphacab.model.JourneyBean;
 import com.alphacab.database.ConnectionManager;
 import java.sql.Date;
 import java.sql.ResultSet;
-import java.sql.Timestamp;
-import java.text.SimpleDateFormat;
 import java.sql.Time;
 import java.util.ArrayList;
 
@@ -32,7 +30,7 @@ public class JourneyDao {
         double d_Longitude = journeyBean.getD_Longitude();
         double journeyDistance = journeyBean.getDistance();
         String status = journeyBean.getStatus();
-        int customerID = journeyBean.getId();
+        int customerID = journeyBean.getCustomerID();
         double journeyPrice = journeyBean.getJourneyPrice();
         
         Connection connection = null;
@@ -73,7 +71,7 @@ public class JourneyDao {
     }
 
 
-    public String getAllJourneysForCustomer(String emailAdress, ArrayList<JourneyBean> journeys) {
+    public String getJourneyDetails(String emailAdress, ArrayList<JourneyBean> journeys) {
 
         Connection connection = null;
         PreparedStatement preparedStatement = null;
@@ -81,13 +79,13 @@ public class JourneyDao {
 
         try {
 
-            String query = "SELECT email,pickup_location,dropoff_location,journeyDistance,status FROM JOURNEYS WHERE email = ?";
+            String query = "SELECT * FROM JOURNEYS WHERE email = ? or ASSIGNEDDRIVER = ?";
 
             connection = ConnectionManager.createConnection();
             preparedStatement = connection.prepareStatement(query);
             
-             preparedStatement.setString(1, emailAdress);
-            
+            preparedStatement.setString(1, emailAdress);
+            preparedStatement.setString(2, emailAdress);
             resultSet = preparedStatement.executeQuery();
             
 
@@ -95,22 +93,22 @@ public class JourneyDao {
                 
                 JourneyBean journey = new JourneyBean();
                 
-                journeyID = Integer.parseInt(resultSet.getString("journeyID"));
-                date = resultSet.getDate("date_time");
-                pickupLocation =  resultSet.getString("pickup_location");
-                p_Lattitude = resultSet.getDouble("p_lattitude");
-                p_Longitude = resultSet.getDouble("p_longitude");
-                dropoffLocation = resultSet.getString("dropoff_location");
-                d_Lattitude = resultSet.getDouble("d_lattitude");
-                d_Longitude =  resultSet.getDouble("d_longitude");
-                status = resultSet.getString("status");
-                distance = resultSet.getDouble("journeyDistance");
-                customerEmail = resultSet.getString("email");
+                int journeyID = resultSet.getInt(1);
+                Date date = resultSet.getDate("date_time");
+                String pickupLocation =  resultSet.getString("pickup_location");
+                double p_Lattitude = resultSet.getDouble("p_lattitude");
+                double p_Longitude = resultSet.getDouble("p_longitude");
+                String dropoffLocation = resultSet.getString("dropoff_location");
+                double d_Lattitude = resultSet.getDouble("d_lattitude");
+                double d_Longitude =  resultSet.getDouble("d_longitude");
+                String status = resultSet.getString("status");
+                double distance = resultSet.getDouble("journeyDistance");
+                String customerEmail = resultSet.getString("email");
                 //get time from time stamp
                 String strTime = (""+resultSet.getTimestamp("date_time"));
                 String []objTime = strTime.split(" ");
                 String []temp = objTime[1].split("\\.");
-                time = java.sql.Time.valueOf(temp[0]);
+                Time time = java.sql.Time.valueOf(temp[0]);
                 
                 journey.setEmail(customerEmail);
                 journey.setJourneyID(journeyID);

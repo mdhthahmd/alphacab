@@ -36,7 +36,7 @@ public class GetARideServlet extends HttpServlet {
         
         JourneyBean jb = new JourneyBean();
         jb.setEmail(""+session.getAttribute("Email"));
-        jb.setId(Integer.parseInt(""+session.getAttribute("ID"))); 
+        jb.setCustomerID(Integer.parseInt(""+session.getAttribute("CustomerID"))); 
         jb.setStatus("UNASSIGNED");
         jb.setDistance(Double.parseDouble(distance));
         jb.setP_Lattitude(Double.parseDouble(origin_lat));

@@ -7,16 +7,16 @@ public class RegisterBean {
     private String userName;
     private String password;
     private String address;
-    private int id;
+    private int customerID;
     
-    public int getID()
+    public int getCustomerID()
     {
-        return id;
+        return customerID;
     }
     
-    public void setID(int id)
+    public void setCustomerID(int id)
     {
-        this.id = id;
+        this.customerID = id;
     }
     
     public void setAddress(String address)

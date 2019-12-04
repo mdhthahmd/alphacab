@@ -67,7 +67,7 @@ public class LoginServlet extends HttpServlet {
                 session.setAttribute("Role", "Customer");
                 session.setAttribute("userName", loginBean.getUserName());
                 session.setAttribute("Email", email);
-                session.setAttribute("CustomerID",loginBean.getCustomerId());
+                session.setAttribute("CustomerID",loginBean.getCustomerID());
 
                 response.sendRedirect("dashboard");
 

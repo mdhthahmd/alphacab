@@ -74,7 +74,7 @@ public class LoginDao {
             resultSet = preparedStatement.executeQuery();
             
             if (resultSet.next()) {
-                loginBean.setCustomerId(resultSet.getInt("id"));
+                loginBean.setCustomerID(resultSet.getInt("id"));
             }
             
             connection.close();

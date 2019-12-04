@@ -20,7 +20,7 @@ public class JourneyBean {
     private double distance;
     private String assigneddriver;
     private String registration;
-    private int id;
+    private int customerID;
     private double journeyPrice;
 
     public void setAssigneddriver(String assigneddriver) {
@@ -31,8 +31,8 @@ public class JourneyBean {
         this.registration = registration;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setCustomerID(int id) {
+        this.customerID = id;
     }
 
     public void setJourneyPrice(double journeyPrice) {
@@ -47,8 +47,8 @@ public class JourneyBean {
         return registration;
     }
 
-    public int getId() {
-        return id;
+    public int getCustomerID() {
+        return customerID;
     }
 
     public double getJourneyPrice() {

@@ -2,7 +2,7 @@
 <%@page import="java.util.ArrayList"%>
 <div class="container" >
 
-     <h1 class="mdc-typography--headline3" >Your Bookings</h1>
+     <h1 class="mdc-typography--headline3" >My Bookings</h1>
      
      <div class="mdc-data-table">
         <table class="mdc-data-table__table" aria-label="Dessert calories">

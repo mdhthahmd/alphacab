@@ -21,7 +21,8 @@
         </thead>
         <tbody class="mdc-data-table__content">
             <%
-                            ArrayList<JourneyBean> journeyInfo = new JourneyDao().getJourneyDetails("" + request.getSession().getAttribute("Email"));
+                            ArrayList<JourneyBean> journeyInfo = new ArrayList();
+                            new JourneyDao().getJourneyDetails("" + request.getSession().getAttribute("Email"), journeyInfo);
                             for (int i = 0; i < journeyInfo.size(); i++) {%>
             <tr class="mdc-data-table__row">
                 <td class="mdc-data-table__cell"><%=journeyInfo.get(i).getEmail()%></td>
