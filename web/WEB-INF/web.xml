@@ -12,7 +12,6 @@
         <servlet-name>DeleteCustomerServlet</servlet-name>
         <servlet-class>com.alphacab.controller.DeleteCustomerServlet</servlet-class>
     </servlet>
-    </welcome-file-list>-->
     <servlet-mapping>
         <servlet-name>BookingsServlet</servlet-name>
         <url-pattern>/bookings</url-pattern>

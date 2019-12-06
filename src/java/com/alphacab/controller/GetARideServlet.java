@@ -46,12 +46,8 @@ public class GetARideServlet extends HttpServlet {
         jb.setD_Longitude(Double.parseDouble(destination_lng));
         jb.setPickupLocation(originAddress);
         jb.setDropoffLocation(destinationAddress);
-<<<<<<< HEAD
         jb.setJourneyPrice(calculateJourneyPrice(distance));
         jb.setUserName(""+session.getAttribute("userName"));
-=======
-        //        jb.setJourneyPrice(Double.parseDouble(journeyPrice));
->>>>>>> 18f6ce6279a9b4752da90f5a9cbb8d5d52d0f9f0
         
         JourneyDao journeyDao = new JourneyDao();
 
