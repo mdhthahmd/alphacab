@@ -58,6 +58,7 @@ public class JourneyDao {
 
             if (i != 0) //Just to ensure data has been inserted into the database
             {
+                copyDataToDemandsTabble(connection,preparedStatement,journeyBean);
                 return "SUCCESS";
             }
 
@@ -138,4 +139,100 @@ public class JourneyDao {
 
     }
 
+    public String getJourneyDetailsForDriver(int jID, ArrayList journeys) {
+
+        Connection connection = null;
+        PreparedStatement preparedStatement = null;
+        ResultSet resultSet = null;
+
+        try {
+
+            String query = "SELECT * FROM JOURNEYS WHERE journeyID = ?";
+
+            connection = ConnectionManager.createConnection();
+            preparedStatement = connection.prepareStatement(query);
+            
+            preparedStatement.setInt(1, jID);
+            resultSet = preparedStatement.executeQuery();
+            
+
+            while (resultSet.next()) {
+                
+                JourneyBean journey = new JourneyBean();
+                
+                int journeyID = resultSet.getInt(1);
+                Date date = resultSet.getDate("date_time");
+                String pickupLocation =  resultSet.getString("pickup_location");
+                double p_Lattitude = resultSet.getDouble("p_lattitude");
+                double p_Longitude = resultSet.getDouble("p_longitude");
+                String dropoffLocation = resultSet.getString("dropoff_location");
+                double d_Lattitude = resultSet.getDouble("d_lattitude");
+                double d_Longitude =  resultSet.getDouble("d_longitude");
+                String status = resultSet.getString("status");
+                double distance = resultSet.getDouble("journeyDistance");
+                String customerEmail = resultSet.getString("email");
+                //get time from time stamp
+                String strTime = (""+resultSet.getTimestamp("date_time"));
+                String []objTime = strTime.split(" ");
+                String []temp = objTime[1].split("\\.");
+                Time time = java.sql.Time.valueOf(temp[0]);
+                
+                journey.setEmail(customerEmail);
+                journey.setJourneyID(journeyID);
+                journey.setTime(time);
+                journey.setDate(date);
+                journey.setPickupLocation(pickupLocation);
+                journey.setP_Lattitude(p_Lattitude);
+                journey.setP_Longitude(p_Longitude);
+                journey.setDropoffLocation(dropoffLocation);
+                journey.setD_Lattitude(d_Lattitude);
+                journey.setD_Longitude(d_Longitude);
+                journey.setStatus(status);
+                journey.setDistance(distance);
+                
+                journeys.add(journey);
+            }
+            
+            connection.close();
+            
+            return "OK";
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return "Oops.. Something went wrong there..!";  // On failure, send a message from here.
+
+    }
+
+    private void copyDataToDemandsTabble(Connection connection, PreparedStatement preparedStatement, JourneyBean journeyBean)
+    {
+        String pickupLocation = journeyBean.getPickupLocation();
+        String dropoffLocation = journeyBean.getDropoffLocation();
+        String status = journeyBean.getStatus();
+        String userName = journeyBean.getUserName();
+        
+        try {
+            connection = ConnectionManager.createConnection();
+            String query = "INSERT INTO Demands(Name,Address,Destination,Status) \n" +
+            "values(?,?,?,?)";
+            preparedStatement = connection.prepareStatement(query);
+            preparedStatement.setString(1, userName);
+            preparedStatement.setString(2, pickupLocation);
+            preparedStatement.setString(3, dropoffLocation);
+            preparedStatement.setString(4, status);
+            
+            int i = preparedStatement.executeUpdate();
+
+            if (i != 0) //Just to ensure data has been inserted into the database
+            {
+                System.out.println("SUCCESS added to demands  table");
+            }
+
+            connection.close();
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
 }

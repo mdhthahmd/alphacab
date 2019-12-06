@@ -9,6 +9,8 @@ import javax.servlet.http.HttpSession;
 
 import com.alphacab.model.JourneyBean;
 import com.alphacab.dao.JourneyDao;
+import com.alphacab.dao.JourneyPriceRateDao;
+import com.alphacab.model.JourneyPriceRateBean;
 
 public class GetARideServlet extends HttpServlet {
 
@@ -32,7 +34,6 @@ public class GetARideServlet extends HttpServlet {
         String destination_lng = request.getParameter("destination-lng");
         String originAddress = request.getParameter("originAddress");
         String destinationAddress = request.getParameter("destinationAddress");
-        String journeyPrice = request.getParameter("journeyPrice");
         
         JourneyBean jb = new JourneyBean();
         jb.setEmail(""+session.getAttribute("Email"));
@@ -45,7 +46,8 @@ public class GetARideServlet extends HttpServlet {
         jb.setD_Longitude(Double.parseDouble(destination_lng));
         jb.setPickupLocation(originAddress);
         jb.setDropoffLocation(destinationAddress);
-        jb.setJourneyPrice(Double.parseDouble(journeyPrice));
+        jb.setJourneyPrice(calculateJourneyPrice(distance));
+        jb.setUserName(""+session.getAttribute("userName"));
         
         JourneyDao journeyDao = new JourneyDao();
 
@@ -64,5 +66,15 @@ public class GetARideServlet extends HttpServlet {
             session.setAttribute("Path", "get-a-ride");
             request.getRequestDispatcher("views/dashboard.jsp").forward(request, response);
         }
+    }
+    
+    private double calculateJourneyPrice(String distance)
+    {
+        JourneyPriceRateBean price = new JourneyPriceRateBean();
+        JourneyPriceRateDao priceDao = new JourneyPriceRateDao();
+        String stat = priceDao.getJourneyPriceRates(price);
+        System.out.println("getJourneyPriceRates stat " +stat);
+        double totalJourneyPrice = (price.getPriceRate() * (Double.parseDouble(distance)/1000));
+        return totalJourneyPrice;
     }
 }

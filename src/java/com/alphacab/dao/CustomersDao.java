@@ -99,7 +99,7 @@ public class CustomersDao {
             
 
             connection.close();
-            
+            deleteFromCustomerTable(customer);
             return "OK";
 
         } catch (SQLException e) {
@@ -155,4 +155,26 @@ public class CustomersDao {
         return "Oops.. Something went wrong there..!";  // On failure, send a message from here.
     }
     
+    private void deleteFromCustomerTable(UserBean customer)
+    {
+        Connection connection = null;
+        PreparedStatement preparedStatement = null;
+
+        try {
+            String query = "DELETE FROM Customer WHERE EMAIL = ?";
+
+            connection = ConnectionManager.createConnection();
+            preparedStatement = connection.prepareStatement(query);
+            preparedStatement.setString(1,customer.getEmail() );
+            
+            int row = preparedStatement.executeUpdate();
+            System.out.println(row);
+            connection.close();
+            
+            System.out.println("Removed from customer Table");
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
 }

@@ -34,6 +34,17 @@
             <div class="mdc-notched-outline__trailing"></div>
         </div>
     </div>
+    
+    <div class="mdc-text-field mdc-text-field--outlined">
+        <input class="mdc-text-field__input" name="plateNumber">
+        <div class="mdc-notched-outline">
+            <div class="mdc-notched-outline__leading"></div>
+            <div class="mdc-notched-outline__notch">
+                <label for="text-field-hero-input" class="mdc-floating-label">License Plate Number</label>
+            </div>
+            <div class="mdc-notched-outline__trailing"></div>
+        </div>
+    </div>
 
     <div class="mdc-text-field mdc-text-field--outlined">
         <input class="mdc-text-field__input" name="password">

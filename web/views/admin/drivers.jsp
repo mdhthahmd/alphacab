@@ -44,7 +44,7 @@
                 </td>    
                 <td class="mdc-data-table__cell">
                     <form action="<%=request.getContextPath()%>/delete-driver" method="post">
-                        <button class="material-icons mdc-top-app-bar__navigation-icon mdc-icon-button">delete</button> 
+                        <input type="submit" value="delete" class="material-icons mdc-top-app-bar__navigation-icon mdc-icon-button" name="<%="submitDEmail"+drivers.get(i).getEmail()%>" /> 
                     </form>
                 </td>
             </tr>

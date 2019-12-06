@@ -37,7 +37,7 @@
                 </td>    
                 <td class="mdc-data-table__cell">
                     <form action="<%=request.getContextPath()%>/delete-customer" method="post">
-                        <button class="material-icons mdc-top-app-bar__navigation-icon mdc-icon-button">delete</button> 
+                        <input type="submit" value="delete" class="material-icons mdc-top-app-bar__navigation-icon mdc-icon-button" name="<%="submitCEmail"+customers.get(i).getEmail()%>"/>
                     </form>
                 </td>
             </tr>

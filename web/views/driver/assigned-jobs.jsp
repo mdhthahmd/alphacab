@@ -4,6 +4,7 @@
 <h1 class="mdc-typography--headline3" >My Journeys</h1>
 
 <div class="mdc-data-table">
+    <form action="<%=request.getContextPath()%>/take-a-journey" method="post" name="takeCustomersJourney">
     <table class="mdc-data-table__table" aria-label="Dessert calories">
         <thead>
             <tr class="mdc-data-table__header-row">
@@ -19,8 +20,8 @@
         </thead>
         <tbody class="mdc-data-table__content">
             <%
-                            ArrayList<JourneyBean> journeys = (ArrayList<JourneyBean>) request.getAttribute("assigned-jobs");
-                            for (int i = 0; i < journeys.size(); i++) {%>
+                ArrayList<JourneyBean> journeys = (ArrayList<JourneyBean>) request.getAttribute("assigned-jobs");
+                for (int i = 0; i < journeys.size(); i++) {%>
             <tr class="mdc-data-table__row">
                 <td class="mdc-data-table__cell"><%=journeys.get(i).getEmail()%></td>
                 <td class="mdc-data-table__cell"><%=journeys.get(i).getPickupLocation()%></td>
@@ -30,12 +31,11 @@
                 <td class="mdc-data-table__cell"><%=journeys.get(i).getTime()%></td>
                 <td class="mdc-data-table__cell"><%=journeys.get(i).getDistance()%></td>
                 <td class="mdc-data-table__cell">
-                    <form action="<%=request.getContextPath()%>/update-driver" method="post">
-                        <a class="material-icons mdc-top-app-bar__navigation-icon mdc-icon-button">check_circle_outline</a>
-                    </form>
+                    <input type="submit" class="material-icons mdc-top-app-bar__navigation-icon mdc-icon-button" value="check_circle_outline" name=<%="submit_"+journeys.get(i).getJourneyID()%>/>
                 </td>
             </tr>
             <%}%>
         </tbody>
     </table>
+    </form>
 </div>

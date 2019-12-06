@@ -4,9 +4,25 @@
     <!-- <welcome-file-list>
         <welcome-file>login</welcome-file>
     </welcome-file-list>  -->
+    <servlet>
+        <servlet-name>DeleteDriverServlet</servlet-name>
+        <servlet-class>com.alphacab.controller.DeleteDriverServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>DeleteCustomerServlet</servlet-name>
+        <servlet-class>com.alphacab.controller.DeleteCustomerServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>BookingsServlet</servlet-name>
         <url-pattern>/bookings</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>DeleteDriverServlet</servlet-name>
+        <url-pattern>/delete-driver</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>DeleteCustomerServlet</servlet-name>
+        <url-pattern>/delete-customer</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>10</session-timeout>

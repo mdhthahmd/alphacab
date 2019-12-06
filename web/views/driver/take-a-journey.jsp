@@ -1,106 +1,140 @@
+<%@page import="java.util.ArrayList"%>
+<%@page import="com.alphacab.model.JourneyBean"%>
 
-            <h1 class="mdc-typography--headline3" >Select a Journey</h1>
+<h1 class="mdc-typography--headline3" >Select a Journey</h1>
+<% if (request.getSession().getAttribute("take-a-journey") != null) { %>
+<%ArrayList<JourneyBean> journeys = (ArrayList<JourneyBean>) request.getSession().getAttribute("take-a-journey");%>
+<input type="hidden" value="<%=journeys.get(0).getP_Lattitude()%>" id="pickup-Lat"/>
+<input type="hidden" value="<%=journeys.get(0).getP_Longitude()%>" id="pickup-Lng"/>
+<input type="hidden" value="<%=journeys.get(0).getD_Lattitude()%>" id="destination-lat"/>
+<input type="hidden" value="<%=journeys.get(0).getD_Longitude()%>" id="destination-lng"/>
+<%}%>
+<div id="googleMap" style="width:100%;height:400px;"></div>
+<script>
+    var customerCurrentPosMarker, customerDestinationMarker, distanceInMeters;
+    var startPoint = [];
+    var endPoint = [];
+    var pickupLat = parseFloat(document.getElementById('pickup-Lat').value);
+    var pickupLng = parseFloat(document.getElementById('pickup-Lng').value);
+    var destinationLat = parseFloat(document.getElementById('destination-lat').value);
+    var destinationLng = parseFloat(document.getElementById('destination-lng').value);
+    
+    var pickupLocation = {lat: pickupLat, lng: pickupLng};
+    var destintionLocation = {lat: destinationLat, lng: destinationLng};
 
-            <div class="mdc-data-table">
-                <table class="mdc-data-table__table" aria-label="Dessert calories">
-                    <thead>
-                        <tr class="mdc-data-table__header-row">
-                            <th class="mdc-data-table__header-cell mdc-data-table__header-cell--checkbox" role="columnheader" scope="col">
-                                <div class="mdc-checkbox mdc-data-table__header-row-checkbox mdc-checkbox--selected">
-                                    <input type="checkbox" class="mdc-checkbox__native-control" aria-label="Checkbox for header row selection"/>
-                                    <div class="mdc-checkbox__background">
-                                        <svg class="mdc-checkbox__checkmark" viewbox="0 0 24 24">
-                                            <path class="mdc-checkbox__checkmark-path" fill="none" d="M1.73,12.91 8.1,19.28 22.79,4.59" />
-                                        </svg>
-                                        <div class="mdc-checkbox__mixedmark"></div>
-                                    </div>
-                                </div>
-                            </th>
-                            <th class="mdc-data-table__header-cell" role="columnheader" scope="col">Status</th>
-                            <th class="mdc-data-table__header-cell" role="columnheader" scope="col">Signal name</th>
-                            <th class="mdc-data-table__header-cell" role="columnheader" scope="col">Severity</th>
-                            <th class="mdc-data-table__header-cell" role="columnheader" scope="col">Stage</th>
-                            <th class="mdc-data-table__header-cell mdc-data-table__header-cell--numeric" role="columnheader" scope="col">Time</th>
-                            <th class="mdc-data-table__header-cell" role="columnheader" scope="col">Roles</th>
-                        </tr>
-                    </thead>
-                    <tbody class="mdc-data-table__content">
-                        <tr data-row-id="u0" class="mdc-data-table__row">
-                            <td class="mdc-data-table__cell mdc-data-table__cell--checkbox">
-                                <div class="mdc-checkbox mdc-data-table__row-checkbox">
-                                    <input type="checkbox" class="mdc-checkbox__native-control" aria-labelledby="u0"/>
-                                    <div class="mdc-checkbox__background">
-                                        <svg class="mdc-checkbox__checkmark" viewbox="0 0 24 24">
-                                            <path class="mdc-checkbox__checkmark-path" fill="none" d="M1.73,12.91 8.1,19.28 22.79,4.59" />
-                                        </svg>
-                                        <div class="mdc-checkbox__mixedmark"></div>
-                                    </div>
-                                </div>
-                            </td>
-                            <td class="mdc-data-table__cell">Online</td>
-                            <td class="mdc-data-table__cell" id="u0">Arcus watch slowdown</td>
-                            <td class="mdc-data-table__cell">Medium</td>
-                            <td class="mdc-data-table__cell">Triaged</td>
-                            <td class="mdc-data-table__cell mdc-data-table__cell--numeric">0:33</td>
-                            <td class="mdc-data-table__cell">Allison Brie</td>
-                        </tr>
-                        <tr data-row-id="u1" class="mdc-data-table__row" aria-selected="true">
-                            <td class="mdc-data-table__cell mdc-data-table__cell--checkbox">
-                                <div class="mdc-checkbox mdc-data-table__row-checkbox mdc-checkbox--selected">
-                                    <input type="checkbox" class="mdc-checkbox__native-control" checked aria-labelledby="u1"/>
-                                    <div class="mdc-checkbox__background">
-                                        <svg class="mdc-checkbox__checkmark" viewbox="0 0 24 24">
-                                            <path class="mdc-checkbox__checkmark-path" fill="none" d="M1.73,12.91 8.1,19.28 22.79,4.59" />
-                                        </svg>
-                                        <div class="mdc-checkbox__mixedmark"></div>
-                                    </div>
-                                </div>
-                            </td>
-                            <td class="mdc-data-table__cell">Offline</td>
-                            <td class="mdc-data-table__cell" id="u1">monarch: prod shared ares-managed-features-provider-heavy</td>
-                            <td class="mdc-data-table__cell">Huge</td>
-                            <td class="mdc-data-table__cell">Triaged</td>
-                            <td class="mdc-data-table__cell mdc-data-table__cell--numeric">0:33</td>
-                            <td class="mdc-data-table__cell">Brie Larson</td>
-                        </tr>
-                        <tr data-row-id="u2" class="mdc-data-table__row" aria-selected="true">
-                            <td class="mdc-data-table__cell mdc-data-table__cell--checkbox">
-                                <div class="mdc-checkbox mdc-data-table__row-checkbox mdc-checkbox--selected">
-                                    <input type="checkbox" class="mdc-checkbox__native-control" checked aria-labelledby="u2"/>
-                                    <div class="mdc-checkbox__background">
-                                        <svg class="mdc-checkbox__checkmark" viewbox="0 0 24 24">
-                                            <path class="mdc-checkbox__checkmark-path" fill="none" d="M1.73,12.91 8.1,19.28 22.79,4.59" />
-                                        </svg>
-                                        <div class="mdc-checkbox__mixedmark"></div>
-                                    </div>
-                                </div>
-                            </td>
-                            <td class="mdc-data-table__cell">Online</td>
-                            <td class="mdc-data-table__cell" id="u2">monarch: prod shared ares-managed-features-provider-heavy</td>
-                            <td class="mdc-data-table__cell">Minor</td>
-                            <td class="mdc-data-table__cell">Not triaged</td>
-                            <td class="mdc-data-table__cell mdc-data-table__cell--numeric">0:33</td>
-                            <td class="mdc-data-table__cell">Jeremy Lake</td>
-                        </tr>
-                        <tr data-row-id="u3" class="mdc-data-table__row">
-                            <td class="mdc-data-table__cell mdc-data-table__cell--checkbox">
-                                <div class="mdc-checkbox mdc-data-table__row-checkbox">
-                                    <input type="checkbox" class="mdc-checkbox__native-control" aria-labelledby="u3"/>
-                                    <div class="mdc-checkbox__background">
-                                        <svg class="mdc-checkbox__checkmark" viewbox="0 0 24 24">
-                                            <path class="mdc-checkbox__checkmark-path" fill="none" d="M1.73,12.91 8.1,19.28 22.79,4.59" />
-                                        </svg>
-                                        <div class="mdc-checkbox__mixedmark"></div>
-                                    </div>
-                                </div>
-                            </td>
-                            <td class="mdc-data-table__cell">Online</td>
-                            <td class="mdc-data-table__cell" id="u3">Arcus watch slowdown</td>
-                            <td class="mdc-data-table__cell">Negligible</td>
-                            <td class="mdc-data-table__cell">Triaged</td>
-                            <td class="mdc-data-table__cell mdc-data-table__cell--numeric">0:33</td>
-                            <td class="mdc-data-table__cell">Angelina Cheng</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
+    function myMap() {
+        var geocoder = new google.maps.Geocoder;
+        var directionsService  = new google.maps.DirectionsService();
+        var directionsRenderer = new google.maps.DirectionsRenderer();
+                    var c_dDirectionsService  = new google.maps.DirectionsService();
+        var c_dDdirectionsRenderer = new google.maps.DirectionsRenderer();
+
+        var mapProp = {
+            center:new google.maps.LatLng(4.1755, 73.5093),
+            zoom:15
+        };
+        var map = new google.maps.Map(document.getElementById("googleMap"),mapProp);
+
+        infoWindowPickup = new google.maps.InfoWindow;
+        var p_lable = 'pickup';
+        var p_icon = 'imgs/baseline_emoji_people_black_18dp.png';
+        placeMarker(pickupLocation, map, customerCurrentPosMarker,p_lable, p_icon, infoWindowPickup);
+
+        infoWindowDest = new google.maps.InfoWindow;
+        var d_lable = 'destination';
+        var d_icon = 'imgs/baseline_store_mall_directory_black_18dp.png';
+        placeMarker(destintionLocation, map, customerDestinationMarker,d_lable, d_icon, infoWindowDest);
+
+        getGeoLocation(map,directionsRenderer, directionsService,c_dDdirectionsRenderer,c_dDirectionsService);
+    }
+
+    function calcRoute(directionsRenderer, directionsService, map, start, end) {
+        directionsRenderer.setMap(map);
+        directionsRenderer.setOptions( { suppressMarkers: true } );
+        var request = {
+            origin: start,
+            destination: end,
+            travelMode: 'DRIVING'
+            };
+        directionsService.route(request, function(result, status) {
+            if (status === 'OK') {
+                directionsRenderer.setDirections(result);
+                //disable btn
+            }
+        });
+    }
+
+    function calcRouteCustToDest(directionsRenderer, directionsService, map, start, end) {
+        directionsRenderer.setMap(map);
+        directionsRenderer.setOptions( { suppressMarkers: true } );
+        directionsRenderer.setOptions({	polylineOptions: { strokeColor: 'red'} });
+        var request = {
+            origin: start,
+            destination: end,
+            travelMode: 'DRIVING'
+            };
+        directionsService.route(request, function(result, status) {
+            if (status === 'OK') {
+                directionsRenderer.setDirections(result);
+                //disable btn
+            }
+        });
+    }
+
+    function placeMarker(location, map, markerName, markerLable, icon,infoWindowMarker) {
+        markerName = new google.maps.Marker({
+                position: location, 
+                lable: markerLable,
+                icon: icon,
+                map: map
+        });
+
+        infoWindowMarker.setPosition(location);
+        infoWindowMarker.setContent(markerLable);
+        infoWindowMarker.open(map);
+        map.setCenter(location);
+    }
+    // Try HTML5 geolocation.
+    function getGeoLocation(map, directionsRenderer, directionsService,cust_destDirectionsRenderer,cust_destDirectionsService) {
+        infoWindow = new google.maps.InfoWindow;
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(function(position) {
+            var pos = {
+                lat: position.coords.latitude,
+                lng: position.coords.longitude
+            };
+
+            currentPosMarker = new google.maps.Marker({
+                position: pos, 
+                lable: "your current location",
+                map: map,
+                icon: 'imgs/baseline_local_taxi_black_18dp.png'
+            });
+
+            infoWindow.setPosition(pos);
+            infoWindow.setContent('Your current location');
+            infoWindow.open(map);
+            map.setCenter(pos);
+            calcRoute(directionsRenderer, directionsService, map, pos, pickupLocation);
+            calcRouteCustToDest(cust_destDirectionsRenderer, cust_destDirectionsService, map, pickupLocation, destintionLocation);
+        }, function() {
+                handleLocationError(true, infoWindow, map.getCenter(),map,directionsRenderer, directionsService);
+           });
+        } else {
+
+            // Browser doesn't support Geolocation
+            handleLocationError(false, infoWindow, map.getCenter(),map);
+        }
+    }
+        //error handling for geolocation
+    function handleLocationError(browserHasGeolocation, infoWindow, pos, map, directionsRenderer, directionsService) {
+        infoWindow.setPosition(pos);
+        infoWindow.setContent(browserHasGeolocation ?
+                              'Error: The Geolocation service failed.' :
+                              'Error: Your browser doesn\'t support geolocation.');
+        infoWindow.open(map);
+        calcRouteCustToDest(directionsRenderer, directionsService, map, pickupLocation, destintionLocation);
+    }
+</script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAm7lXwI_sLxrwk-6TEeM6HMQ3GL-K439w&libraries=geometry&callback=myMap"></script>
+

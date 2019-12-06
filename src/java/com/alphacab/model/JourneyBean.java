@@ -22,6 +22,15 @@ public class JourneyBean {
     private String registration;
     private int customerID;
     private double journeyPrice;
+    private String userName;
+
+    public void setUserName(String userName) {
+        this.userName = userName;
+    }
+
+    public String getUserName() {
+        return userName;
+    }
 
     public void setAssigneddriver(String assigneddriver) {
         this.assigneddriver = assigneddriver;

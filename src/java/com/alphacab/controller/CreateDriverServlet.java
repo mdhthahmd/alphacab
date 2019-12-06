@@ -23,6 +23,7 @@ public class CreateDriverServlet extends HttpServlet {
         String email = request.getParameter("email");
         String userName = request.getParameter("username");
         String password = request.getParameter("password");
+        String plateNumber = request.getParameter("plateNumber");
 
         HttpSession session = request.getSession();
         
@@ -32,6 +33,7 @@ public class CreateDriverServlet extends HttpServlet {
         createDriverBean.setEmail(email);
         createDriverBean.setUserName(userName);
         createDriverBean.setPassword(password);
+        createDriverBean.setRegistration(plateNumber);
 
         DriverDao driverDao = new DriverDao();
         //////////////////////////////////////////////////////////////////////////

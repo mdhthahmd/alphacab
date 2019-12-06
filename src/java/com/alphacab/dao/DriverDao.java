@@ -40,6 +40,7 @@ public class DriverDao {
 
             if (i != 0) //Just to ensure data has been inserted into the database
             {
+                addToDriverTable(createDriverBean);
                 return "SUCCESS";
             }
 
@@ -137,7 +138,7 @@ public class DriverDao {
             
 
             connection.close();
-            
+            deleteFromDriverTable(driver);
             return "OK";
 
         } catch (SQLException e) {
@@ -191,6 +192,63 @@ public class DriverDao {
         }
 
         return "Oops.. Something went wrong there..!";  // On failure, send a message from here.
+    }
+    
+    private void addToDriverTable(CreateDriverBean createDriverBean)
+    {
+        String fullName = createDriverBean.getFullName();
+        String email = createDriverBean.getEmail();
+        String pateNo = createDriverBean.getRegistration();
+        
+        Connection connection = null;
+        PreparedStatement preparedStatement = null;
+
+        try {
+            connection = ConnectionManager.createConnection();
+            String query = "insert into Drivers(email,Registration,Name) values (?,?,?)";
+            preparedStatement = connection.prepareStatement(query); //Making use of prepared statements here to insert bunch of data
+            preparedStatement.setString(1,email);
+            preparedStatement.setString(2,pateNo);
+            preparedStatement.setString(3, fullName);
+            
+            
+            int i = preparedStatement.executeUpdate();
+
+            if (i != 0) //Just to ensure data has been inserted into the database
+            {
+                System.out.println("Added to driver table");
+            }
+
+            connection.close();
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+    
+    private void deleteFromDriverTable(UserBean driver)
+    {
+        Connection connection = null;
+        PreparedStatement preparedStatement = null;
+
+        try {
+
+            String query = "DELETE FROM Drivers WHERE EMAIL = ?";
+
+            connection = ConnectionManager.createConnection();
+            preparedStatement = connection.prepareStatement(query);
+            preparedStatement.setString(1,driver.getEmail());
+            
+            int row = preparedStatement.executeUpdate();
+            System.out.println(row);
+            
+             connection.close();
+            
+            System.out.println("Driver Removed form driver table");
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
     
 }

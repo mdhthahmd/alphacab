@@ -20,11 +20,12 @@ CREATE TABLE Customer (
 -- );
 -- 
 -- --CREATE Table Drivers;
--- CREATE TABLE Drivers (
---   Registration varchar(10) NOT NULL,
---   Name varchar(20),
---   PRIMARY KEY (Registration)
--- );
+CREATE TABLE Drivers (
+--    email VARCHAR(30) NOT NULL,
+--    Registration varchar(30) NOT NULL,
+--    Name varchar(20),
+--    PRIMARY KEY (Registration)
+--  );
 
 
 
@@ -86,6 +87,13 @@ values(
 1234.123,
 'UNASSIGNED');
 
+-- CREATE TABLE journeyPriceRate (
+--      JourneyPriceRate DECIMAL(16 , 8 ) NOT NULL
+--  );
+INSERT INTO journeyPriceRate(
+JourneyPriceRate)
+
+values(2.50);
 
 
 
