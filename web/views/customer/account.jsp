@@ -1,1 +1,0 @@
-<h1 class="mdc-typography--headline3">Account</h1>

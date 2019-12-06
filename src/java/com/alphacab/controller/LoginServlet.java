@@ -13,12 +13,14 @@ import com.alphacab.dao.LoginDao;
 
 public class LoginServlet extends HttpServlet {
 
+    @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         request.getRequestDispatcher("index.jsp").forward(request, response);
 
     }
 
+    @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
@@ -43,8 +45,10 @@ public class LoginServlet extends HttpServlet {
                 session.setAttribute("Role", "Admin");
                 session.setAttribute("Email", email);
                 session.setAttribute("userName", loginBean.getUserName());
-
+                
+                
                 response.sendRedirect("dashboard");
+                
 
             } else if (userValidate.equals("Driver_Role")) {
 
@@ -68,14 +72,14 @@ public class LoginServlet extends HttpServlet {
                 session.setAttribute("userName", loginBean.getUserName());
                 session.setAttribute("Email", email);
                 session.setAttribute("CustomerID",loginBean.getCustomerID());
-
-                response.sendRedirect("dashboard");
+                
+                response.sendRedirect(request.getContextPath()+"/get-a-ride");
 
             } else {
                 System.out.println("Error message = " + userValidate);
                 
                 request.setAttribute("errMessage", userValidate);
-                request.getRequestDispatcher("index.jsp").forward(request, response);
+                response.sendRedirect(request.getContextPath()+"/");
             }
         } catch (IOException e1) {
             e1.printStackTrace();

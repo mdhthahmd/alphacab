@@ -1,5 +1,4 @@
 
-<h1 class="mdc-typography--headline3" >Get A Ride</h1>
 <div id="googleMap"></div>
 <script>
     var startAddress, endAddress;

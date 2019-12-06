@@ -12,6 +12,9 @@ import {MDCMenu} from '@material/menu';
 import {MDCSnackbar} from '@material/snackbar';
 const snackbar = new MDCSnackbar(document.querySelector('.mdc-snackbar'));
 
+import {MDCDialog} from '@material/dialog';
+const dialog = new MDCDialog(document.querySelector('.mdc-dialog'));
+
 const menu = new MDCMenu(document.querySelector('.mdc-menu'));
 menu.open = true;
 

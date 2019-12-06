@@ -18,7 +18,7 @@
             response.setHeader("Expires", "0");
 
             if (session.getAttribute("userName") == null) {
-                response.sendRedirect("index.jsp");
+                response.sendRedirect(request.getContextPath()+"/");
             }
         %>
 
@@ -122,26 +122,17 @@
 
                 <%}%>
 
-
                 <%if (session.getAttribute("Role") == "Customer") {%>
 
                 <hr class="mdc-list-divider">
                 <h6 class="mdc-list-group__subheader">Customer</h6>
-                
-                <a class="mdc-list-item" href="#">
-                    <i class="material-icons mdc-list-item__graphic" aria-hidden="true">account_circle</i>
-                    <span class="mdc-list-item__text">Profile</span>
-                </a>
-
-                <hr class="mdc-list-divider">
-                <h6 class="mdc-list-group__subheader">Menu</h6>
 
                 <a class="mdc-list-item <%=session.getAttribute("Path") == "get-a-ride" ? "mdc-list-item--activated" : "" %>" href="<%=request.getContextPath()%>/get-a-ride">
                     <i class="material-icons mdc-list-item__graphic" aria-hidden="true">my_location</i>
                     <span class="mdc-list-item__text">Get A Ride</span>
                 </a>
                     
-                 <a class="mdc-list-item <%=session.getAttribute("Path") == "account" ? "mdc-list-item--activated" : "" %>" href="<%=request.getContextPath()%>/bookings">
+                 <a class="mdc-list-item <%=session.getAttribute("Path") == "bookings" ? "mdc-list-item--activated" : "" %>" href="<%=request.getContextPath()%>/bookings">
                     <i class="material-icons mdc-list-item__graphic" aria-hidden="true">account_circle</i>
                     <span class="mdc-list-item__text">Bookings</span>
                 </a>
@@ -150,12 +141,6 @@
                     <i class="material-icons mdc-list-item__graphic" aria-hidden="true">history</i>
                     <span class="mdc-list-item__text">History</span>
                 </a>
-
-                <a class="mdc-list-item <%=session.getAttribute("Path") == "dashboard" ? "mdc-list-item--activated" : "" %>" href="<%=request.getContextPath()%>/dashboard">
-                    <i class="material-icons mdc-list-item__graphic" aria-hidden="true">my_location</i>
-                    <span class="mdc-list-item__text">Dashboard</span>
-                </a>
-
                 <%}%>   
             </nav>
         </div>
@@ -163,22 +148,17 @@
 
     <div class="mdc-drawer-app-content mdc-top-app-bar--fixed-adjust">
         <main id="main-content" >
+            
             <%if (session.getAttribute("Path") == "add-driver") {%>
             <jsp:include page="admin/add-driver.jsp" /> 
             <%}%>
+            
             <%if (session.getAttribute("Path") == "drivers") {%>
             <jsp:include page="admin/drivers.jsp" /> 
             <%}%>
+            
             <%if (session.getAttribute("Path") == "customers-list") {%>
             <jsp:include page="admin/customers.jsp" /> 
-            <%}%>
-
-            <%if (session.getAttribute("Path") == "get-a-ride") {%>
-            <jsp:include page="customer/get-a-ride.jsp" /> 
-            <%}%>
-            
-            <%if (session.getAttribute("Path") == "bookings") {%>
-            <jsp:include page="customer/bookings.jsp" /> 
             <%}%>
 
             <%if (session.getAttribute("Path") == "assigned-jobs") {%>
@@ -204,10 +184,21 @@
             <%if (session.getAttribute("Path") == "account") {%>
             <jsp:include page="customer/account.jsp" /> 
             <%}%>
+            
+            <!--- Customer Options ---->
+
+            <%if (session.getAttribute("Path") == "get-a-ride") {%>
+            <jsp:include page="customer/get-a-ride.jsp" /> 
+            <%}%>
+            
+            <%if (session.getAttribute("Path") == "bookings") {%>
+            <jsp:include page="customer/bookings.jsp" /> 
+            <%}%>
 
             <%if (session.getAttribute("Path") == "history") {%>
             <jsp:include page="customer/history.jsp" /> 
             <%}%>
+            
         </main>
     </div>
 </body>
