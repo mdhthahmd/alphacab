@@ -10,7 +10,8 @@
 <input type="hidden" value="<%=journeys.get(0).getD_Longitude()%>" id="destination-lng"/>
 <%}%>
 
-<div id="googleMap" style="width:100%;height:400px;"></div>
+<div id="googleMap"></div>
+
 <script>
     var customerCurrentPosMarker, customerDestinationMarker, distanceInMeters;
     var startPoint = [];

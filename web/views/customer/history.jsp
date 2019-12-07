@@ -6,18 +6,6 @@
 
     <h1 class="mdc-typography--headline3" >History</h1>
 
-    <button class="js--dropdown-toggle">Open Menu One</button>
-    <div class="mdc-simple-menu mdc-simple-menu--open-from-bottom-left" tabindex="-1">
-        <ul class="mdc-simple-menu__items mdc-list" role="menu" aria-hidden="true">
-            <li class="mdc-list-item" role="menuitem" tabindex="0">
-                Menu One: Link 1
-            </li>
-            <li class="mdc-list-item" role="menuitem" tabindex="0">
-                Menu One: Link 2
-            </li>
-        </ul>
-    </div>
-
     <div class="mdc-data-table">
         <table class="mdc-data-table__table" aria-label="Dessert calories">
             <thead>
