@@ -419,8 +419,7 @@ public class JourneyDao {
 
     }
 
-    private void copyDataToDemandsTabble(Connection connection, PreparedStatement preparedStatement, JourneyBean journeyBean)
-    {
+    private void copyDataToDemandsTabble(Connection connection, PreparedStatement preparedStatement, JourneyBean journeyBean) {
         String pickupLocation = journeyBean.getPickupLocation();
         String dropoffLocation = journeyBean.getDropoffLocation();
         String status = journeyBean.getStatus();
@@ -449,4 +448,134 @@ public class JourneyDao {
             e.printStackTrace();
         }
     }
+    
+    public String getHistoryForCustomer( String emailAdress, ArrayList<JourneyBean> journeys ) {
+        Connection connection = null;
+        PreparedStatement preparedStatement = null;
+        ResultSet resultSet = null;
+
+        try {
+
+            String query = "SELECT * FROM JOURNEYS WHERE STATUS <> 'UNASSIGNED' AND EMAIL = ?";
+
+            connection = ConnectionManager.createConnection();
+            preparedStatement = connection.prepareStatement(query);
+            
+            preparedStatement.setString(1, emailAdress);
+            resultSet = preparedStatement.executeQuery();
+            
+
+            while (resultSet.next()) {
+                
+                JourneyBean journey = new JourneyBean();
+                
+                int journeyID = resultSet.getInt(1);
+                Date date = resultSet.getDate("date_time");
+                String pickupLocation =  resultSet.getString("pickup_location");
+                double p_Lattitude = resultSet.getDouble("p_lattitude");
+                double p_Longitude = resultSet.getDouble("p_longitude");
+                String dropoffLocation = resultSet.getString("dropoff_location");
+                double d_Lattitude = resultSet.getDouble("d_lattitude");
+                double d_Longitude =  resultSet.getDouble("d_longitude");
+                String status = resultSet.getString("status");
+                double distance = resultSet.getDouble("journeyDistance");
+                String customerEmail = resultSet.getString("email");
+                //get time from time stamp
+                String strTime = (""+resultSet.getTimestamp("date_time"));
+                String []objTime = strTime.split(" ");
+                String []temp = objTime[1].split("\\.");
+                Time time = java.sql.Time.valueOf(temp[0]);
+                
+                journey.setEmail(customerEmail);
+                journey.setJourneyID(journeyID);
+                journey.setTime(time);
+                journey.setDate(date);
+                journey.setPickupLocation(pickupLocation);
+                journey.setP_Lattitude(p_Lattitude);
+                journey.setP_Longitude(p_Longitude);
+                journey.setDropoffLocation(dropoffLocation);
+                journey.setD_Lattitude(d_Lattitude);
+                journey.setD_Longitude(d_Longitude);
+                journey.setStatus(status);
+                journey.setDistance(distance);
+                
+                journeys.add(journey);
+            }
+            
+            connection.close();
+            
+            return "OK";
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return "Oops.. Something went wrong there..!";  // On failure, send a message from here.
+    }
+    
+    public String getBookingsForCustomer( String emailAdress, ArrayList<JourneyBean> journeys ) {
+        Connection connection = null;
+        PreparedStatement preparedStatement = null;
+        ResultSet resultSet = null;
+
+        try {
+
+            String query = "SELECT * FROM JOURNEYS WHERE STATUS = 'UNASSIGNED' AND EMAIL = ?";
+
+            connection = ConnectionManager.createConnection();
+            preparedStatement = connection.prepareStatement(query);
+            
+            preparedStatement.setString(1, emailAdress);
+            resultSet = preparedStatement.executeQuery();
+            
+
+            while (resultSet.next()) {
+                
+                JourneyBean journey = new JourneyBean();
+                
+                int journeyID = resultSet.getInt(1);
+                Date date = resultSet.getDate("date_time");
+                String pickupLocation =  resultSet.getString("pickup_location");
+                double p_Lattitude = resultSet.getDouble("p_lattitude");
+                double p_Longitude = resultSet.getDouble("p_longitude");
+                String dropoffLocation = resultSet.getString("dropoff_location");
+                double d_Lattitude = resultSet.getDouble("d_lattitude");
+                double d_Longitude =  resultSet.getDouble("d_longitude");
+                String status = resultSet.getString("status");
+                double distance = resultSet.getDouble("journeyDistance");
+                String customerEmail = resultSet.getString("email");
+                //get time from time stamp
+                String strTime = (""+resultSet.getTimestamp("date_time"));
+                String []objTime = strTime.split(" ");
+                String []temp = objTime[1].split("\\.");
+                Time time = java.sql.Time.valueOf(temp[0]);
+                
+                journey.setEmail(customerEmail);
+                journey.setJourneyID(journeyID);
+                journey.setTime(time);
+                journey.setDate(date);
+                journey.setPickupLocation(pickupLocation);
+                journey.setP_Lattitude(p_Lattitude);
+                journey.setP_Longitude(p_Longitude);
+                journey.setDropoffLocation(dropoffLocation);
+                journey.setD_Lattitude(d_Lattitude);
+                journey.setD_Longitude(d_Longitude);
+                journey.setStatus(status);
+                journey.setDistance(distance);
+                
+                journeys.add(journey);
+            }
+            
+            connection.close();
+            
+            return "OK";
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return "Oops.. Something went wrong there..!";  // On failure, send a message from here.
+    }
+    
+   
 }

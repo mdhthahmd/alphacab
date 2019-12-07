@@ -9,14 +9,6 @@ import {MDCDataTable} from '@material/data-table';
 import {MDCSelect} from '@material/select';
 import {MDCMenu} from '@material/menu';
 
-import {MDCSnackbar} from '@material/snackbar';
-const snackbar = new MDCSnackbar(document.querySelector('.mdc-snackbar'));
-
-import {MDCDialog} from '@material/dialog';
-const dialog = new MDCDialog(document.querySelector('.mdc-dialog'));
-
-const menu = new MDCMenu(document.querySelector('.mdc-menu'));
-menu.open = true;
 
 var i = 0;
 
@@ -48,19 +40,6 @@ topAppBar.listen('MDCTopAppBar:nav', () => {
     drawer.open = !drawer.open;
 });
 
-//const checkbox = new MDCCheckbox(document.querySelector('.mdc-checkbox'));
-//const formField = new MDCFormField(document.querySelector('.mdc-form-field'));
-//formField.input = checkbox;
-
-const selects = [].map.call(document.querySelectorAll('.mdc-select'), function (el) {
-    return new MDCSelect(el);
-});
-
-for (i = 0; i < selects.length; i++) {
-    selects[i].listen('MDCSelect:change', () => {
-        alert(`Selected option at index ${selects[i].selectedIndex} with value "${selects[i].value}"`);
-    });
-}
 
 
 

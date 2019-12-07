@@ -1,6 +1,9 @@
 package com.alphacab.controller;
 
+import com.alphacab.dao.JourneyDao;
+import com.alphacab.model.JourneyBean;
 import java.io.IOException;
+import java.util.ArrayList;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -14,6 +17,16 @@ public class HistoryServlet extends HttpServlet {
             throws ServletException, IOException {
             HttpSession session = request.getSession();
             session.setAttribute("Path", "history");
+            
+            JourneyDao jd = new JourneyDao();
+            ArrayList<JourneyBean> journeys = new ArrayList<>();
+            
+            System.out.println(session.getAttribute("Email"));
+            String Status = jd.getHistoryForCustomer( (String) session.getAttribute("Email"), journeys);
+            
+            System.out.println(Status);
+            
+            request.setAttribute("history", journeys );
             request.getRequestDispatcher("views/dashboard.jsp").forward(request, response);
     }
 
