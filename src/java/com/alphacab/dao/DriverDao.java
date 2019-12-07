@@ -10,9 +10,9 @@ import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import com.alphacab.model.CreateDriverBean;
 import com.alphacab.database.ConnectionManager;
+import com.alphacab.model.DriverBean;
 import com.alphacab.model.UserBean;
 import java.sql.ResultSet;
-import java.sql.ResultSetMetaData;
 import java.util.ArrayList;
 
 public class DriverDao {
@@ -192,6 +192,41 @@ public class DriverDao {
         }
 
         return "Oops.. Something went wrong there..!";  // On failure, send a message from here.
+    }
+    
+    public String specficDriverDetails(String email, DriverBean driverDetails)
+    {
+        Connection connection = null;
+        PreparedStatement preparedStatement = null;
+        ResultSet resultSet = null;
+        
+        try {
+           
+            String query = "SELECT * FROM Drivers WHERE email = ?";
+            
+            connection = ConnectionManager.createConnection();
+            preparedStatement = connection.prepareStatement(query);
+            preparedStatement.setString(1,email);
+            resultSet = preparedStatement.executeQuery();
+            
+            if(resultSet.next())
+            {
+                String name = resultSet.getString("Name");
+                String plateNumber = resultSet.getString("Registration");
+                
+                driverDetails.setLicence(plateNumber);
+                driverDetails.setName(name);
+                driverDetails.setEmail(email);
+            }
+            
+            connection.close();
+            return "OK";
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        
+        return "Oops.. Something went wrong there..!";
     }
     
     private void addToDriverTable(CreateDriverBean createDriverBean)
