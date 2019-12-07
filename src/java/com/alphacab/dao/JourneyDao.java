@@ -203,6 +203,33 @@ public class JourneyDao {
         return "Oops.. Something went wrong there..!";
     }
     
+    public String cancelJourneys(int jid)
+    {
+        Connection connection = null;
+        PreparedStatement preparedStatement = null;
+        
+        try {
+            
+            String query = "UPDATE journeys SET status = 'CANCEL' WHERE journeyID = ?";
+            
+            connection = ConnectionManager.createConnection();
+            preparedStatement = connection.prepareStatement(query);
+            
+            preparedStatement.setInt(1,jid);
+            
+            int row = preparedStatement.executeUpdate();
+            System.out.println(row);
+            connection.close();
+            
+            return "OK";
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return "Oops.. Something went wrong there..!";       
+    }
+    
     public String assiginJourneys(DriverBean driverDetails, int jid)
     {
         Connection connection = null;

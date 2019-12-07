@@ -16,6 +16,10 @@
         <servlet-name>AssignJobsServlet</servlet-name>
         <servlet-class>com.alphacab.controller.AssignJobsServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>CancelBookingServlet</servlet-name>
+        <servlet-class>com.alphacab.controller.CancelBookingServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>BookingsServlet</servlet-name>
         <url-pattern>/bookings</url-pattern>
@@ -31,6 +35,10 @@
     <servlet-mapping>
         <servlet-name>AssignJobsServlet</servlet-name>
         <url-pattern>/assign-jobs</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>CancelBookingServlet</servlet-name>
+        <url-pattern>/cancel-booking</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>10</session-timeout>
