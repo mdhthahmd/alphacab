@@ -18,7 +18,7 @@ import java.sql.SQLException;
  */
 public class JourneyPriceRateDao {
     
-    public String updateJourneyPriceRates(JourneyPriceRateBean priceRateBean)
+    public String updateJourneyPriceRates(double priceRate)
     {
         Connection connection = null;
         PreparedStatement preparedStatement = null;
@@ -30,7 +30,7 @@ public class JourneyPriceRateDao {
             connection = ConnectionManager.createConnection();
             preparedStatement = connection.prepareStatement(query);
             
-            preparedStatement.setDouble(1,priceRateBean.getPriceRate());
+            preparedStatement.setDouble(1,priceRate);
             
             int row = preparedStatement.executeUpdate();
             System.out.println(row);

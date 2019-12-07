@@ -11,7 +11,7 @@
     </head>
 
     <body class="mdc-typography">
-
+        
         <%
             response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
             response.setHeader("Pragma3", "no-cahce");
@@ -68,11 +68,17 @@
                     <span class="mdc-list-item__text">Customers</span>
                 </a>
 
-                <a class="mdc-list-item" href="#">
+                <a class="mdc-list-item <%=session.getAttribute("Path") == "change-price" ? "mdc-list-item--activated" : "" %>" href="<%=request.getContextPath()%>/change-price">
                     <i class="material-icons mdc-list-item__graphic" aria-hidden="true">attach_money</i>
                     <span class="mdc-list-item__text">Change Price</span>
                 </a>
-                <a class="mdc-list-item" href="#">
+                    
+                <a class="mdc-list-item <%=session.getAttribute("Path") == "assign-jobs" ? "mdc-list-item--activated" : "" %>" href="<%=request.getContextPath()%>/assign-jobs">
+                    <i class="material-icons mdc-list-item__graphic" aria-hidden="true">description</i>
+                    <span class="mdc-list-item__text">Assign Jobs</span>
+                </a>
+                    
+                <a class="mdc-list-item  <%=session.getAttribute("Path") == "generate-report" ? "mdc-list-item--activated" : "" %>" href="<%=request.getContextPath()%>/generate-report">
                     <i class="material-icons mdc-list-item__graphic" aria-hidden="true">description</i>
                     <span class="mdc-list-item__text">Generate Report</span>
                 </a>
@@ -159,6 +165,22 @@
             
             <%if (session.getAttribute("Path") == "customers-list") {%>
             <jsp:include page="admin/customers.jsp" /> 
+            <%}%>
+            
+            <%if (session.getAttribute("Path") == "edit-driver") {%>
+            <jsp:include page="admin/edit-driver.jsp" /> 
+            <%}%>
+            
+            <%if (session.getAttribute("Path") == "change-price") {%>
+            <jsp:include page="admin/change-price.jsp" /> 
+            <%}%>
+
+            <%if (session.getAttribute("Path") == "assign-jobs") {%>
+                <jsp:include page="admin/assign-jobs.jsp" /> 
+            <%}%>
+            
+             <%if (session.getAttribute("Path") == "generate-report") {%>
+            <jsp:include page="admin/generate-report.jsp" /> 
             <%}%>
 
             <%if (session.getAttribute("Path") == "assigned-jobs") {%>
