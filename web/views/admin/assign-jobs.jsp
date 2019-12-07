@@ -19,6 +19,7 @@
                 </tr>
             </thead>
             <tbody class="mdc-data-table__content">
+                <% if (request.getSession().getAttribute("unassignedJobs") != null) { %>
                 <%
                     ArrayList<UserBean> drivers = (ArrayList<UserBean>) request.getSession().getAttribute("driverList");
                     ArrayList<JourneyBean> journeys = (ArrayList<JourneyBean>) request.getSession().getAttribute("unassignedJobs");
@@ -44,6 +45,7 @@
                             <input type="submit" class="material-icons mdc-top-app-bar__navigation-icon mdc-icon-button" value="check_circle_outline" name=<%="submit_"+journeys.get(i).getJourneyID()%>/>
                     </td>
                 </tr>
+                <%}%>
                 <%}%>
             </tbody>
         </table>
