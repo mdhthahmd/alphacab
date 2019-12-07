@@ -21,10 +21,10 @@ public class BookingsServlet extends HttpServlet {
             JourneyDao jd = new JourneyDao();
             ArrayList<JourneyBean> journeys = new ArrayList<>();
             
-            System.out.println(session.getAttribute("Email") + "##########################################################################################");
-            String Status = jd.getJourneyDetails( (String) session.getAttribute("Email"), journeys);
+            System.out.println(session.getAttribute("Email"));
+            String Status = jd.getBookingsForCustomer( (String) session.getAttribute("Email"), journeys);
             
-            System.out.println("================================================================================================" + Status);
+            System.out.println(Status);
             
             request.setAttribute("Bookings", journeys );
             request.getRequestDispatcher("views/dashboard.jsp").forward(request, response);

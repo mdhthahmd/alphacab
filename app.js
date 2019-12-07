@@ -15,8 +15,7 @@ const snackbar = new MDCSnackbar(document.querySelector('.mdc-snackbar'));
 import {MDCDialog} from '@material/dialog';
 const dialog = new MDCDialog(document.querySelector('.mdc-dialog'));
 
-const menu = new MDCMenu(document.querySelector('.mdc-menu'));
-menu.open = true;
+
 
 var i = 0;
 
@@ -65,3 +64,15 @@ for (i = 0; i < selects.length; i++) {
 
 
 
+const menuEls = Array.from(document.querySelectorAll('.mdc-simple-menu'));
+
+menuEls.forEach((menuEl) => {
+  // Initialize MDCSimpleMenu on each ".mdc-simple-menu"
+  const menu = new MDCMenu (menuEl);
+
+  // We wrapped menu and toggle into containers for easier selecting the toggles
+  const dropdownToggle = menuEl.parentElement.querySelector('.js--dropdown-toggle');
+  dropdownToggle.addEventListener('click', () => {
+    menu.open = !menu.open;
+  });
+});
