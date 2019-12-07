@@ -140,14 +140,17 @@
 </script>
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAm7lXwI_sLxrwk-6TEeM6HMQ3GL-K439w&libraries=geometry&callback=myMap"></script>
 
+<% if (request.getSession().getAttribute("take-a-journey") != null) { %>
+<%ArrayList<JourneyBean> journeys = (ArrayList<JourneyBean>) request.getSession().getAttribute("take-a-journey");%>
 <div>
-    <form action="<%=request.getContextPath()%>/" method="post" name="bookaride">
-        <button id="btn-ride" onclick="myFunction()"  class="mdc-button mdc-button--raised">  
+    <form action="<%=request.getContextPath()%>/end-trip" method="post" name="bookaride">
+        <input type="hidden" name="journeyID" value="<%=journeys.get(0).getJourneyID()%>"/>
+        <button id="btn-ride" class="mdc-button mdc-button--raised">  
             <span class="mdc-button__ripple"></span> End Trip
         </button>
-       
-    </form>
+   </form>
 </div>
+<%}%>
 
 <style>
     #btn-ride {
