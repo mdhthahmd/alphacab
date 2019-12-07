@@ -4,9 +4,9 @@
 <h1 class="mdc-typography--headline3" >Assign Journey</h1>
 <div class="mdc-data-table">
     <form action="<%=request.getContextPath()%>/assign-jobs" method="post">
-        <table class="mdc-data-table__table" aria-label="Dessert calories">
+        <table class="mdc-data-table__table " aria-label="Dessert calories">
             <thead>
-                <tr class="mdc-data-table__header-row">
+                <tr class="mdc-data-table__header-row card">
                     <th class="mdc-data-table__header-cell" role="columnheader" scope="col">Journey ID</th>
                     <th class="mdc-data-table__header-cell" role="columnheader" scope="col">Pickup Location</th>
                     <th class="mdc-data-table__header-cell" role="columnheader" scope="col">Destination</th>

@@ -8,13 +8,13 @@
 <%@page import="java.util.ArrayList"%>
 <%@page import="com.alphacab.model.RegisterBean"%>
 
-<div>
+<div class="title">
     <h2>Customers</h2>
 </div>
-<div class="mdc-data-table">
+<div class="mdc-data-table main-table">
     <table class="mdc-data-table__table" aria-label="Dessert calories">
         <thead>
-            <tr class="mdc-data-table__header-row">
+            <tr class="mdc-data-table__header-row card">
                 <th class="mdc-data-table__header-cell" role="columnheader" scope="col">Full Name</th>
                 <th class="mdc-data-table__header-cell" role="columnheader" scope="col">User Name</th>
                 <th class="mdc-data-table__header-cell" role="columnheader" scope="col">Email</th>
@@ -26,7 +26,7 @@
             <%
                 ArrayList<UserBean> customers = (ArrayList<UserBean>) request.getSession().getAttribute("customers");
                 for (int i = 0; i < customers.size(); i++) {%>
-            <tr class="mdc-data-table__row">
+            <tr class="mdc-data-table__row card">
                 <td class="mdc-data-table__cell"><%=customers.get(i).getFirstName()%></td>
                 <td class="mdc-data-table__cell"><%=customers.get(i).getLastName()%></td>
                 <td class="mdc-data-table__cell"><%=customers.get(i).getEmail()%></td>
@@ -46,29 +46,6 @@
     </table>
 </div>
 
-<div class="mdc-select">
-    <div class="mdc-select__anchor demo-width-class">
-        <i class="mdc-select__dropdown-icon"></i>
-        <div class="mdc-select__selected-text"></div>
-        <span class="mdc-floating-label">Pick a Food Group</span>
-        <div class="mdc-line-ripple"></div>
-    </div>
-
-    <div class="mdc-select__menu mdc-menu mdc-menu-surface demo-width-class">
-        <ul class="mdc-list">
-            <li class="mdc-list-item mdc-list-item--selected" data-value="" aria-selected="true"></li>
-            <li class="mdc-list-item" data-value="grains">
-                Bread, Cereal, Rice, and Pasta
-            </li>
-            <li class="mdc-list-item" data-value="vegetables">
-                Vegetables
-            </li>
-            <li class="mdc-list-item" data-value="fruit">
-                Fruit
-            </li>
-        </ul>
-    </div>
-</div>
 
 <style>
     .mdc-data-table__row:nth-child(2n) {
@@ -76,5 +53,32 @@
     }
     .mdc-data-table__header-row{
         background-color: grey;
+    }
+    
+    
+    .card {
+        max-width: 800px;
+        margin: auto;
+        margin-top: 30px;
+        border: 1px solid #eee;
+        box-shadow: 0 0 10px rgba(0, 0, 0, .15);
+        font-size: 16px;
+        line-height: 24px;
+        font-family: 'Helvetica Neue', 'Helvetica', Helvetica, Arial, sans-serif;
+        color: #555;
+    }
+    
+    .main-table {
+        display: flex;
+        flex: 1;
+        align-items: center;
+        margin: 20px;
+    }
+    
+    .title {
+        display: flex;
+        flex: 1;
+        justify-content: center;
+        padding: 20px;
     }
 </style>

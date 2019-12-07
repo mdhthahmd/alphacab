@@ -45,7 +45,7 @@ public class CreateDriverServlet extends HttpServlet {
         {    
             request.setAttribute("userName", createDriverBean.getUserName() );
             session.setAttribute("Customer", createDriverBean.getEmail() );
-            request.getRequestDispatcher("views/dashboard.jsp").forward(request, response);
+            response.sendRedirect(request.getContextPath()+"/drivers");
         } else //On Failure, display a meaningful message to the User.
         {
             request.setAttribute("errMessage", driverCreated);
