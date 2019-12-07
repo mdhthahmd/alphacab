@@ -76,6 +76,11 @@
                     <i class="material-icons mdc-list-item__graphic" aria-hidden="true">description</i>
                     <span class="mdc-list-item__text">Generate Report</span>
                 </a>
+                    
+                <a class="mdc-list-item <%=session.getAttribute("Path") == "assign-jobs" ? "mdc-list-item--activated" : "" %>" href="<%=request.getContextPath()%>/assign-jobs">
+                    <i class="material-icons mdc-list-item__graphic" aria-hidden="true">description</i>
+                    <span class="mdc-list-item__text">Assign Jobs</span>
+                </a>
 
                 <%}%>
 
@@ -171,6 +176,10 @@
             
              <%if (session.getAttribute("Path") == "generate-report") {%>
             <jsp:include page="admin/generate-report.jsp" /> 
+            <%}%>
+
+            <%if (session.getAttribute("Path") == "assign-jobs") {%>
+            <jsp:include page="admin/assign-jobs.jsp" /> 
             <%}%>
 
             <%if (session.getAttribute("Path") == "assigned-jobs") {%>
