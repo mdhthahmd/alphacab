@@ -22,7 +22,7 @@ import javax.servlet.http.HttpSession;
 
 /**
  *
- * @author de
+ * @author samooh
  */
 public class AssignJobsServlet extends HttpServlet {
 
