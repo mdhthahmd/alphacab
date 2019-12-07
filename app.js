@@ -1,4 +1,4 @@
-import { MDCTextField} from '@material/textfield';
+import {MDCTextField} from '@material/textfield';
 import {MDCRipple} from '@material/ripple';
 import {MDCList} from "@material/list";
 import {MDCTopAppBar} from "@material/top-app-bar";
@@ -24,9 +24,8 @@ const buttons = [].map.call(document.querySelectorAll('.mdc-button'), function (
     return new MDCRipple(el);
 });
 
-const textfields = [].map.call(document.querySelectorAll('.mdc-text-field'), function (el) {
-    return new MDCTextField(el);
-
+const textfields = [].map.call(document.querySelectorAll('.mdc-text-field'), function (tf) {
+    return new MDCTextField(tf);
 });
 
 const lists = [].map.call(document.querySelectorAll('.mdc-list'), function (el) {
