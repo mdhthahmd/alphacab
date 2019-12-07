@@ -47,7 +47,7 @@ public class LoginServlet extends HttpServlet {
                 session.setAttribute("userName", loginBean.getUserName());
                 
                 
-                response.sendRedirect("dashboard");
+                response.sendRedirect(request.getContextPath()+"/assign-jobs");
                 
 
             } else if (userValidate.equals("Driver_Role")) {

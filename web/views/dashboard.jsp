@@ -93,13 +93,7 @@
                 <hr class="mdc-list-divider">
                 <h6 class="mdc-list-group__subheader">Driver</h6>
                 
-                <a class="mdc-list-item" href="#">
-                    <i class="material-icons mdc-list-item__graphic" aria-hidden="true">account_circle</i>
-                    <span class="mdc-list-item__text">Profile</span>
-                </a>
-
-                <hr class="mdc-list-divider">
-                <h6 class="mdc-list-group__subheader">Menu</h6>
+              
                 
                 <a class="mdc-list-item <%=session.getAttribute("Path") == "take-a-journey" ? "mdc-list-item--activated" : "" %>" href="<%=request.getContextPath()%>/take-a-journey">
                     <i class="material-icons mdc-list-item__graphic" aria-hidden="true">bookmark</i>

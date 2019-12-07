@@ -1,4 +1,4 @@
-<h1>Generete de reporte</h1>
+<h1>Reports</h1>
 
 <div class="invoice-box">
     <table cellpadding="0" cellspacing="0">
